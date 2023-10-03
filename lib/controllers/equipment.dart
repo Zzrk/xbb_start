@@ -3,10 +3,17 @@ import 'package:get/get.dart';
 import 'package:xbb_start/utils/equipment.dart';
 
 class EquipmentController extends GetxController {
-  var equipmentItemList = [].obs;
+  var equipmentData = {
+    'item': <EquipmentItem>[],
+    'fragment': <EquipmentItem>[],
+  }.obs;
 
   Future<void> initEquipmentList() async {
     final data = await rootBundle.loadString('lib/mock/equipment.json');
-    equipmentItemList.value = parseEquipmentList(data);
+    final list = parseEquipmentList(data);
+    equipmentData['item'] =
+        list.where((element) => element.type == 'item').toList();
+    equipmentData['fragment'] =
+        list.where((element) => element.type == 'fragment').toList();
   }
 }

@@ -12,15 +12,18 @@ import 'dart:convert';
 
 abstract class Equipment {
   const Equipment({
+    required this.type,
     required this.name,
     required this.quality,
     this.access,
     required this.description,
   });
 
+  // 装备类型 item/fragment
+  final String type;
   // 装备名称
   final String name;
-  // 装备品质
+  // 装备品质 白/绿/蓝/紫
   final String quality;
   // 获取途径
   final List<String>? access;
@@ -30,6 +33,7 @@ abstract class Equipment {
 
 class EquipmentItem extends Equipment {
   const EquipmentItem({
+    required super.type,
     required super.name,
     required super.quality,
     super.access,
@@ -39,6 +43,7 @@ class EquipmentItem extends Equipment {
   factory EquipmentItem.fromJson(Map<String, dynamic> json) {
     final access = json['access'];
     return EquipmentItem(
+      type: json['type'] as String,
       name: json['name'] as String,
       quality: json['quality'] as String,
       description: json['description'] as String,
@@ -52,22 +57,4 @@ List<EquipmentItem> parseEquipmentList(String responseBody) {
   return parsed
       .map<EquipmentItem>((json) => EquipmentItem.fromJson(json))
       .toList();
-}
-
-class EquipmentFragment extends Equipment {
-  const EquipmentFragment({
-    required super.name,
-    required super.quality,
-    super.access,
-    required super.description,
-  });
-
-  factory EquipmentFragment.fromJson(Map<String, dynamic> json) {
-    return EquipmentFragment(
-      name: json['name'] as String,
-      quality: json['quality'] as String,
-      description: json['description'] as String,
-      access: json['access'] as List<String>,
-    );
-  }
 }
