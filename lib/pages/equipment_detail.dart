@@ -26,7 +26,7 @@ class EquipmentDetailPage extends StatelessWidget {
                       children: [
                         Text(equipment.name),
                         const SizedBox(height: 12),
-                        Text('品质: ${equipmentQualityMap[equipment.quality]!}'),
+                        Text('品质: ${equipment.quality}'),
                       ],
                     ),
                   ),
