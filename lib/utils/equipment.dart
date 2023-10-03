@@ -10,8 +10,8 @@ import 'dart:convert';
 //   EquipmentQuality.purple: '紫',
 // };
 
-abstract class EquipmentItem {
-  const EquipmentItem({
+abstract class Equipment {
+  const Equipment({
     required this.name,
     required this.quality,
     this.access,
@@ -28,17 +28,17 @@ abstract class EquipmentItem {
   final String description;
 }
 
-class Equipment extends EquipmentItem {
-  const Equipment({
+class EquipmentItem extends Equipment {
+  const EquipmentItem({
     required super.name,
     required super.quality,
     super.access,
     required super.description,
   });
 
-  factory Equipment.fromJson(Map<String, dynamic> json) {
+  factory EquipmentItem.fromJson(Map<String, dynamic> json) {
     final access = json['access'];
-    return Equipment(
+    return EquipmentItem(
       name: json['name'] as String,
       quality: json['quality'] as String,
       description: json['description'] as String,
@@ -47,12 +47,14 @@ class Equipment extends EquipmentItem {
   }
 }
 
-List<Equipment> parseEquipmentList(String responseBody) {
+List<EquipmentItem> parseEquipmentList(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  return parsed.map<Equipment>((json) => Equipment.fromJson(json)).toList();
+  return parsed
+      .map<EquipmentItem>((json) => EquipmentItem.fromJson(json))
+      .toList();
 }
 
-class EquipmentFragment extends EquipmentItem {
+class EquipmentFragment extends Equipment {
   const EquipmentFragment({
     required super.name,
     required super.quality,

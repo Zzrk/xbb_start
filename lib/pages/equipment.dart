@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/controllers/equipment.dart';
+import 'package:xbb_start/utils/equipment.dart';
 
 class EquipmentPage extends StatelessWidget {
   const EquipmentPage({super.key});
@@ -17,8 +18,8 @@ class EquipmentPage extends StatelessWidget {
         ),
         body: Obx(() => GridView.count(
               crossAxisCount: 4,
-              children: List.generate(c.equipmentList.length, (index) {
-                final equipment = c.equipmentList[index];
+              children: List.generate(c.equipmentItemList.length, (index) {
+                final equipment = c.equipmentItemList[index] as EquipmentItem;
                 return GestureDetector(
                   onTap: () {
                     Get.toNamed('/equipment_detail', arguments: equipment);
@@ -29,7 +30,7 @@ class EquipmentPage extends StatelessWidget {
                         const SizedBox(height: 12),
                         Image(
                           image: Image.asset(
-                                  'assets/equipment/${equipment.name}.jpg')
+                                  'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg')
                               .image,
                           width: 32,
                           height: 32,

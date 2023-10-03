@@ -19,7 +19,8 @@ class EquipmentDetailPage extends StatelessWidget {
             Row(
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset('assets/equipment/${equipment.name}.jpg'),
+                Image.asset(
+                    'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg'),
                 Expanded(
                   child: Center(
                     child: Column(
