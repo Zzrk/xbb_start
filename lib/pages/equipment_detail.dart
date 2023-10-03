@@ -33,18 +33,30 @@ class EquipmentDetailPage extends StatelessWidget {
                 )
               ],
             ),
+            const SizedBox(height: 12),
             if (equipment.description.isNotEmpty)
-              Column(
-                children: [const Text('装备描述'), Text(equipment.description)],
+              Card(
+                child: Column(children: [
+                  const ListTile(
+                    title: Text('装备描述'),
+                  ),
+                  const Divider(),
+                  Text(equipment.description),
+                  const SizedBox(height: 12)
+                ]),
               ),
-            if (equipment.access != null)
-              Column(
-                children: [
-                  const Text('获取途径'),
+            if (equipment.access != null && equipment.access!.isNotEmpty)
+              Card(
+                child: Column(children: [
+                  const ListTile(
+                    title: Text('获取途径'),
+                  ),
+                  const Divider(),
                   ...List.generate(equipment.access!.length,
-                      (index) => Text(equipment.access![index]))
-                ],
-              )
+                      (index) => Text(equipment.access![index])),
+                  const SizedBox(height: 12)
+                ]),
+              ),
           ],
         ),
         drawer: const GlobalDrawer());
