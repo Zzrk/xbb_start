@@ -19,7 +19,7 @@ class EquipmentDetailPage extends StatelessWidget {
             Row(
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image(image: equipment.image),
+                Image.asset('assets/equipment/${equipment.name}.jpg'),
                 Expanded(
                   child: Center(
                     child: Column(

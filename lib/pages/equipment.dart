@@ -28,7 +28,9 @@ class EquipmentPage extends StatelessWidget {
                       children: [
                         const SizedBox(height: 12),
                         Image(
-                          image: equipment.image,
+                          image: Image.asset(
+                                  'assets/equipment/${equipment.name}.jpg')
+                              .image,
                           width: 32,
                           height: 32,
                         ),

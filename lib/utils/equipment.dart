@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 
 // 装备品质
 // const equipmentQualityMap = {
@@ -12,12 +11,12 @@ import 'package:flutter/material.dart';
 // };
 
 abstract class EquipmentItem {
-  const EquipmentItem(
-      {required this.name,
-      required this.quality,
-      this.access,
-      required this.description,
-      this.image = const AssetImage('assets/equipment/placeholder.png')});
+  const EquipmentItem({
+    required this.name,
+    required this.quality,
+    this.access,
+    required this.description,
+  });
 
   // 装备名称
   final String name;
@@ -27,17 +26,15 @@ abstract class EquipmentItem {
   final List<String>? access;
   // 装备描述
   final String description;
-  // 装备图片
-  final AssetImage image;
 }
 
 class Equipment extends EquipmentItem {
-  const Equipment(
-      {required super.name,
-      required super.quality,
-      super.access,
-      required super.description,
-      super.image});
+  const Equipment({
+    required super.name,
+    required super.quality,
+    super.access,
+    required super.description,
+  });
 
   factory Equipment.fromJson(Map<String, dynamic> json) {
     final access = json['access'];
@@ -52,17 +49,16 @@ class Equipment extends EquipmentItem {
 
 List<Equipment> parseEquipmentList(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  // print('类型: ${parsed[10]['access'].runtimeType}');
   return parsed.map<Equipment>((json) => Equipment.fromJson(json)).toList();
 }
 
 class EquipmentFragment extends EquipmentItem {
-  const EquipmentFragment(
-      {required super.name,
-      required super.quality,
-      super.access,
-      required super.description,
-      super.image});
+  const EquipmentFragment({
+    required super.name,
+    required super.quality,
+    super.access,
+    required super.description,
+  });
 
   factory EquipmentFragment.fromJson(Map<String, dynamic> json) {
     return EquipmentFragment(
