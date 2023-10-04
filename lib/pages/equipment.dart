@@ -44,6 +44,8 @@ class EquipmentContent extends StatelessWidget {
           crossAxisCount: 4,
           children: c.equipmentData[type]!.map((equipment) {
             final equipmentName = equipment.name.replaceAll('(碎片)', '');
+            final isTodo = equipment.description.isEmpty ||
+                (equipment.synthesis != null && equipment.synthesis!.isEmpty);
             return GestureDetector(
               onTap: () {
                 Get.toNamed('/equipment_detail', arguments: equipment);
@@ -59,36 +61,14 @@ class EquipmentContent extends StatelessWidget {
                       height: 32,
                     ),
                     const SizedBox(height: 12),
-                    Text(equipmentName),
+                    Text(equipmentName,
+                        style: TextStyle(
+                            color: isTodo ? Colors.red : Colors.black)),
                   ],
                 ),
               ),
             );
           }).toList(),
-          // children: List.generate(c.equipmentItemList.length, (index) {
-          //   final equipment = c.equipmentItemList[index] as EquipmentItem;
-          //   return GestureDetector(
-          //     onTap: () {
-          //       Get.toNamed('/equipment_detail', arguments: equipment);
-          //     },
-          //     child: Center(
-          //       child: Column(
-          //         children: [
-          //           const SizedBox(height: 12),
-          //           Image(
-          //             image: Image.asset(
-          //                     'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg')
-          //                 .image,
-          //             width: 32,
-          //             height: 32,
-          //           ),
-          //           const SizedBox(height: 12),
-          //           Text(equipment.name),
-          //         ],
-          //       ),
-          //     ),
-          //   );
-          // }),
         ));
   }
 }
