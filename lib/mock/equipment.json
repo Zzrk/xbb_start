@@ -3,19 +3,27 @@
       "type": "item",
       "name": "阿托斯",
       "quality": "蓝",
-      "description": "这根棍子里蕴含着强大的灵魂力量！是真的！"
+      "description": "这根棍子里蕴含着强大的灵魂力量！是真的！",
+      "synthesis": []
   },
   {
       "type": "item",
       "name": "暗灭",
       "quality": "蓝",
-      "description": "都说了，血是绿色的。"
+      "description": "都说了，血是绿色的。",
+      "synthesis": [
+        { "name": "暗灭卷轴", "count": 1 },
+        { "name": "秘银锤", "count": 2 }
+      ]
   },
   {
       "type": "item",
       "name": "暗灭卷轴",
       "quality": "蓝",
-      "description": "可以合成暗灭"
+      "description": "可以合成暗灭",
+      "synthesis": [
+        { "name": "暗灭卷轴(碎片)", "count": 5 }
+      ]
   },
   {
       "type": "fragment",
@@ -1077,7 +1085,10 @@
       "type": "item",
       "name": "秘银锤",
       "quality": "蓝",
-      "description": "妙尔尼尔飞来！"
+      "description": "妙尔尼尔飞来！",
+      "synthesis": [
+        { "name": "秘银锤(碎片)", "count": 5 }
+      ]
   },
   {
       "type": "fragment",

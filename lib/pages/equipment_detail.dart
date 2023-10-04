@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
+import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/utils/equipment.dart';
 
 class EquipmentDetailPage extends StatelessWidget {
@@ -8,6 +9,8 @@ class EquipmentDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final EquipmentController c = Get.find();
+    // final equipmentName = Get.parameters['name']!;
     final equipment = Get.arguments as Equipment;
 
     return Scaffold(
@@ -55,6 +58,30 @@ class EquipmentDetailPage extends StatelessWidget {
                   const Divider(),
                   ...List.generate(equipment.access!.length,
                       (index) => Text(equipment.access![index])),
+                  const SizedBox(height: 12)
+                ]),
+              ),
+            if (equipment.synthesis != null && equipment.synthesis!.isNotEmpty)
+              Card(
+                child: Column(children: [
+                  const ListTile(
+                    title: Text('装备合成'),
+                  ),
+                  const Divider(),
+                  ...List.generate(equipment.synthesis!.length, (index) {
+                    final synthesis = equipment.synthesis![index];
+                    return GestureDetector(
+                      child: Text('${synthesis.name} x${synthesis.count}'),
+                      onTap: () {
+                        final type =
+                            synthesis.name.contains('碎片') ? 'fragment' : 'item';
+                        final e = c.equipmentData[type]!.firstWhere(
+                            (element) => element.name == synthesis.name);
+                        Get.toNamed('/equipment_detail?name=${e.name}',
+                            arguments: e);
+                      },
+                    );
+                  }),
                   const SizedBox(height: 12)
                 ]),
               ),

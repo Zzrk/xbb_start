@@ -4,8 +4,9 @@ import 'package:xbb_start/utils/equipment.dart';
 
 class EquipmentController extends GetxController {
   var equipmentData = {
-    'item': <EquipmentItem>[],
-    'fragment': <EquipmentItem>[],
+    'item': <Equipment>[],
+    'fragment': <Equipment>[],
+    'total': <Equipment>[]
   }.obs;
 
   Future<void> initEquipmentList() async {
@@ -15,5 +16,6 @@ class EquipmentController extends GetxController {
         list.where((element) => element.type == 'item').toList();
     equipmentData['fragment'] =
         list.where((element) => element.type == 'fragment').toList();
+    equipmentData['total'] = list;
   }
 }

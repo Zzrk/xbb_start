@@ -1,22 +1,32 @@
 import 'dart:convert';
 
-// 装备品质
-// const equipmentQualityMap = {
+class EquipmentSynthesis {
+  const EquipmentSynthesis({
+    required this.name,
+    required this.count,
+  });
 
-// const equipmentQualityMap = {
-//   EquipmentQuality.white: '白',
-//   EquipmentQuality.green: '绿',
-//   EquipmentQuality.blue: '蓝',
-//   EquipmentQuality.purple: '紫',
-// };
+  // 装备名称
+  final String name;
+  // 装备数量
+  final int count;
 
-abstract class Equipment {
+  factory EquipmentSynthesis.fromJson(Map<String, dynamic> json) {
+    return EquipmentSynthesis(
+      name: json['name'] as String,
+      count: json['count'] as int,
+    );
+  }
+}
+
+class Equipment {
   const Equipment({
     required this.type,
     required this.name,
     required this.quality,
     this.access,
     required this.description,
+    this.synthesis,
   });
 
   // 装备类型 item/fragment
@@ -29,32 +39,27 @@ abstract class Equipment {
   final List<String>? access;
   // 装备描述
   final String description;
-}
+  // 装备合成
+  final List<EquipmentSynthesis>? synthesis;
 
-class EquipmentItem extends Equipment {
-  const EquipmentItem({
-    required super.type,
-    required super.name,
-    required super.quality,
-    super.access,
-    required super.description,
-  });
-
-  factory EquipmentItem.fromJson(Map<String, dynamic> json) {
+  factory Equipment.fromJson(Map<String, dynamic> json) {
     final access = json['access'];
-    return EquipmentItem(
+    final synthesis = json['synthesis'];
+    return Equipment(
       type: json['type'] as String,
       name: json['name'] as String,
       quality: json['quality'] as String,
       description: json['description'] as String,
       access: access != null ? List<String>.from(access) : null,
+      synthesis: synthesis != null
+          ? List<EquipmentSynthesis>.from(
+              synthesis.map((x) => EquipmentSynthesis.fromJson(x)))
+          : null,
     );
   }
 }
 
-List<EquipmentItem> parseEquipmentList(String responseBody) {
+List<Equipment> parseEquipmentList(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  return parsed
-      .map<EquipmentItem>((json) => EquipmentItem.fromJson(json))
-      .toList();
+  return parsed.map<Equipment>((json) => Equipment.fromJson(json)).toList();
 }
