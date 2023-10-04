@@ -31,6 +31,9 @@ class EquipmentDetailPage extends StatelessWidget {
                         Text(equipment.name),
                         const SizedBox(height: 12),
                         Text('品质: ${equipment.quality}'),
+                        if (equipment.level != null) const SizedBox(height: 12),
+                        if (equipment.level != null)
+                          Text('需求英雄等级: ${equipment.level}'),
                       ],
                     ),
                   ),

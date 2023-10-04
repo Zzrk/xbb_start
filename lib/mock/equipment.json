@@ -11,6 +11,7 @@
     "name": "暗灭",
     "quality": "蓝",
     "description": "都说了，血是绿色的。",
+    "level": 44,
     "synthesis": [
       {
         "name": "暗灭卷轴",
@@ -132,6 +133,7 @@
     "name": "冰甲",
     "quality": "紫",
     "description": "可穿戴冰箱，抵抗夏日和龙骑士咳嗽的必备良物。",
+    "level": 70,
     "access": [
       "公会商店获取"
     ],
@@ -207,6 +209,7 @@
     "name": "冲锋盾",
     "quality": "绿",
     "description": "为爱冲锋必备，死亡冲锋不必备。",
+    "level": 19,
     "synthesis": [
       {
         "name": "小圆盾",
@@ -263,6 +266,7 @@
     "name": "大剑",
     "quality": "蓝",
     "description": "不管是用来砍盔甲还是切糕，都游刃有余。",
+    "level": 22,
     "synthesis": [
       {
         "name": "大剑(碎片)",
@@ -311,6 +315,7 @@
     "name": "大炮",
     "quality": "紫",
     "description": "可以造成成吨的伤害！",
+    "level": 79,
     "access": [
       "梦境商店获取"
     ],
@@ -373,6 +378,7 @@
     "name": "法力之球",
     "quality": "绿",
     "description": "每个法师都希望能够得到它。",
+    "level": 11,
     "access": [
       "【普通第2章】赤脚大夫",
       "【普通第6章】再面战神",
@@ -410,6 +416,7 @@
     "name": "飞鞋",
     "quality": "蓝",
     "description": "不走寻常路。",
+    "level": 31,
     "synthesis": [
       {
         "name": "飞鞋卷轴",
@@ -457,6 +464,7 @@
     "name": "分身斧",
     "quality": "紫",
     "description": "只有心灵纯洁的人才能看到分身。",
+    "level": 53,
     "access": [
       "梦境商店获取"
     ],
@@ -540,6 +548,7 @@
     "name": "风杖",
     "quality": "蓝",
     "description": "臭流氓！不许拾头！",
+    "level": 34,
     "synthesis": [
       {
         "name": "风杖卷轴",
@@ -683,6 +692,7 @@
     "name": "鬼手",
     "quality": "蓝",
     "description": "神灵武士的挚爱。",
+    "level": 32,
     "synthesis": [
       {
         "name": "鬼手卷轴",
@@ -733,6 +743,7 @@
     "name": "贵族头环",
     "quality": "白",
     "description": "我明明看到地精商人的进货单上叫它下沉用户头环！！！",
+    "level": 2,
     "access": [
       "【普通第1章】埋骨场",
       "【普通第2章】糟糕的搭讪",
@@ -749,6 +760,7 @@
     "name": "黑黄",
     "quality": "蓝",
     "description": "变大！但是注意，用得越多，持续时间就越短······",
+    "level": 42,
     "synthesis": [
       {
         "name": "黑黄卷轴",
@@ -844,6 +856,7 @@
     "name": "红杖4阶",
     "quality": "紫",
     "description": "很红很暴力。",
+    "level": 80,
     "access": [
       "梦境商店获取"
     ],
@@ -884,6 +897,7 @@
     "name": "蝴蝶",
     "quality": "紫",
     "description": "十分怀念振翅飞翔的感觉。",
+    "level": 73,
     "access": [
       "远征商店获取"
     ],
@@ -921,6 +935,7 @@
     "name": "回复之巾",
     "quality": "白",
     "description": "有效果，但不多。",
+    "level": 10,
     "synthesis": [
       {
         "name": "回复之巾卷轴",
@@ -1006,6 +1021,7 @@
     "name": "祭品",
     "quality": "绿",
     "description": "最好的条品是水果、蜡烛还是猪头肉？",
+    "level": 20,
     "synthesis": [
       {
         "name": "祭品卷轴",
@@ -1166,6 +1182,7 @@
     "name": "阔剑",
     "quality": "蓝",
     "description": "大风车吱呀吱溜溜地转。",
+    "level": 10,
     "synthesis": [
       {
         "name": "阔剑(碎片)",
@@ -1195,6 +1212,7 @@
     "name": "蓝杖",
     "quality": "蓝",
     "description": "曾经是法师们最高的荣耀······",
+    "level": 35,
     "synthesis": [
       {
         "name": "元气之球",
@@ -1219,10 +1237,24 @@
     "name": "力量护腕",
     "quality": "白",
     "description": "增强体质，延年益寿的好选择。",
+    "level": 9,
     "access": [
       "【精英第1章】启程"
     ],
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "力量护腕卷轴",
+        "count": 1
+      },
+      {
+        "name": "力量拳套",
+        "count": 1
+      },
+      {
+        "name": "贵族头环",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1252,6 +1284,7 @@
     "name": "力量拳套",
     "quality": "白",
     "description": "野兽般的力量！",
+    "level": 2,
     "access": [
       "【普通第1章】启程",
       "【普通第3章】夺船",
@@ -1309,6 +1342,7 @@
     "name": "林肯",
     "quality": "紫",
     "description": "嗯，它可以保护你，但只限一次。",
+    "level": 59,
     "access": [
       "远征商店获取"
     ],
@@ -1360,6 +1394,7 @@
     "name": "龙心",
     "quality": "紫",
     "description": "一般情况来说，加点生命值总没错的。",
+    "level": 72,
     "access": [
       "公会商店获取"
     ],
@@ -1416,6 +1451,7 @@
     "name": "绿杖",
     "quality": "蓝",
     "description": "不作死就不会死······",
+    "level": 24,
     "synthesis": [
       {
         "name": "绿杖(碎片)",
@@ -1509,6 +1545,7 @@
     "name": "梅肯3阶",
     "quality": "紫",
     "description": "不要放弃治疗！不要放弃治疗！不要放弃治疗！",
+    "level": 62,
     "access": [
       "公会商店获取"
     ],
@@ -1620,6 +1657,7 @@
     "name": "敏捷系带",
     "quality": "白",
     "description": "吓死我了，里面有蜘蛛啊！！！",
+    "level": 9,
     "synthesis": [
       {
         "name": "敏捷系带卷轴",
@@ -1681,6 +1719,7 @@
     "name": "命匣",
     "quality": "绿",
     "description": "曾经名字被吐槽，换了个名字后感觉良好。",
+    "level": 16,
     "synthesis": [
       {
         "name": "命匣卷轴",
@@ -1729,7 +1768,20 @@
     "name": "魔抗头巾",
     "quality": "绿",
     "description": "有效缓解火球术带来的头疼。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "治疗指环",
+        "count": 1
+      },
+      {
+        "name": "回复戒指",
+        "count": 2
+      },
+      {
+        "name": "魔抗斗篷",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1766,6 +1818,7 @@
     "name": "强袭",
     "quality": "紫",
     "description": "最强大的战士才有资格穿它。",
+    "level": 51,
     "access": [
       "公会商店获取"
     ],
@@ -1829,6 +1882,7 @@
     "name": "撒旦",
     "quality": "紫",
     "description": "吸血效果卓越，超过99%资本家。",
+    "level": 80,
     "access": [
       "公会商店获取"
     ],
@@ -1932,6 +1986,7 @@
     "name": "散失2阶",
     "quality": "紫",
     "description": "你以为拿上它就能假装敌法师了？",
+    "level": 61,
     "access": [
       "公会商店获取"
     ],
@@ -2016,6 +2071,7 @@
     "name": "深渊之刃",
     "quality": "紫",
     "description": "不需要在乎它是欧洲产的还是非洲产的了。",
+    "level": 78,
     "access": [
       "公会商店获取"
     ],
@@ -2035,6 +2091,7 @@
     "name": "生命之球",
     "quality": "绿",
     "description": "每个战士的居家旅行、杀人灭口的必备良药",
+    "level": 12,
     "access": [
       "【普通第3章】人鱼?鱼人!",
       "【普通第6章】问心",
@@ -2066,6 +2123,7 @@
     "name": "树枝",
     "quality": "白",
     "description": "性价比之王，敏感肌也可以用，家里孩子很喜欢。",
+    "level": 2,
     "access": [
       "【普通第1章】启程",
       "【普通第1章】知识分子",
@@ -2082,6 +2140,7 @@
     "name": "刷新珠",
     "quality": "紫",
     "description": "F5已坏！",
+    "level": 60,
     "access": [
       "梦境商店获取"
     ],
@@ -2275,6 +2334,7 @@
     "name": "天堂之刃",
     "quality": "紫",
     "description": "不知道为什么它可以让敌人无法挥舞武器。",
+    "level": 64,
     "access": [
       "远征商店获取"
     ],
@@ -2301,6 +2361,7 @@
     "name": "推推棒",
     "quality": "蓝",
     "description": "愿原力与你同在。",
+    "level": 30,
     "synthesis": [
       {
         "name": "推推棒卷轴",
@@ -2347,6 +2408,7 @@
     "name": "武士头盔",
     "quality": "绿",
     "description": "像某款砸核桃专用机一样坚固。",
+    "level": 10,
     "access": [
       "【普通第3章】夺船",
       "【普通第6章】问心",
@@ -2447,6 +2509,7 @@
     "name": "小人书",
     "quality": "蓝",
     "description": "我和我的小伙伴都惊呆了。",
+    "level": 43,
     "synthesis": [
       {
         "name": "小人书卷轴",
@@ -2482,6 +2545,7 @@
     "name": "小人书3阶",
     "quality": "紫",
     "description": "我和我的小伙伴都惊呆了。",
+    "level": 74,
     "access": [
       "公会商店获取"
     ],
@@ -2538,6 +2602,7 @@
     "name": "鞋",
     "quality": "白",
     "description": "每个英雄都得穿鞋，美杜莎也不例外。",
+    "level": 8,
     "access": [
       "【普通第1章】苦痛教条",
       "【普通第6章】空中劫匪",
@@ -2569,6 +2634,7 @@
     "name": "虚灵",
     "quality": "紫",
     "description": "“呜呜，你变了！”——不愿意透露姓名的水人说道。",
+    "level": 80,
     "access": [
       "梦境商店获取"
     ],
@@ -2622,6 +2688,7 @@
     "name": "血晶石",
     "quality": "蓝",
     "description": "据说在以前是医疗兵的必备道具。",
+    "level": 45,
     "synthesis": [
       {
         "name": "坚韧法球",
@@ -2638,6 +2705,7 @@
     "name": "羊刀",
     "quality": "紫",
     "description": "武功再高，也怕羊刀。",
+    "level": 53,
     "access": [
       "公会商店获取"
     ],
@@ -2729,6 +2797,7 @@
     "name": "艺人面罩",
     "quality": "白",
     "description": "打算进军演艺圈吗？",
+    "level": 2,
     "access": [
       "【普通第2章】糟糕的搭讪",
       "【普通第4章】再遇",
@@ -2807,7 +2876,20 @@
     "access": [
       "远征商店获取"
     ],
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "长笛卷轴",
+        "count": 1
+      },
+      {
+        "name": "魔抗头巾",
+        "count": 1
+      },
+      {
+        "name": "回复之巾",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -2892,6 +2974,7 @@
     "name": "支配",
     "quality": "绿",
     "description": "转职成为神奇野怪训练师！",
+    "level": 19,
     "synthesis": [
       {
         "name": "吸血面具",
@@ -2922,6 +3005,7 @@
     "name": "智力法杖",
     "quality": "蓝",
     "description": "你将会挂科！",
+    "level": 20,
     "synthesis": [
       {
         "name": "智力法杖(碎片)",
@@ -2949,6 +3033,7 @@
     "name": "智力挂件",
     "quality": "白",
     "description": "考场违禁物品。",
+    "level": 9,
     "synthesis": [
       {
         "name": "智力挂件卷轴",
@@ -2983,6 +3068,7 @@
     "name": "智力假腿",
     "quality": "绿",
     "description": "被追杀，切换力量假腿。咦，这怎么切不了？",
+    "level": 18,
     "synthesis": [
       {
         "name": "鞋",
@@ -3003,6 +3089,7 @@
     "name": "智力长袍",
     "quality": "绿",
     "description": "法师外观毕业装备，穿上会显得很有智慧。",
+    "level": 10,
     "access": [
       "【普通第2章】突袭",
       "【普通第5章】编织者",
