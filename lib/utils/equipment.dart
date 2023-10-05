@@ -53,10 +53,12 @@ class Equipment {
       name: json['name'] as String,
       quality: json['quality'] as String,
       description: json['description'] as String,
-      access: access != null ? List<String>.from(access) : null,
+      access: access != null ? access!.cast<String>() : null,
       synthesis: synthesis != null
-          ? List<EquipmentSynthesis>.from(
-              synthesis.map((x) => EquipmentSynthesis.fromJson(x)))
+          ? synthesis!
+              .map((x) => EquipmentSynthesis.fromJson(x))
+              .toList()
+              .cast<EquipmentSynthesis>()
           : null,
       level: json['level'],
     );
