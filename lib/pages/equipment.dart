@@ -8,9 +8,6 @@ class EquipmentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final EquipmentController c = Get.put(EquipmentController());
-    c.initEquipmentList();
-
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -47,7 +44,8 @@ class EquipmentContent extends StatelessWidget {
                 (equipment.synthesis != null && equipment.synthesis!.isEmpty);
             return GestureDetector(
               onTap: () {
-                Get.toNamed('/equipment_detail', arguments: equipment);
+                Get.toNamed('/equipment_detail?name=$equipmentName',
+                    arguments: equipment);
               },
               child: Center(
                 child: Column(

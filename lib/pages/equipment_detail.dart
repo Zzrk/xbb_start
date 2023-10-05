@@ -10,7 +10,6 @@ class EquipmentDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EquipmentController c = Get.find();
-    // final equipmentName = Get.parameters['name']!;
     final equipment = Get.arguments as Equipment;
 
     return Scaffold(
@@ -20,7 +19,6 @@ class EquipmentDetailPage extends StatelessWidget {
         body: Column(
           children: [
             Row(
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
                     'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg'),

@@ -24,7 +24,7 @@ class HeroStage {
   }
 }
 
-class Hero {
+class HeroInfo {
   // 英雄名称
   final String name;
   // 英雄类型 力/敏/智
@@ -34,15 +34,15 @@ class Hero {
   // 英雄阶段
   final List<HeroStage> stages;
 
-  const Hero({
+  const HeroInfo({
     required this.name,
     required this.type,
     required this.star,
     required this.stages,
   });
 
-  factory Hero.fromJson(Map<String, dynamic> json) {
-    return Hero(
+  factory HeroInfo.fromJson(Map<String, dynamic> json) {
+    return HeroInfo(
       name: json['name'] as String,
       type: json['type'] as String,
       star: json['star'] as int,
@@ -54,7 +54,7 @@ class Hero {
   }
 }
 
-List<Hero> parseHeroList(String responseBody) {
+List<HeroInfo> parseHeroList(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  return parsed.map<Hero>((json) => Hero.fromJson(json)).toList();
+  return parsed.map<HeroInfo>((json) => HeroInfo.fromJson(json)).toList();
 }

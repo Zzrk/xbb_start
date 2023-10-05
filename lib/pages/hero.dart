@@ -8,8 +8,7 @@ class HeroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HeroesController c = Get.put(HeroesController());
-    c.initHeroList();
+    final HeroInfoController c = Get.find();
 
     return Scaffold(
         appBar: AppBar(
