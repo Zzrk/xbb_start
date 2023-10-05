@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/controllers/equipment.dart';
-import 'package:xbb_start/utils/equipment.dart';
 
 class EquipmentPage extends StatelessWidget {
   const EquipmentPage({super.key});

@@ -6,19 +6,20 @@ class HeroStage {
   // 阶段装备
   final List<String> equipments;
   // 可进阶等级
-  final int level;
+  final int? level;
 
   const HeroStage({
     required this.stage,
     required this.equipments,
-    required this.level,
+    this.level,
   });
 
   factory HeroStage.fromJson(Map<String, dynamic> json) {
+    final level = json['level'];
     return HeroStage(
       stage: json['stage'] as String,
       equipments: json['equipments'].cast<String>(),
-      level: json['level'] as int,
+      level: level != null ? level as int : null,
     );
   }
 }
