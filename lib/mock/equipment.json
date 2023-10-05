@@ -4,7 +4,16 @@
     "name": "阿托斯",
     "quality": "蓝",
     "description": "这根棍子里蕴含着强大的灵魂力量！是真的！",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "智力法杖",
+        "count": 2      
+      },
+      {
+        "name": "元气之球",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -188,7 +197,20 @@
     "access": [
       "梦境商店获取"
     ],
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "极限球",
+        "count": 2
+      },
+      {
+        "name": "元气之球",
+        "count": 1
+      },
+      {
+        "name": "小毒球",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -229,9 +251,23 @@
     "type": "item",
     "name": "大电锤",
     "quality": "紫",
-    "description": "",
+    "description": "如有刮坏请照价赔偿——索尔。",
     "access": [
       "梦境商店获取"
+    ],
+    "synthesis": [
+      {
+        "name": "大电锤卷轴",
+        "count": 1
+      },
+      {
+        "name": "小电锤",
+        "count": 1
+      },
+      {
+        "name": "振奋石",
+        "count": 1
+      }
     ]
   },
   {
@@ -294,7 +330,20 @@
     "name": "大魔杖",
     "quality": "绿",
     "description": "你一定是树枝买多了吧？",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "大魔杖卷轴",
+        "count": 1
+      },
+      {
+        "name": "小魔棒",
+        "count": 1
+      },
+      {
+        "name": "树枝",
+        "count": 2
+      }
+    ]
   },
   {
     "type": "item",
@@ -393,7 +442,20 @@
     "name": "反伤甲",
     "quality": "蓝",
     "description": "打我撒！你来打我撒！",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "阔剑",
+        "count": 1
+      },
+      {
+        "name": "锁甲",
+        "count": 1
+      },
+      {
+        "name": "智力长袍",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -515,7 +577,20 @@
     "name": "纷争",
     "quality": "蓝",
     "description": "散发着落不详的气息。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "纷争卷轴",
+        "count": 1
+      },
+      {
+        "name": "武士头盔",
+        "count": 1
+      },
+      {
+        "name": "智力长袍",
+        "count": 2
+      }
+    ]
   },
   {
     "type": "item",
@@ -599,7 +674,16 @@
     "name": "疯脸",
     "quality": "绿",
     "description": "嘲讽力MAX，使用后妥妥挨揍。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "疯脸卷轴",
+        "count": 1
+      },
+      {
+        "name": "吸血面具",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -636,7 +720,20 @@
     "name": "古之耐歌",
     "quality": "绿",
     "description": "俺们兽人内旮瘩都管这玩意儿叫战鼓。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "古之耐歌卷轴",
+        "count": 1
+      },
+      {
+        "name": "力量护腕",
+        "count": 1
+      },
+      {
+        "name": "智力长袍",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -660,7 +757,16 @@
     "access": [
       "远征商店获取"
     ],
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "光耀卷轴",
+        "count": 1
+      },
+      {
+        "name": "远古遗物",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -970,7 +1076,20 @@
     "name": "魂戒",
     "quality": "绿",
     "description": "呀！我要跟你拼了！！！",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "魂戒卷轴",
+        "count": 1
+      },
+      {
+        "name": "回复戒指",
+        "count": 1
+      },
+      {
+        "name": "艺人面罩",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1121,7 +1240,20 @@
     "access": [
       "梦境商店获取"
     ],
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "金箍棒卷轴",
+        "count": 1
+      },
+      {
+        "name": "标枪",
+        "count": 2
+      },
+      {
+        "name": "魔王刀锋",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1175,7 +1307,20 @@
     "name": "狂战斧",
     "quality": "蓝",
     "description": "“拯救世界”",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "坚韧法球",
+        "count": 1
+      },
+      {
+        "name": "阔剑",
+        "count": 1
+      },
+      {
+        "name": "大剑",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1277,7 +1422,20 @@
     "name": "力量假腿",
     "quality": "绿",
     "description": "喝治疗药膏之前，切换敏捷假腿。咦，这怎么切不了？",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "鞋",
+        "count": 1
+      },
+      {
+        "name": "加速手套",
+        "count": 1
+      },
+      {
+        "name": "力量腰带",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1444,7 +1602,20 @@
     "name": "绿鞋",
     "quality": "绿",
     "description": "警告：请勿戴在头上。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "鞋",
+        "count": 1
+      },
+      {
+        "name": "防御指环",
+        "count": 1
+      },
+      {
+        "name": "回复戒指",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1506,7 +1677,16 @@
     "name": "洛萨",
     "quality": "蓝",
     "description": "隐身等于无敌。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "大剑",
+        "count": 1
+      },
+      {
+        "name": "暗影符",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1588,7 +1768,16 @@
     "name": "秘法鞋",
     "quality": "绿",
     "description": "战斗前闻一闻就会充满怒气。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "鞋",
+        "count": 1
+      },
+      {
+        "name": "法力之球",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1622,7 +1811,20 @@
     "name": "敏捷假腿",
     "quality": "绿",
     "description": "不够蓝放技能，切换智力假腿。咦，这怎么切不了？",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "鞋",
+        "count": 1
+      },
+      {
+        "name": "加速手套",
+        "count": 1
+      },
+      {
+        "name": "敏捷皮靴",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -1875,7 +2077,16 @@
     "name": "穷鬼盾",
     "quality": "白",
     "description": "如今已成为时代的眼泪。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "小圆盾",
+        "count": 1
+      },
+      {
+        "name": "敏捷丝袜",
+        "count": 2
+      }
+    ]
   },
   {
     "type": "item",
@@ -2191,7 +2402,16 @@
     "name": "双刀",
     "quality": "蓝",
     "description": "我有两把刀······",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "散华",
+        "count": 1
+      },
+      {
+        "name": "夜叉",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -2354,7 +2574,16 @@
     "name": "天鹰之戒",
     "quality": "绿",
     "description": "很多人怀念有它的日子。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "敏捷系带",
+        "count": 1
+      },
+      {
+        "name": "圣殿指环",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -2439,14 +2668,36 @@
     "name": "相位鞋",
     "quality": "绿",
     "description": "万花丛中过，片叶不沾身。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "鞋",
+        "count": 1
+      },
+      {
+        "name": "攻击利爪",
+        "count": 2
+      }
+    ]
   },
   {
     "type": "item",
     "name": "小电锤",
     "quality": "蓝",
     "description": "控制不住乱放电。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "小电锤卷轴",
+        "count": 1
+      },
+      {
+        "name": "加速手套",
+        "count": 1
+      },
+      {
+        "name": "秘银锤",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -2812,7 +3063,20 @@
     "name": "勇气勋章",
     "quality": "绿",
     "description": "人类的赞歌就是勇气的赞歌。",
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "勇气勋章卷轴",
+        "count": 1
+      },
+      {
+        "name": "锁甲",
+        "count": 1
+      },
+      {
+        "name": "艺人面罩",
+        "count": 1
+      }
+    ]
   },
   {
     "type": "item",
@@ -3123,7 +3387,16 @@
     "access": [
       "梦境商店获取"
     ],
-    "synthesis": []
+    "synthesis": [
+      {
+        "name": "紫苑卷轴",
+        "count": 1
+      },
+      {
+        "name": "空明禅杖",
+        "count": 2
+      }
+    ]
   },
   {
     "type": "item",

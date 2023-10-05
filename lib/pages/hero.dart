@@ -18,6 +18,8 @@ class HeroPage extends StatelessWidget {
               crossAxisCount: 4,
               children: c.heroList.map((hero) {
                 final heroName = hero.name;
+                final isTodo = hero.stages.any((stage) =>
+                    stage.equipments.any((equipment) => equipment.isEmpty));
                 return GestureDetector(
                   onTap: () {
                     Get.toNamed('/hero_detail', arguments: hero);
@@ -32,7 +34,7 @@ class HeroPage extends StatelessWidget {
                           height: 32,
                         ),
                         const SizedBox(height: 12),
-                        Text(heroName),
+                        Text(heroName + (isTodo ? '*' : '')),
                       ],
                     ),
                   ),

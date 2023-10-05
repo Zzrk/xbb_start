@@ -40,8 +40,6 @@ class EquipmentContent extends StatelessWidget {
           crossAxisCount: 4,
           children: c.equipmentData[type]!.map((equipment) {
             final equipmentName = equipment.name.replaceAll('(碎片)', '');
-            final isTodo = equipment.description.isEmpty ||
-                (equipment.synthesis != null && equipment.synthesis!.isEmpty);
             return GestureDetector(
               onTap: () {
                 Get.toNamed('/equipment_detail?name=$equipmentName',
@@ -58,9 +56,7 @@ class EquipmentContent extends StatelessWidget {
                       height: 32,
                     ),
                     const SizedBox(height: 12),
-                    Text(equipmentName,
-                        style: TextStyle(
-                            color: isTodo ? Colors.red : Colors.black)),
+                    Text(equipmentName),
                   ],
                 ),
               ),
