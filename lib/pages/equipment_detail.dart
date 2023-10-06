@@ -69,20 +69,39 @@ class EquipmentDetailPage extends StatelessWidget {
                     title: Text('装备合成'),
                   ),
                   const Divider(),
-                  ...List.generate(equipment.synthesis!.length, (index) {
-                    final synthesis = equipment.synthesis![index];
-                    return GestureDetector(
-                      child: Text('${synthesis.name} x${synthesis.count}'),
-                      onTap: () {
-                        final type =
-                            synthesis.name.contains('碎片') ? 'fragment' : 'item';
-                        final e = c.equipmentData[type]!.firstWhere(
-                            (element) => element.name == synthesis.name);
-                        Get.toNamed('/equipment_detail?name=${e.name}',
-                            arguments: e);
-                      },
-                    );
-                  }),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ...List.generate(equipment.synthesis!.length, (index) {
+                        final synthesis = equipment.synthesis![index];
+                        return GestureDetector(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/equipment/${synthesis.name.replaceAll('(碎片)', '')}.jpg',
+                                  width: 64,
+                                  height: 64,
+                                ),
+                                Text(synthesis.name),
+                                Text('x${synthesis.count}')
+                              ],
+                            ),
+                          ),
+                          onTap: () {
+                            final type = synthesis.name.contains('碎片')
+                                ? 'fragment'
+                                : 'item';
+                            final e = c.equipmentData[type]!.firstWhere(
+                                (element) => element.name == synthesis.name);
+                            Get.toNamed('/equipment_detail?name=${e.name}',
+                                arguments: e);
+                          },
+                        );
+                      }),
+                    ],
+                  ),
                   const SizedBox(height: 12)
                 ]),
               ),
