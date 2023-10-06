@@ -8,6 +8,7 @@ class HeroDetailPage extends StatelessWidget {
   const HeroDetailPage({super.key});
 
   static const stageList = ['蓝+2', '紫', '紫+1', '紫+2', '紫+3'];
+  static const typeMap = {'力': 'hero_str', '敏': 'hero_agi', '智': 'hero_int'};
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +29,36 @@ class HeroDetailPage extends StatelessWidget {
                   child: Center(
                     child: Column(
                       children: [
-                        Text(hero.name),
+                        Text(
+                          hero.name,
+                          style: const TextStyle(fontSize: 18),
+                        ),
                         const SizedBox(height: 12),
-                        Text('属性: ${hero.type}'),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text('属性: '),
+                            Image.asset(
+                              'assets/hero_detail/${typeMap[hero.type]}.png',
+                              width: 32,
+                              height: 32,
+                            )
+                          ],
+                        ),
                         const SizedBox(height: 12),
-                        Text('初始星级: ${hero.star}'),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text('初始星级: '),
+                            ...List.generate(
+                                hero.star,
+                                (index) => Image.asset(
+                                      'assets/hero_detail/hero_star.png',
+                                      width: 20,
+                                      height: 20,
+                                    )).toList()
+                          ],
+                        ),
                       ],
                     ),
                   ),

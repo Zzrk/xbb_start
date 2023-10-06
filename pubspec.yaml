@@ -21,4 +21,5 @@ flutter:
   assets:
     - assets/equipment/
     - assets/hero/
+    - assets/hero_detail/
     - lib/mock/
