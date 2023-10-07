@@ -7,6 +7,8 @@ import 'package:xbb_start/pages/equipment.dart';
 import 'package:xbb_start/pages/equipment_detail.dart';
 import 'package:xbb_start/pages/hero.dart';
 import 'package:xbb_start/pages/hero_detail.dart';
+import 'package:xbb_start/pages/hero_foster.dart';
+import 'package:xbb_start/pages/hero_foster_summary.dart';
 
 void main() {
   runApp(MainApp());
@@ -34,6 +36,9 @@ class MainApp extends StatelessWidget {
             name: '/equipment_detail', page: () => const EquipmentDetailPage()),
         GetPage(name: '/hero', page: () => const HeroPage()),
         GetPage(name: '/hero_detail', page: () => const HeroDetailPage()),
+        GetPage(name: '/hero_foster', page: () => const HeroFosterPage()),
+        GetPage(
+            name: '/hero_foster_summary', page: () => HeroFosterSummaryPage()),
       ],
     );
   }

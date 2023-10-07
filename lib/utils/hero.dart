@@ -58,3 +58,11 @@ List<HeroInfo> parseHeroList(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
   return parsed.map<HeroInfo>((json) => HeroInfo.fromJson(json)).toList();
 }
+
+class HeroFosterInfo {
+  final HeroInfo hero;
+  String from;
+  String to;
+
+  HeroFosterInfo({required this.hero, required this.from, required this.to});
+}
