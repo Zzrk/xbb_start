@@ -69,3 +69,10 @@ List<Equipment> parseEquipmentList(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
   return parsed.map<Equipment>((json) => Equipment.fromJson(json)).toList();
 }
+
+class EquipmentFoster {
+  final Equipment equipment;
+  int count;
+
+  EquipmentFoster({required this.equipment, required this.count});
+}

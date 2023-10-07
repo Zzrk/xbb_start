@@ -60,8 +60,11 @@ List<HeroInfo> parseHeroList(String responseBody) {
 }
 
 class HeroFosterInfo {
+  // 养成的英雄
   final HeroInfo hero;
+  // 初始阶段
   String from;
+  // 目的阶段
   String to;
 
   HeroFosterInfo({required this.hero, required this.from, required this.to});
