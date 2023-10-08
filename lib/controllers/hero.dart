@@ -31,10 +31,11 @@ class HeroInfoController extends GetxController {
 
   // 切换添加或删除英雄
   void toogleFoster(HeroInfo hero) {
-    final fosterInfo = HeroFosterInfo(hero: hero, from: '蓝+2', to: '紫+3');
-    if (fosterList.contains(fosterInfo)) {
-      fosterList.remove(fosterInfo);
+    final index = fosterList.indexWhere((element) => element.hero == hero);
+    if (index >= 0) {
+      fosterList.removeAt(index);
     } else {
+      final fosterInfo = HeroFosterInfo(hero: hero, from: '蓝+2', to: '紫+3');
       fosterList.add(fosterInfo);
     }
   }
@@ -86,7 +87,30 @@ class HeroInfoController extends GetxController {
         .compareTo(qualityList.indexOf(a.equipment.quality)));
   }
 
-  // void computeFragment() {
-  //   for (EquipmentFoster foster in computedList) {}
-  // }
+  void computeFragment() {
+    if (!computedList.any((element) => element.equipment.synthesis != null)) {
+      return;
+    }
+    for (EquipmentFoster foster in computedList) {
+      if (foster.equipment.synthesis == null) {
+        return;
+      }
+      computedList.remove(foster);
+      final synthesis = foster.equipment.synthesis!;
+      final equipmentList = EquipmentController.to.equipmentData['total'];
+      for (EquipmentSynthesis synthesis in synthesis) {
+        final equipment = equipmentList!
+            .firstWhere((element) => element.name == synthesis.name);
+        if (computedList.any((element) => element.equipment == equipment)) {
+          final computedEquipment = computedList
+              .firstWhere((element) => element.equipment == equipment);
+          computedEquipment.count += foster.count * synthesis.count;
+        } else {
+          computedList.add(
+              EquipmentFoster(equipment: equipment, count: synthesis.count));
+        }
+      }
+    }
+    computeFragment();
+  }
 }
