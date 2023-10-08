@@ -4,6 +4,7 @@ import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/utils/equipment.dart';
 
+// 装备详情
 class EquipmentDetailPage extends StatelessWidget {
   const EquipmentDetailPage({super.key});
 
@@ -13,9 +14,7 @@ class EquipmentDetailPage extends StatelessWidget {
     final equipment = Get.arguments as Equipment;
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('装备图鉴'),
-        ),
+        appBar: AppBar(title: const Text('装备图鉴')),
         body: Column(
           children: [
             Row(
@@ -42,32 +41,26 @@ class EquipmentDetailPage extends StatelessWidget {
             if (equipment.description.isNotEmpty)
               Card(
                 child: Column(children: [
-                  const ListTile(
-                    title: Text('装备描述'),
-                  ),
+                  const ListTile(title: Text('装备描述')),
                   const Divider(),
                   Text(equipment.description),
-                  const SizedBox(height: 12)
+                  const SizedBox(height: 8)
                 ]),
               ),
             if (equipment.access != null && equipment.access!.isNotEmpty)
               Card(
                 child: Column(children: [
-                  const ListTile(
-                    title: Text('获取途径'),
-                  ),
+                  const ListTile(title: Text('获取途径')),
                   const Divider(),
                   ...List.generate(equipment.access!.length,
                       (index) => Text(equipment.access![index])),
-                  const SizedBox(height: 12)
+                  const SizedBox(height: 8)
                 ]),
               ),
             if (equipment.synthesis != null && equipment.synthesis!.isNotEmpty)
               Card(
                 child: Column(children: [
-                  const ListTile(
-                    title: Text('装备合成'),
-                  ),
+                  const ListTile(title: Text('装备合成')),
                   const Divider(),
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -75,6 +68,16 @@ class EquipmentDetailPage extends StatelessWidget {
                       ...List.generate(equipment.synthesis!.length, (index) {
                         final synthesis = equipment.synthesis![index];
                         return GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () {
+                            final type = synthesis.name.contains('碎片')
+                                ? 'fragment'
+                                : 'item';
+                            final e = c.equipmentData[type]!.firstWhere(
+                                (element) => element.name == synthesis.name);
+                            Get.toNamed('/equipment_detail?name=${e.name}',
+                                arguments: e);
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -89,20 +92,11 @@ class EquipmentDetailPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          onTap: () {
-                            final type = synthesis.name.contains('碎片')
-                                ? 'fragment'
-                                : 'item';
-                            final e = c.equipmentData[type]!.firstWhere(
-                                (element) => element.name == synthesis.name);
-                            Get.toNamed('/equipment_detail?name=${e.name}',
-                                arguments: e);
-                          },
                         );
                       }),
                     ],
                   ),
-                  const SizedBox(height: 12)
+                  const SizedBox(height: 8)
                 ]),
               ),
           ],

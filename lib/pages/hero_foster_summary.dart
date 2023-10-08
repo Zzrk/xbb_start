@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/controllers/hero.dart';
+import 'package:xbb_start/utils/index.dart';
 
+// 养成总结
 class HeroFosterSummaryPage extends StatelessWidget {
   const HeroFosterSummaryPage({super.key});
 
@@ -11,41 +13,41 @@ class HeroFosterSummaryPage extends StatelessWidget {
     final HeroInfoController c = Get.find();
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('英雄养成总结'),
+      appBar: AppBar(title: const Text('英雄养成总结')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            FosterGridView(),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      c.computeFoster();
+                    },
+                    child: const Text('整件装备计算')),
+                TextButton(
+                    onPressed: () {
+                      c.computeFoster();
+                      c.computeFragment();
+                    },
+                    child: const Text('装备碎片计算')),
+              ],
+            ),
+            const EquipmentGridView()
+          ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              FosterGridView(),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        c.computeFoster();
-                      },
-                      child: const Text('整件装备计算')),
-                  TextButton(
-                      onPressed: () {
-                        c.computeFoster();
-                        c.computeFragment();
-                      },
-                      child: const Text('装备碎片计算')),
-                ],
-              ),
-              const EquipmentGridView()
-            ],
-          ),
-        ),
-        drawer: const GlobalDrawer());
+      ),
+      drawer: const GlobalDrawer(),
+    );
   }
 }
 
+// 选择的养成英雄
 class FosterGridView extends StatelessWidget {
   FosterGridView({super.key});
-  static const stageList = ['蓝+2', '紫', '紫+1', '紫+2', '紫+3'];
-  final dropdownItems = stageList
+  // 英雄阶段选择列表
+  final dropdownItems = heroStageList
       .map((e) => DropdownMenuItem(
             value: e,
             child: Text(e),
@@ -70,6 +72,7 @@ class FosterGridView extends StatelessWidget {
             final heroName = hero.name;
             final isTodo = hero.stages.any((stage) =>
                 stage.equipments.any((equipment) => equipment.isEmpty));
+
             return Column(
               children: [
                 const SizedBox(height: 8),
@@ -104,6 +107,7 @@ class FosterGridView extends StatelessWidget {
   }
 }
 
+// 装备计算结果
 class EquipmentGridView extends StatelessWidget {
   const EquipmentGridView({super.key});
 
@@ -120,13 +124,12 @@ class EquipmentGridView extends StatelessWidget {
           children: c.computedList.map((element) {
             final equipment = element.equipment;
             final count = element.count;
+
             return Column(
               children: [
                 const SizedBox(height: 8),
-                Image(
-                  image: Image.asset(
-                          'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg')
-                      .image,
+                Image.asset(
+                  'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg',
                   width: 32,
                   height: 32,
                 ),

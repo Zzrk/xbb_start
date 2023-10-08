@@ -71,7 +71,9 @@ List<Equipment> parseEquipmentList(String responseBody) {
 }
 
 class EquipmentFoster {
+  // 养成的装备
   final Equipment equipment;
+  // 装备数量
   int count;
 
   EquipmentFoster({required this.equipment, required this.count});

@@ -11,34 +11,60 @@ import 'package:xbb_start/pages/hero_foster.dart';
 import 'package:xbb_start/pages/hero_foster_summary.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  MainApp({super.key});
-
-  final EquipmentController c1 = Get.put(EquipmentController());
-  final HeroInfoController c2 = Get.put(HeroInfoController());
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     // 初始化装备和英雄数据
+    final EquipmentController c1 = Get.put(EquipmentController());
+    final HeroInfoController c2 = Get.put(HeroInfoController());
     c1.initEquipmentList();
     c2.initHeroList();
 
     return GetMaterialApp(
       title: '小冰冰, 启动!',
       initialRoute: '/',
+      // 各级路由
       getPages: [
-        GetPage(name: '/', page: () => const HomePage()),
-        GetPage(name: '/equipment', page: () => const EquipmentPage()),
+        // 首页
         GetPage(
-            name: '/equipment_detail', page: () => const EquipmentDetailPage()),
-        GetPage(name: '/hero', page: () => const HeroPage()),
-        GetPage(name: '/hero_detail', page: () => const HeroDetailPage()),
-        GetPage(name: '/hero_foster', page: () => const HeroFosterPage()),
+          name: '/',
+          page: () => const HomePage(),
+        ),
+        // 装备图鉴
         GetPage(
-            name: '/hero_foster_summary', page: () => HeroFosterSummaryPage()),
+          name: '/equipment',
+          page: () => const EquipmentPage(),
+        ),
+        // 装备详情
+        GetPage(
+          name: '/equipment_detail',
+          page: () => const EquipmentDetailPage(),
+        ),
+        // 英雄图鉴
+        GetPage(
+          name: '/hero',
+          page: () => const HeroPage(),
+        ),
+        // 英雄详情
+        GetPage(
+          name: '/hero_detail',
+          page: () => const HeroDetailPage(),
+        ),
+        // 英雄养成
+        GetPage(
+          name: '/hero_foster',
+          page: () => const HeroFosterPage(),
+        ),
+        // 养成总计
+        GetPage(
+          name: '/hero_foster_summary',
+          page: () => const HeroFosterSummaryPage(),
+        ),
       ],
     );
   }
