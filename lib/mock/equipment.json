@@ -7,7 +7,7 @@
     "synthesis": [
       {
         "name": "智力法杖",
-        "count": 2      
+        "count": 2
       },
       {
         "name": "元气之球",
@@ -143,9 +143,7 @@
     "quality": "紫",
     "description": "可穿戴冰箱，抵抗夏日和龙骑士咳嗽的必备良物。",
     "level": 70,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "冰甲卷轴",
@@ -166,9 +164,7 @@
     "name": "冰甲卷轴",
     "quality": "紫",
     "description": "可以合成冰甲",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "冰甲卷轴(碎片)",
@@ -194,9 +190,7 @@
     "name": "冰眼",
     "quality": "紫",
     "description": "它用深井冰般的目光凝视着你。",
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "极限球",
@@ -252,9 +246,7 @@
     "name": "大电锤",
     "quality": "紫",
     "description": "如有刮坏请照价赔偿——索尔。",
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "大电锤卷轴",
@@ -275,9 +267,7 @@
     "name": "大电锤卷轴",
     "quality": "紫",
     "description": "可以合成大电锤",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "大电锤卷轴(碎片)",
@@ -365,9 +355,7 @@
     "quality": "紫",
     "description": "可以造成成吨的伤害！",
     "level": 79,
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "大炮卷轴",
@@ -388,9 +376,7 @@
     "name": "大炮卷轴",
     "quality": "紫",
     "description": "可以合成大炮",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "大炮卷轴(碎片)",
@@ -403,10 +389,7 @@
     "name": "大炮卷轴(碎片)",
     "quality": "紫",
     "description": "集齐50个碎片，可以合成大炮卷轴",
-    "access": [
-      "【普通第11章】黑暗者",
-      "【精英第11章】黑暗者"
-    ]
+    "access": ["【普通第11章】黑暗者", "【精英第11章】黑暗者"]
   },
   {
     "type": "item",
@@ -527,9 +510,7 @@
     "quality": "紫",
     "description": "只有心灵纯洁的人才能看到分身。",
     "level": 53,
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "分身斧卷轴",
@@ -550,9 +531,7 @@
     "name": "分身斧卷轴",
     "quality": "紫",
     "description": "可以合成分身斧",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "分身斧卷轴(碎片)",
@@ -754,9 +733,7 @@
     "name": "光耀",
     "quality": "紫",
     "description": "团队闪避，懂又不懂呀！",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "光耀卷轴",
@@ -773,9 +750,7 @@
     "name": "光耀卷轴",
     "quality": "紫",
     "description": "可以合成光耀",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "光耀卷轴(碎片)",
@@ -788,10 +763,7 @@
     "name": "光耀卷轴(碎片)",
     "quality": "紫",
     "description": "集齐50个碎片，可以合成光耀卷轴",
-    "access": [
-      "【普通第11章】我与我",
-      "【精英第11章】我与我"
-    ]
+    "access": ["【普通第11章】我与我", "【精英第11章】我与我"]
   },
   {
     "type": "item",
@@ -932,9 +904,7 @@
     "name": "红杖2阶",
     "quality": "紫",
     "description": "很红很暴力。",
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "红杖",
@@ -947,9 +917,7 @@
     "name": "红杖3阶",
     "quality": "紫",
     "description": "很红很暴力。",
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "红杖2阶",
@@ -963,9 +931,7 @@
     "quality": "紫",
     "description": "很红很暴力。",
     "level": 80,
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "红杖3阶",
@@ -1004,9 +970,7 @@
     "quality": "紫",
     "description": "十分怀念振翅飞翔的感觉。",
     "level": 73,
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "角鹰弓",
@@ -1110,9 +1074,7 @@
     "name": "极限球",
     "quality": "紫",
     "description": "只要假腿切得快，当极限球身上带。",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "极限球(碎片)",
@@ -1209,9 +1171,7 @@
     "name": "角鹰弓",
     "quality": "紫",
     "description": "角什么弓，鹰什么弓，鹰歌什么？",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "角鹰弓(碎片)",
@@ -1237,9 +1197,7 @@
     "name": "金箍棒",
     "quality": "紫",
     "description": "你是猴子请来的救兵吗？",
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "金箍棒卷轴",
@@ -1260,9 +1218,7 @@
     "name": "金箍棒卷轴",
     "quality": "紫",
     "description": "可以合成金箍棒",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "金箍棒卷轴(碎片)",
@@ -1383,9 +1339,7 @@
     "quality": "白",
     "description": "增强体质，延年益寿的好选择。",
     "level": 9,
-    "access": [
-      "【精英第1章】启程"
-    ],
+    "access": ["【精英第1章】启程"],
     "synthesis": [
       {
         "name": "力量护腕卷轴",
@@ -1501,9 +1455,7 @@
     "quality": "紫",
     "description": "嗯，它可以保护你，但只限一次。",
     "level": 59,
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "林肯卷轴",
@@ -1524,9 +1476,7 @@
     "name": "林肯卷轴",
     "quality": "紫",
     "description": "可以合成林肯",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "林肯卷轴(碎片)",
@@ -1553,9 +1503,7 @@
     "quality": "紫",
     "description": "一般情况来说，加点生命值总没错的。",
     "level": 72,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "龙心卷轴",
@@ -1576,9 +1524,7 @@
     "name": "龙心卷轴",
     "quality": "紫",
     "description": "可以合成龙心",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "龙心卷轴(碎片)",
@@ -1649,9 +1595,7 @@
     "name": "掠夺之斧",
     "quality": "紫",
     "description": "据说可以开山断岳",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "掠夺之斧(碎片)",
@@ -1726,9 +1670,7 @@
     "quality": "紫",
     "description": "不要放弃治疗！不要放弃治疗！不要放弃治疗！",
     "level": 62,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "梅肯2阶",
@@ -1741,9 +1683,7 @@
     "name": "梅肯4阶",
     "quality": "紫",
     "description": "不要放弃治疗！不要放弃治疗！不要放弃治疗！不要放弃治疗！",
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "梅肯3阶",
@@ -1990,9 +1930,7 @@
     "name": "魔王刀锋",
     "quality": "紫",
     "description": "路西法大人，这是我这个月的灵魂······",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "魔王刀锋(碎片)",
@@ -2021,9 +1959,7 @@
     "quality": "紫",
     "description": "最强大的战士才有资格穿它。",
     "level": 51,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "强袭卷轴",
@@ -2048,9 +1984,7 @@
     "name": "强袭卷轴",
     "quality": "紫",
     "description": "可以合成强袭",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "强袭卷轴(碎片)",
@@ -2094,9 +2028,7 @@
     "quality": "紫",
     "description": "吸血效果卓越，超过99%资本家。",
     "level": 80,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "撒旦卷轴",
@@ -2117,9 +2049,7 @@
     "name": "撒旦卷轴",
     "quality": "紫",
     "description": "可以合成撒旦",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "撒旦卷轴(碎片)",
@@ -2198,9 +2128,7 @@
     "quality": "紫",
     "description": "你以为拿上它就能假装敌法师了？",
     "level": 61,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "散失",
@@ -2213,9 +2141,7 @@
     "name": "散失3阶",
     "quality": "紫",
     "description": "你以为拿上它就能假装敌法师了？",
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "散失2阶",
@@ -2254,9 +2180,7 @@
     "name": "闪避项链",
     "quality": "紫",
     "description": "通过闪瞎敌人的双眼达到闪避效果。",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "闪避项链(碎片)",
@@ -2283,9 +2207,7 @@
     "quality": "紫",
     "description": "不需要在乎它是欧洲产的还是非洲产的了。",
     "level": 78,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "远古遗物",
@@ -2352,9 +2274,7 @@
     "quality": "紫",
     "description": "F5已坏！",
     "level": 60,
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "刷新珠卷轴",
@@ -2375,9 +2295,7 @@
     "name": "刷新珠卷轴",
     "quality": "紫",
     "description": "可以合成刷新珠",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "刷新珠卷轴(碎片)",
@@ -2418,9 +2336,7 @@
     "name": "水晶法杖",
     "quality": "紫",
     "description": "如果用水晶剑劈水晶法杖，谁会先碎掉呢？",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "水晶法杖(碎片)",
@@ -2555,9 +2471,7 @@
     "quality": "紫",
     "description": "不知道为什么它可以让敌人无法挥舞武器。",
     "level": 64,
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "散华",
@@ -2781,9 +2695,7 @@
     "name": "小人书2阶",
     "quality": "紫",
     "description": "我和我的小伙伴都惊呆了。",
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "小人书",
@@ -2797,9 +2709,7 @@
     "quality": "紫",
     "description": "我和我的小伙伴都惊呆了。",
     "level": 74,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "小人书2阶",
@@ -2886,9 +2796,7 @@
     "quality": "紫",
     "description": "“呜呜，你变了！”——不愿意透露姓名的水人说道。",
     "level": 80,
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "角鹰弓",
@@ -2957,9 +2865,7 @@
     "quality": "紫",
     "description": "武功再高，也怕羊刀。",
     "level": 53,
-    "access": [
-      "公会商店获取"
-    ],
+    "access": ["公会商店获取"],
     "synthesis": [
       {
         "name": "羊刀卷轴",
@@ -2984,9 +2890,7 @@
     "name": "羊刀卷轴",
     "quality": "紫",
     "description": "可以合成羊刀",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "羊刀卷轴(碎片)",
@@ -3111,9 +3015,7 @@
     "name": "远古遗物",
     "quality": "紫",
     "description": "多少执着败给了3800？",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "远古遗物(碎片)",
@@ -3126,20 +3028,14 @@
     "name": "远古遗物(碎片)",
     "quality": "紫",
     "description": "集齐50个碎片，可以合成远古遗物",
-    "access": [
-      "【普通第10章】仪式",
-      "【精英第10章】仪式",
-      "英雄试炼获取"
-    ]
+    "access": ["【普通第10章】仪式", "【精英第10章】仪式", "英雄试炼获取"]
   },
   {
     "type": "item",
     "name": "长笛",
     "quality": "紫",
     "description": "这货长得一点也不像笛子。",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "长笛卷轴",
@@ -3160,9 +3056,7 @@
     "name": "长笛卷轴",
     "quality": "紫",
     "description": "可以合成长笛",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "长笛卷轴(碎片)",
@@ -3188,9 +3082,7 @@
     "name": "振奋石",
     "quality": "紫",
     "description": "我整个人都斯巴达了！",
-    "access": [
-      "远征商店获取"
-    ],
+    "access": ["远征商店获取"],
     "synthesis": [
       {
         "name": "振奋石(碎片)",
@@ -3384,9 +3276,7 @@
     "name": "紫苑",
     "quality": "紫",
     "description": "专用于堵住法师们的臭嘴。",
-    "access": [
-      "梦境商店获取"
-    ],
+    "access": ["梦境商店获取"],
     "synthesis": [
       {
         "name": "紫苑卷轴",
@@ -3403,9 +3293,7 @@
     "name": "紫苑卷轴",
     "quality": "紫",
     "description": "可以合成紫苑",
-    "access": [
-      "竞技场商店获取"
-    ],
+    "access": ["竞技场商店获取"],
     "synthesis": [
       {
         "name": "紫苑卷轴(碎片)",

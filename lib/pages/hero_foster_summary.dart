@@ -29,6 +29,7 @@ class HeroFosterSummaryPage extends StatelessWidget {
                   TextButton(
                       onPressed: () {
                         c.computeFoster();
+                        c.computeFragment();
                       },
                       child: const Text('装备碎片计算')),
                 ],
@@ -61,6 +62,7 @@ class FosterGridView extends StatelessWidget {
 
     return Obx(() => GridView.count(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           crossAxisCount: itemCount,
           childAspectRatio: itemWidth / itemHeight,
           children: c.fosterList.map((fosterInfo) {
@@ -113,6 +115,7 @@ class EquipmentGridView extends StatelessWidget {
 
     return Obx(() => GridView.count(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           crossAxisCount: itemCount,
           children: c.computedList.map((element) {
             final equipment = element.equipment;
@@ -121,12 +124,16 @@ class EquipmentGridView extends StatelessWidget {
               children: [
                 const SizedBox(height: 8),
                 Image(
-                  image: Image.asset('assets/equipment/${equipment.name}.jpg')
+                  image: Image.asset(
+                          'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg')
                       .image,
                   width: 32,
                   height: 32,
                 ),
-                Text(equipment.name),
+                Text(
+                  equipment.name,
+                  style: const TextStyle(fontSize: 12),
+                ),
                 Text('x$count'),
               ],
             );

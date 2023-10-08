@@ -87,30 +87,37 @@ class HeroInfoController extends GetxController {
         .compareTo(qualityList.indexOf(a.equipment.quality)));
   }
 
+  // 计算装备碎片
   void computeFragment() {
-    if (!computedList.any((element) => element.equipment.synthesis != null)) {
+    final synthesisList = computedList
+        .where((element) => element.equipment.synthesis != null)
+        .toList();
+    if (synthesisList.isEmpty) {
+      computedList.sort((a, b) => qualityList
+          .indexOf(b.equipment.quality)
+          .compareTo(qualityList.indexOf(a.equipment.quality)));
       return;
     }
-    for (EquipmentFoster foster in computedList) {
-      if (foster.equipment.synthesis == null) {
-        return;
-      }
-      computedList.remove(foster);
+    final newList = <EquipmentFoster>[];
+    final equipmentList = EquipmentController.to.equipmentData['total'];
+    for (EquipmentFoster foster in synthesisList) {
+      computedList
+          .removeWhere((element) => element.equipment == foster.equipment);
       final synthesis = foster.equipment.synthesis!;
-      final equipmentList = EquipmentController.to.equipmentData['total'];
       for (EquipmentSynthesis synthesis in synthesis) {
         final equipment = equipmentList!
             .firstWhere((element) => element.name == synthesis.name);
-        if (computedList.any((element) => element.equipment == equipment)) {
-          final computedEquipment = computedList
-              .firstWhere((element) => element.equipment == equipment);
+        if (newList.any((element) => element.equipment == equipment)) {
+          final computedEquipment =
+              newList.firstWhere((element) => element.equipment == equipment);
           computedEquipment.count += foster.count * synthesis.count;
         } else {
-          computedList.add(
-              EquipmentFoster(equipment: equipment, count: synthesis.count));
+          newList.add(EquipmentFoster(
+              equipment: equipment, count: foster.count * synthesis.count));
         }
       }
     }
+    computedList.addAll(newList);
     computeFragment();
   }
 }
