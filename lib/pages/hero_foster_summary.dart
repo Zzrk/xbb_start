@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
+import 'package:xbb_start/components/equipment.dart';
+import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/hero.dart';
 import 'package:xbb_start/utils/index.dart';
 
@@ -69,20 +71,14 @@ class FosterGridView extends StatelessWidget {
           childAspectRatio: itemWidth / itemHeight,
           children: c.fosterList.map((fosterInfo) {
             final hero = fosterInfo.hero;
-            final heroName = hero.name;
-            final isTodo = hero.stages.any((stage) =>
-                stage.equipments.any((equipment) => equipment.isEmpty));
 
             return Column(
               children: [
-                const SizedBox(height: 8),
-                Image(
-                  image: Image.asset('assets/hero/$heroName.jpg').image,
-                  width: 32,
-                  height: 32,
+                HeroItem(
+                  hero: hero,
+                  outerPadding: const EdgeInsets.all(0),
+                  innerPadding: const EdgeInsets.all(8.0),
                 ),
-                Text(heroName + (isTodo ? '*' : '')),
-                const SizedBox(height: 8),
                 Expanded(
                   child: DropdownButton(
                     items: dropdownItems,
@@ -125,20 +121,10 @@ class EquipmentGridView extends StatelessWidget {
             final equipment = element.equipment;
             final count = element.count;
 
-            return Column(
-              children: [
-                const SizedBox(height: 8),
-                Image.asset(
-                  'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg',
-                  width: 32,
-                  height: 32,
-                ),
-                Text(
-                  equipment.name,
-                  style: const TextStyle(fontSize: 12),
-                ),
-                Text('x$count'),
-              ],
+            return EquipmentItem(
+              equipment: equipment,
+              count: count,
+              innerPadding: const EdgeInsets.all(4.0),
             );
           }).toList(),
         ));

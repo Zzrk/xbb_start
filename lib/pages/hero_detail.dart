@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/components/equipment.dart';
+import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/utils/hero.dart';
 import 'package:xbb_start/utils/index.dart';
@@ -15,12 +16,15 @@ class HeroDetailPage extends StatelessWidget {
     final hero = Get.arguments as HeroInfo;
 
     return DefaultTabController(
-      length: 6,
+      length: heroStageList.length,
       child: Scaffold(
         appBar: AppBar(title: const Text('英雄图鉴')),
         body: Column(children: [
           Row(children: [
-            Image.asset('assets/hero/${hero.name}.jpg'),
+            HeroImage(
+              hero: hero,
+              imageSize: 140,
+            ),
             Expanded(
               child: Center(
                 child: Column(

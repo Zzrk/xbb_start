@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
+import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/hero.dart';
 
 // 英雄养成
@@ -25,31 +26,13 @@ class HeroFosterPage extends StatelessWidget {
       body: Obx(() => GridView.count(
             crossAxisCount: 4,
             children: c.heroList.map((hero) {
-              final heroName = hero.name;
-              final isTodo = hero.stages.any((stage) =>
-                  stage.equipments.any((equipment) => equipment.isEmpty));
-
-              return GestureDetector(
-                behavior: HitTestBehavior.translucent,
+              return HeroItem(
+                hero: hero,
                 onTap: () => c.toogleFoster(hero),
-                child: Container(
-                  decoration: c.fosterList
-                          .any((element) => element.hero.name == hero.name)
-                      ? const BoxDecoration(color: Colors.black26)
-                      : null,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 12),
-                      Image(
-                        image: Image.asset('assets/hero/$heroName.jpg').image,
-                        width: 32,
-                        height: 32,
-                      ),
-                      const SizedBox(height: 12),
-                      Text(heroName + (isTodo ? '*' : '')),
-                    ],
-                  ),
-                ),
+                decoration: c.fosterList
+                        .any((element) => element.hero.name == hero.name)
+                    ? const BoxDecoration(color: Colors.black26)
+                    : null,
               );
             }).toList(),
           )),
