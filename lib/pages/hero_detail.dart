@@ -121,29 +121,30 @@ class EquipmentRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final equipment = c.equipmentData['item']!
+        .firstWhereOrNull((element) => element.name == name);
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 4),
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
-          final equipment = c.equipmentData['total']!
-              .where((element) => element.name == name)
-              .first;
+          if (equipment == null) return;
           Get.toNamed('/equipment_detail?name=$name', arguments: equipment);
         },
         child: Row(
           children: [
-            if (name.isNotEmpty)
+            if (equipment != null)
               Image.asset(
                 'assets/equipment/$name.jpg',
                 width: 64,
                 height: 64,
               ),
             SizedBox(
-              width: name.isNotEmpty ? 12 : 76,
+              width: equipment != null ? 12 : 76,
               height: 64,
             ),
-            Text(name.isNotEmpty ? name : '暂无数据'),
+            Text(equipment != null ? name : '暂无数据'),
           ],
         ),
       ),

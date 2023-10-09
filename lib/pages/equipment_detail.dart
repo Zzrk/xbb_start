@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
+import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/utils/equipment.dart';
 
@@ -67,31 +68,18 @@ class EquipmentDetailPage extends StatelessWidget {
                     children: [
                       ...List.generate(equipment.synthesis!.length, (index) {
                         final synthesis = equipment.synthesis![index];
-                        return GestureDetector(
-                          behavior: HitTestBehavior.translucent,
-                          onTap: () {
-                            final type = synthesis.name.contains('碎片')
-                                ? 'fragment'
-                                : 'item';
-                            final e = c.equipmentData[type]!.firstWhere(
-                                (element) => element.name == synthesis.name);
-                            Get.toNamed('/equipment_detail?name=${e.name}',
-                                arguments: e);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/equipment/${synthesis.name.replaceAll('(碎片)', '')}.jpg',
-                                  width: 64,
-                                  height: 64,
-                                ),
-                                Text(synthesis.name),
-                                Text('x${synthesis.count}')
-                              ],
-                            ),
-                          ),
+                        final type =
+                            synthesis.name.contains('碎片') ? 'fragment' : 'item';
+                        final e = c.equipmentData[type]!.firstWhere(
+                            (element) => element.name == synthesis.name);
+
+                        return EquipmentItem(
+                          equipment: e,
+                          imageSize: 64,
+                          fontSize: 14,
+                          outerPadding: const EdgeInsets.all(8.0),
+                          innerPadding: const EdgeInsets.all(0),
+                          count: synthesis.count,
                         );
                       }),
                     ],
