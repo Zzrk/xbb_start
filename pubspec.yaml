@@ -20,6 +20,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/equipment/
+    - assets/equipment_detail/
     - assets/hero/
     - assets/hero_detail/
     - lib/mock/

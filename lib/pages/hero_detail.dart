@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
+import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/utils/hero.dart';
 import 'package:xbb_start/utils/index.dart';
@@ -135,10 +136,9 @@ class EquipmentRow extends StatelessWidget {
         child: Row(
           children: [
             if (equipment != null)
-              Image.asset(
-                'assets/equipment/$name.jpg',
-                width: 64,
-                height: 64,
+              EquipmentImage(
+                equipment: equipment,
+                imageSize: 64,
               ),
             SizedBox(
               width: equipment != null ? 12 : 76,

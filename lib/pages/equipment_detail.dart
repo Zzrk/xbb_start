@@ -20,8 +20,10 @@ class EquipmentDetailPage extends StatelessWidget {
           children: [
             Row(
               children: [
-                Image.asset(
-                    'assets/equipment/${equipment.name.replaceAll('(碎片)', '')}.jpg'),
+                EquipmentImage(
+                  equipment: equipment,
+                  imageSize: 140,
+                ),
                 Expanded(
                   child: Center(
                     child: Column(
