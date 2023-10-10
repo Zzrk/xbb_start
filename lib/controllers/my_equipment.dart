@@ -13,8 +13,10 @@ class MyEquipmentController extends GetxController {
 
   // 初始化装备数据
   Future<void> initMyEquipmentList() async {
-    final response =
-        await http.get(Uri.parse('http://10.0.2.2:3000/equipments'));
-    myEquipmentData['item'] = parseMyEquipmentList(response.body);
+    final itemResponse = await http.get(Uri.parse('http://10.0.2.2:3000/item'));
+    myEquipmentData['item'] = parseMyEquipmentList(itemResponse.body);
+    final fragmentResponse =
+        await http.get(Uri.parse('http://10.0.2.2:3000/fragment'));
+    myEquipmentData['fragment'] = parseMyEquipmentList(fragmentResponse.body);
   }
 }

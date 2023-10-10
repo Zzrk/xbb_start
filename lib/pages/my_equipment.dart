@@ -49,8 +49,10 @@ class EquipmentContent extends StatelessWidget {
           crossAxisCount: 4,
           children: c.myEquipmentData[type]!.map((element) {
             final equipment = c0.equipmentData[type]!
-                .firstWhere((e) => e.name == element.name);
+                .firstWhereOrNull((e) => e.name == element.name);
             final count = element.count;
+
+            if (equipment == null) return Text(element.name);
 
             return EquipmentItem(equipment: equipment, count: count);
           }).toList(),
