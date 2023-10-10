@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/controllers/hero.dart';
+import 'package:xbb_start/controllers/my_equipment.dart';
 import 'package:xbb_start/pages/home.dart';
 import 'package:xbb_start/pages/equipment.dart';
 import 'package:xbb_start/pages/equipment_detail.dart';
@@ -9,6 +10,7 @@ import 'package:xbb_start/pages/hero.dart';
 import 'package:xbb_start/pages/hero_detail.dart';
 import 'package:xbb_start/pages/hero_foster.dart';
 import 'package:xbb_start/pages/hero_foster_summary.dart';
+import 'package:xbb_start/pages/my_equipment.dart';
 
 void main() {
   runApp(const MainApp());
@@ -22,8 +24,10 @@ class MainApp extends StatelessWidget {
     // 初始化装备和英雄数据
     final EquipmentController c1 = Get.put(EquipmentController());
     final HeroInfoController c2 = Get.put(HeroInfoController());
+    final MyEquipmentController c3 = Get.put(MyEquipmentController());
     c1.initEquipmentList();
     c2.initHeroList();
+    c3.initMyEquipmentList();
 
     return GetMaterialApp(
       title: '小冰冰, 启动!',
@@ -64,6 +68,11 @@ class MainApp extends StatelessWidget {
         GetPage(
           name: '/hero_foster_summary',
           page: () => const HeroFosterSummaryPage(),
+        ),
+        // 我的装备
+        GetPage(
+          name: '/my_equipment',
+          page: () => const MyEquipmentPage(),
         ),
       ],
     );

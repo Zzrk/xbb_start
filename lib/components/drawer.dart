@@ -35,6 +35,11 @@ class GlobalDrawer extends StatelessWidget {
             selected: Get.currentRoute == '/hero_foster',
             onTap: () => Get.toNamed('/hero_foster'),
           ),
+          ListTile(
+            title: const Text('我的装备'),
+            selected: Get.currentRoute == '/my_equipment',
+            onTap: () => Get.toNamed('/my_equipment'),
+          ),
         ],
       ),
     );
