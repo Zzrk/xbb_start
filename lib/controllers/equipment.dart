@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:get/get.dart';
-import 'package:xbb_start/utils/equipment.dart';
+import 'package:xbb_start/declaration/equipment.dart';
 
 class EquipmentController extends GetxController {
   static EquipmentController get to => Get.find();

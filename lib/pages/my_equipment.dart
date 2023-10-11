@@ -7,7 +7,7 @@ import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/controllers/my_equipment.dart';
 import 'package:xbb_start/utils/toast.dart';
-import 'package:xbb_start/request/index.dart';
+import 'package:xbb_start/utils/request.dart';
 
 // 我的装备
 class MyEquipmentPage extends StatelessWidget {

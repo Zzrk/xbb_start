@@ -4,8 +4,8 @@ import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/equipment.dart';
-import 'package:xbb_start/utils/hero.dart';
-import 'package:xbb_start/utils/index.dart';
+import 'package:xbb_start/declaration/hero.dart';
+import 'package:xbb_start/declaration/index.dart';
 
 // 英雄图鉴
 class HeroDetailPage extends StatelessWidget {

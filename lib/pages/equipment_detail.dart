@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/controllers/equipment.dart';
-import 'package:xbb_start/utils/equipment.dart';
+import 'package:xbb_start/declaration/equipment.dart';
 
 // 装备详情
 class EquipmentDetailPage extends StatelessWidget {

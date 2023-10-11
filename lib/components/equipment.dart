@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xbb_start/utils/equipment.dart';
-import 'package:xbb_start/utils/index.dart';
+import 'package:xbb_start/declaration/equipment.dart';
+import 'package:xbb_start/declaration/index.dart';
 
 // 装备碎片的裁剪器
 class MyClipper extends CustomClipper<Path> {

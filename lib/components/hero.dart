@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xbb_start/utils/hero.dart';
+import 'package:xbb_start/declaration/hero.dart';
 
 // 装备图片
 class HeroImage extends StatelessWidget {

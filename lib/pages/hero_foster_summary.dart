@@ -4,7 +4,7 @@ import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/hero.dart';
-import 'package:xbb_start/utils/index.dart';
+import 'package:xbb_start/declaration/index.dart';
 
 // 养成总结
 class HeroFosterSummaryPage extends StatelessWidget {

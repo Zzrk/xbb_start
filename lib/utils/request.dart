@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:xbb_start/utils/my_equipment.dart';
+import 'package:xbb_start/declaration/my_equipment.dart';
 
 abstract class CommonRequest {
   static final dio = Dio(BaseOptions(

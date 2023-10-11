@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:xbb_start/request/index.dart';
-import 'package:xbb_start/utils/my_equipment.dart';
+import 'package:xbb_start/utils/request.dart';
+import 'package:xbb_start/declaration/my_equipment.dart';
 
 class MyEquipmentController extends GetxController {
   static MyEquipmentController get to => Get.find();

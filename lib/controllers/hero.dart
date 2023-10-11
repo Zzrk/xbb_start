@@ -1,9 +1,9 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:get/get.dart';
 import 'package:xbb_start/controllers/equipment.dart';
-import 'package:xbb_start/utils/equipment.dart';
-import 'package:xbb_start/utils/hero.dart';
-import 'package:xbb_start/utils/index.dart';
+import 'package:xbb_start/declaration/equipment.dart';
+import 'package:xbb_start/declaration/hero.dart';
+import 'package:xbb_start/declaration/index.dart';
 
 class HeroInfoController extends GetxController {
   static HeroInfoController get to => Get.find();
