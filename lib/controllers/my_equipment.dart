@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
+import 'package:xbb_start/request/index.dart';
 import 'package:xbb_start/utils/my_equipment.dart';
 
 class MyEquipmentController extends GetxController {
@@ -7,16 +7,24 @@ class MyEquipmentController extends GetxController {
 
   // 我的装备
   var myEquipmentData = {
-    'item': <MyEquipment>[],
-    'fragment': <MyEquipment>[],
-  }.obs;
+    'item': <MyEquipment>[].obs,
+    'fragment': <MyEquipment>[].obs,
+  };
 
   // 初始化装备数据
   Future<void> initMyEquipmentList() async {
-    final itemResponse = await http.get(Uri.parse('http://10.0.2.2:3000/item'));
-    myEquipmentData['item'] = parseMyEquipmentList(itemResponse.body);
-    final fragmentResponse =
-        await http.get(Uri.parse('http://10.0.2.2:3000/fragment'));
-    myEquipmentData['fragment'] = parseMyEquipmentList(fragmentResponse.body);
+    final itemResponse = await CommonRequest.getEquipmentItem();
+    myEquipmentData['item']!.value = parseMyEquipmentList(itemResponse);
+    final fragmentResponse = await CommonRequest.getEquipmentFragment();
+    myEquipmentData['fragment']!.value = parseMyEquipmentList(fragmentResponse);
+  }
+
+  // 更新装备数据
+  updateMyEquipment(String type, String name, int count) {
+    final equipment =
+        myEquipmentData[type]!.firstWhere((element) => element.name == name);
+    final index = myEquipmentData[type]!.indexOf(equipment);
+    equipment.count = count;
+    myEquipmentData[type]![index] = equipment;
   }
 }
