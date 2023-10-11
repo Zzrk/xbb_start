@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+
 import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/controllers/my_equipment.dart';
+import 'package:xbb_start/utils/toast.dart';
+import 'package:xbb_start/request/index.dart';
 
 // 我的装备
 class MyEquipmentPage extends StatelessWidget {
@@ -43,18 +47,66 @@ class EquipmentContent extends StatelessWidget {
   final MyEquipmentController c = Get.find();
   final EquipmentController c0 = Get.find();
 
+  final myController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final toaster = CommonToast(context);
+
     return Obx(() => GridView.count(
           crossAxisCount: 4,
           children: c.myEquipmentData[type]!.map((element) {
             final equipment = c0.equipmentData[type]!
-                .firstWhereOrNull((e) => e.name == element.name);
-            final count = element.count;
+                .firstWhere((e) => e.name == element.name);
 
-            if (equipment == null) return Text(element.name);
-
-            return EquipmentItem(equipment: equipment, count: count);
+            return EquipmentItem(
+              equipment: equipment,
+              count: element.count,
+              onLongPress: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => Dialog(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            '修改装备数量',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(equipment.name),
+                          const SizedBox(height: 8),
+                          TextField(
+                            controller: myController,
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: '输入装备数量'),
+                          ),
+                          const SizedBox(height: 8),
+                          TextButton(
+                            child: const Text('确认'),
+                            onPressed: () async {
+                              final newCount = int.parse(myController.text);
+                              element.count = newCount;
+                              CommonRequest.updateEquipmentItem(element);
+                              c.updateMyEquipment(
+                                  type, equipment.name, newCount);
+                              toaster.showToast('修改成功');
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            );
           }).toList(),
         ));
   }

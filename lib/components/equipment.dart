@@ -109,6 +109,7 @@ class EquipmentItem extends StatelessWidget {
     this.outerPadding = const EdgeInsets.only(top: 8.0),
     this.innerPadding = const EdgeInsets.all(12.0),
     this.count,
+    this.onLongPress,
   });
 
   final Equipment equipment;
@@ -117,6 +118,7 @@ class EquipmentItem extends StatelessWidget {
   final EdgeInsets outerPadding;
   final EdgeInsets innerPadding;
   final int? count;
+  final void Function()? onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -131,6 +133,7 @@ class EquipmentItem extends StatelessWidget {
           arguments: equipment,
         );
       },
+      onLongPress: onLongPress,
       child: Padding(
         padding: outerPadding,
         child: Column(
