@@ -64,8 +64,18 @@ class HeroFosterInfo {
   final HeroInfo hero;
   // 初始阶段
   String from;
+  // 初始状态
+  int fromState;
   // 目的阶段
   String to;
+  // 目的状态
+  int toState;
 
-  HeroFosterInfo({required this.hero, required this.from, required this.to});
+  HeroFosterInfo({
+    required this.hero,
+    required this.from,
+    required this.to,
+    this.fromState = 0,
+    this.toState = 63,
+  });
 }

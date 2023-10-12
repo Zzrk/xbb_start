@@ -32,7 +32,7 @@ class HeroInfoController extends GetxController {
     }
   }
 
-  // 修改英雄的初始和目的阶段
+  // 修改英雄的初始和目的状态
   void modifyFromOrTo(HeroInfo hero, String type, String value) {
     final fosterInfo =
         fosterList.firstWhere((foster) => foster.hero.name == hero.name);
@@ -41,6 +41,20 @@ class HeroInfoController extends GetxController {
       fosterInfo.from = value;
     } else if (type == 'to') {
       fosterInfo.to = value;
+    }
+    fosterList[index] = fosterInfo;
+  }
+
+  // 修改英雄的初始和目的阶段
+  void modifyFromOrToState(HeroInfo hero, String type, int idx) {
+    final fosterInfo =
+        fosterList.firstWhere((foster) => foster.hero.name == hero.name);
+    final index = fosterList.indexOf(fosterInfo);
+    final newState = (1 << (5 - idx)) ^ fosterInfo.fromState;
+    if (type == 'from') {
+      fosterInfo.fromState = newState;
+    } else if (type == 'to') {
+      fosterInfo.toState = newState;
     }
     fosterList[index] = fosterInfo;
   }
