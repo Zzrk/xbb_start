@@ -31,10 +31,12 @@ class EquipmentImage extends StatelessWidget {
     super.key,
     required this.equipment,
     required this.imageSize,
+    this.isGrey = false,
   });
 
   final Equipment equipment;
   final double imageSize;
+  final bool isGrey;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +84,8 @@ class EquipmentImage extends StatelessWidget {
               'assets/equipment/$equipmentName.jpg',
               width: imageSize,
               height: imageSize,
+              color: isGrey ? Colors.grey : null,
+              colorBlendMode: isGrey ? BlendMode.color : null,
             ),
           ),
           Positioned(
@@ -91,6 +95,7 @@ class EquipmentImage extends StatelessWidget {
               'assets/equipment_detail/equip_frame_$equipmentQuality.png',
               width: imageSize * 1.2,
               height: imageSize * 1.2,
+              color: isGrey ? Colors.grey : null,
             ),
           )
         ],
