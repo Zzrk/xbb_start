@@ -131,7 +131,7 @@ class HeroInfoController extends GetxController {
           .removeWhere((element) => element.equipment == foster.equipment);
       final synthesis = foster.equipment.synthesis!;
       // 遍历合成所需的子装备
-      for (EquipmentSynthesis synthesis in synthesis) {
+      for (EquipmentCount synthesis in synthesis) {
         // 如果计算结果中已经有该装备，数量+父装备数量*子装备数量，否则新增
         final equipment = equipmentList!
             .firstWhere((element) => element.name == synthesis.name);

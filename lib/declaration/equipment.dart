@@ -1,18 +1,18 @@
 import 'dart:convert';
 
-class EquipmentSynthesis {
+class EquipmentCount {
   // 装备名称
   final String name;
   // 装备数量
   final int count;
 
-  const EquipmentSynthesis({
+  const EquipmentCount({
     required this.name,
     required this.count,
   });
 
-  factory EquipmentSynthesis.fromJson(Map<String, dynamic> json) {
-    return EquipmentSynthesis(
+  factory EquipmentCount.fromJson(Map<String, dynamic> json) {
+    return EquipmentCount(
       name: json['name'] as String,
       count: json['count'] as int,
     );
@@ -31,7 +31,7 @@ class Equipment {
   // 装备描述
   final String description;
   // 装备合成
-  final List<EquipmentSynthesis>? synthesis;
+  final List<EquipmentCount>? synthesis;
   // 需求等级
   final int? level;
 
@@ -56,9 +56,9 @@ class Equipment {
       access: access != null ? access!.cast<String>() : null,
       synthesis: synthesis != null
           ? synthesis!
-              .map((x) => EquipmentSynthesis.fromJson(x))
+              .map((x) => EquipmentCount.fromJson(x))
               .toList()
-              .cast<EquipmentSynthesis>()
+              .cast<EquipmentCount>()
           : null,
       level: json['level'],
     );
