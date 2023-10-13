@@ -3,19 +3,28 @@ import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/controllers/hero.dart';
 
-import 'package:xbb_start/pages/hero_foster_sumamry/foster_grid_view.dart';
-import 'package:xbb_start/pages/hero_foster_sumamry/equipment_grid_view.dart';
+import 'package:xbb_start/pages/hero_foster_config/foster_grid_view.dart';
+import 'package:xbb_start/pages/hero_foster_config/equipment_grid_view.dart';
 
-// 养成总结
-class HeroFosterSummaryPage extends StatelessWidget {
-  const HeroFosterSummaryPage({super.key});
+// 养成设置
+class HeroFosterConfigPage extends StatelessWidget {
+  const HeroFosterConfigPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final HeroInfoController c = Get.find();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('英雄养成总结')),
+      appBar: AppBar(
+        title: const Text('英雄养成设置'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.check),
+            tooltip: '确认',
+            onPressed: () => Get.toNamed('/hero_foster_summary'),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -9,7 +9,8 @@ import 'package:xbb_start/pages/equipment_detail.dart';
 import 'package:xbb_start/pages/hero.dart';
 import 'package:xbb_start/pages/hero_detail.dart';
 import 'package:xbb_start/pages/hero_foster.dart';
-import 'package:xbb_start/pages/hero_foster_sumamry/index.dart';
+import 'package:xbb_start/pages/hero_foster_config/index.dart';
+import 'package:xbb_start/pages/hero_foster_summary/index.dart';
 import 'package:xbb_start/pages/my_equipment.dart';
 
 void main() {
@@ -64,7 +65,12 @@ class MainApp extends StatelessWidget {
           name: '/hero_foster',
           page: () => const HeroFosterPage(),
         ),
-        // 养成总计
+        // 养成设置
+        GetPage(
+          name: '/hero_foster_config',
+          page: () => const HeroFosterConfigPage(),
+        ),
+        // 养成总结
         GetPage(
           name: '/hero_foster_summary',
           page: () => const HeroFosterSummaryPage(),

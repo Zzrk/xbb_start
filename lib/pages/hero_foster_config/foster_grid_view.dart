@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/hero.dart';
-import 'package:xbb_start/pages/hero_foster_sumamry/stage_column.dart';
+import 'package:xbb_start/pages/hero_foster_config/stage_column.dart';
 
 // 选择的养成英雄
 class FosterGridView extends StatelessWidget {

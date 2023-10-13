@@ -19,7 +19,7 @@ class HeroFosterPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.check),
             tooltip: '确认',
-            onPressed: () => Get.toNamed('/hero_foster_summary'),
+            onPressed: () => Get.toNamed('/hero_foster_config'),
           ),
         ],
       ),
@@ -29,8 +29,7 @@ class HeroFosterPage extends StatelessWidget {
               return HeroItem(
                 hero: hero,
                 onTap: () => c.toogleFoster(hero),
-                decoration: c.fosterList
-                        .any((element) => element.hero.name == hero.name)
+                decoration: c.fosterList.any((element) => element.hero.name == hero.name)
                     ? const BoxDecoration(color: Colors.black26)
                     : null,
               );
