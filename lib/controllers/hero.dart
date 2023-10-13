@@ -34,8 +34,7 @@ class HeroInfoController extends GetxController {
 
   // 修改英雄的初始和目的状态
   void modifyFromOrTo(HeroInfo hero, String type, String value) {
-    final fosterInfo =
-        fosterList.firstWhere((foster) => foster.hero.name == hero.name);
+    final fosterInfo = fosterList.firstWhere((foster) => foster.hero.name == hero.name);
     final index = fosterList.indexOf(fosterInfo);
     if (type == 'from') {
       fosterInfo.from = value;
@@ -47,14 +46,12 @@ class HeroInfoController extends GetxController {
 
   // 修改英雄的初始和目的阶段
   void modifyFromOrToState(HeroInfo hero, String type, int idx) {
-    final fosterInfo =
-        fosterList.firstWhere((foster) => foster.hero.name == hero.name);
+    final fosterInfo = fosterList.firstWhere((foster) => foster.hero.name == hero.name);
     final index = fosterList.indexOf(fosterInfo);
-    final newState = (1 << (5 - idx)) ^ fosterInfo.fromState;
     if (type == 'from') {
-      fosterInfo.fromState = newState;
+      fosterInfo.fromState = (1 << (5 - idx)) ^ fosterInfo.fromState;
     } else if (type == 'to') {
-      fosterInfo.toState = newState;
+      fosterInfo.toState = (1 << (5 - idx)) ^ fosterInfo.toState;
     }
     fosterList[index] = fosterInfo;
   }
@@ -64,9 +61,8 @@ class HeroInfoController extends GetxController {
 
   // 按照装备品质排序
   void sortFoster() {
-    computedList.sort((a, b) => equipmentQualityList
-        .indexOf(b.equipment.quality)
-        .compareTo(equipmentQualityList.indexOf(a.equipment.quality)));
+    computedList.sort((a, b) =>
+        equipmentQualityList.indexOf(b.equipment.quality).compareTo(equipmentQualityList.indexOf(a.equipment.quality)));
   }
 
   // 计算养成装备
@@ -79,8 +75,7 @@ class HeroInfoController extends GetxController {
       // 英雄的各个阶段所需装备
       final stages = foster.hero.stages;
       // 英雄的初始阶段
-      final fromIndex =
-          stages.indexWhere((stage) => stage.stage == foster.from);
+      final fromIndex = stages.indexWhere((stage) => stage.stage == foster.from);
       // 英雄的目的阶段
       final toIndex = stages.indexWhere((stage) => stage.stage == foster.to);
       // 如果目的阶段小于初始阶段，说明英雄已经进阶到目的阶段，不需要计算
@@ -92,11 +87,9 @@ class HeroInfoController extends GetxController {
         // 遍历当前阶段所需装备
         for (String equipmentName in stage.equipments) {
           // 如果计算结果中已经有该装备，数量+1，否则新增
-          final equipment = equipmentList!
-              .firstWhere((element) => element.name == equipmentName);
+          final equipment = equipmentList!.firstWhere((element) => element.name == equipmentName);
           if (computedList.any((element) => element.equipment == equipment)) {
-            final computedEquipment = computedList
-                .firstWhere((element) => element.equipment == equipment);
+            final computedEquipment = computedList.firstWhere((element) => element.equipment == equipment);
             computedEquipment.count++;
           } else {
             computedList.add(EquipmentFoster(equipment: equipment, count: 1));
@@ -111,9 +104,7 @@ class HeroInfoController extends GetxController {
   void computeFragment() {
     // 在 computeFoster 之后调用
     // 筛选需要合成的装备
-    final synthesisList = computedList
-        .where((element) => element.equipment.synthesis != null)
-        .toList();
+    final synthesisList = computedList.where((element) => element.equipment.synthesis != null).toList();
     // 如果没有需要合成的装备，直接返回
     if (synthesisList.isEmpty) {
       computedList.sort((a, b) => equipmentQualityList
@@ -127,21 +118,17 @@ class HeroInfoController extends GetxController {
     // 遍历需要合成的装备
     for (EquipmentFoster foster in synthesisList) {
       // 删除需要合成的装备
-      computedList
-          .removeWhere((element) => element.equipment == foster.equipment);
+      computedList.removeWhere((element) => element.equipment == foster.equipment);
       final synthesis = foster.equipment.synthesis!;
       // 遍历合成所需的子装备
       for (EquipmentCount synthesis in synthesis) {
         // 如果计算结果中已经有该装备，数量+父装备数量*子装备数量，否则新增
-        final equipment = equipmentList!
-            .firstWhere((element) => element.name == synthesis.name);
+        final equipment = equipmentList!.firstWhere((element) => element.name == synthesis.name);
         if (newList.any((element) => element.equipment == equipment)) {
-          final computedEquipment =
-              newList.firstWhere((element) => element.equipment == equipment);
+          final computedEquipment = newList.firstWhere((element) => element.equipment == equipment);
           computedEquipment.count += foster.count * synthesis.count;
         } else {
-          newList.add(EquipmentFoster(
-              equipment: equipment, count: foster.count * synthesis.count));
+          newList.add(EquipmentFoster(equipment: equipment, count: foster.count * synthesis.count));
         }
       }
     }

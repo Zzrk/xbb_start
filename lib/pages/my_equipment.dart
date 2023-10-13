@@ -27,7 +27,7 @@ class MyEquipmentPage extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             EquipmentContent(type: 'item'),
             EquipmentContent(type: 'fragment'),
@@ -41,16 +41,15 @@ class MyEquipmentPage extends StatelessWidget {
 
 // 列表内容
 class EquipmentContent extends StatelessWidget {
-  EquipmentContent({super.key, this.type = 'item'});
+  const EquipmentContent({super.key, this.type = 'item'});
 
   final String type;
-  final MyEquipmentController c = Get.find();
-  final EquipmentController c0 = Get.find();
-
-  final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final MyEquipmentController c = Get.find();
+    final EquipmentController c0 = Get.find();
+    final myController = TextEditingController();
     final toaster = CommonToast(context);
 
     return Obx(() => GridView.count(

@@ -119,13 +119,13 @@ class HeroStageContent extends StatelessWidget {
 
 // 可点击装备
 class EquipmentRow extends StatelessWidget {
-  EquipmentRow({super.key, required this.name});
+  const EquipmentRow({super.key, required this.name});
 
   final String name;
-  final EquipmentController c = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    final EquipmentController c = Get.find();
     final equipment = c.equipmentData['item']!
         .firstWhereOrNull((element) => element.name == name);
 

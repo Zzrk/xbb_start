@@ -22,7 +22,7 @@ class EquipmentPage extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             EquipmentContent(type: 'item'),
             EquipmentContent(type: 'fragment'),
@@ -36,13 +36,14 @@ class EquipmentPage extends StatelessWidget {
 
 // 图鉴列表内容
 class EquipmentContent extends StatelessWidget {
-  EquipmentContent({super.key, this.type = 'item'});
+  const EquipmentContent({super.key, this.type = 'item'});
 
   final String type;
-  final EquipmentController c = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    final EquipmentController c = Get.find();
+
     return Obx(() => GridView.count(
           crossAxisCount: 4,
           children: c.equipmentData[type]!.map((equipment) {

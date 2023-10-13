@@ -16,7 +16,6 @@ class StageColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HeroInfoController c = Get.find();
-    final hero = fosterInfo.hero;
 
     return Expanded(
       child: Column(
@@ -25,7 +24,7 @@ class StageColumn extends StatelessWidget {
           DropdownButton(
             items: dropdownItems,
             value: type == 'from' ? fosterInfo.from : fosterInfo.to,
-            onChanged: (value) => c.modifyFromOrTo(hero, type, value!),
+            onChanged: (value) => c.modifyFromOrTo(fosterInfo.hero, type, value!),
             style: const TextStyle(
               fontSize: 12,
               color: Colors.black,
@@ -49,137 +48,128 @@ class StageRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hero = fosterInfo.hero;
+    final state = type == 'from' ? fosterInfo.fromState : fosterInfo.toState;
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () {
-        final stage = hero.stages.firstWhere((element) =>
-            element.stage ==
-            (type == 'from' ? fosterInfo.from : fosterInfo.to));
-        openDialog(
-          title: '编辑装备',
-          stage: stage,
-          fosterInfo: fosterInfo,
-          type: type,
+        showDialog(
           context: context,
+          builder: (BuildContext context) => Dialog(
+            child: DialogWidget(
+              title: '编辑装备',
+              fosterInfo: fosterInfo,
+              type: type,
+              fatherContext: context,
+            ),
+          ),
         );
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: List.generate(
-            6,
-            (index) => Container(
-                  width: 8,
-                  height: 8,
-                  margin: const EdgeInsets.only(
-                    left: 2,
-                    right: 2,
-                    top: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: ((type == 'from'
-                                        ? fosterInfo.fromState
-                                        : fosterInfo.toState) >>
-                                    (5 - index) &
-                                1 ==
-                            0)
-                        ? Colors.grey[300]
-                        : Colors.grey[600],
-                  ),
-                )).toList(),
+        children: List.generate(6, (index) {
+          return Container(
+              width: 8,
+              height: 8,
+              margin: const EdgeInsets.only(left: 2, right: 2, top: 8),
+              decoration: BoxDecoration(
+                color: (state >> (5 - index) & 1 == 0) ? Colors.grey[300] : Colors.grey[600],
+              ));
+        }).toList(),
       ),
     );
   }
 }
 
-void openDialog({
-  required String title,
-  required HeroStage stage,
-  required HeroFosterInfo fosterInfo,
-  required String type,
-  required BuildContext context,
-}) {
-  final HeroInfoController c = Get.find();
-  final EquipmentController c1 = Get.find();
-  final hero = fosterInfo.hero;
+class DialogWidget extends StatelessWidget {
+  const DialogWidget(
+      {super.key, required this.title, required this.fosterInfo, required this.type, required this.fatherContext});
 
-  Get.defaultDialog(
-    content: Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Row(
+  final String title;
+  final HeroFosterInfo fosterInfo;
+  final String type;
+  final BuildContext fatherContext;
+
+  @override
+  Widget build(BuildContext context) {
+    final HeroInfoController c = Get.find();
+    final EquipmentController c1 = Get.find();
+    final hero = fosterInfo.hero;
+    final stageName = type == 'from' ? fosterInfo.from : fosterInfo.to;
+    final stage = fosterInfo.hero.stages.firstWhere((element) => element.stage == stageName);
+
+    return Obx(() => Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Column(
-                children: [0, 1, 2].map((e) {
-                  final equipmentName = stage.equipments[e];
-                  final equipment = c1.equipmentData['item']!
-                      .firstWhere((element) => element.name == equipmentName);
-
-                  return DialogImage(
-                    equipment: equipment,
-                    onTap: () => c.modifyFromOrToState(hero, type, e),
-                    isGrey: (type == 'from'
-                                        ? fosterInfo.fromState
-                                        : fosterInfo.toState) >>
-                                    (5 - e) &
-                                1 ==
-                            0
-                        ? true
-                        : false,
-                  );
-                }).toList(),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              Column(
-                children: [3, 4, 5].map((e) {
-                  final equipmentName = stage.equipments[e];
-                  final equipment = c1.equipmentData['item']!
-                      .firstWhere((element) => element.name == equipmentName);
-                  return DialogImage(
-                    equipment: equipment,
-                    onTap: () => c.modifyFromOrToState(hero, type, e),
-                    isGrey: (type == 'from'
-                                        ? fosterInfo.fromState
-                                        : fosterInfo.toState) >>
-                                    (5 - e) &
-                                1 ==
-                            0
-                        ? true
-                        : false,
-                  );
-                }).toList(),
-              )
+              const SizedBox(height: 8),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Column(
+                    children: [0, 1, 2].map((e) {
+                      final equipmentName = stage.equipments[e];
+                      final equipment =
+                          c1.equipmentData['item']!.firstWhere((element) => element.name == equipmentName);
+
+                      return DialogImage(
+                        equipment: equipment,
+                        onTap: () => c.modifyFromOrToState(hero, type, e),
+                        isGrey: (type == 'from'
+                                            ? c.fosterList.firstWhere((element) => element.hero == hero).fromState
+                                            : c.fosterList.firstWhere((element) => element.hero == hero).toState) >>
+                                        (5 - e) &
+                                    1 ==
+                                0
+                            ? true
+                            : false,
+                      );
+                    }).toList(),
+                  ),
+                  Column(
+                    children: [3, 4, 5].map((e) {
+                      final equipmentName = stage.equipments[e];
+                      final equipment =
+                          c1.equipmentData['item']!.firstWhere((element) => element.name == equipmentName);
+
+                      return DialogImage(
+                        equipment: equipment,
+                        onTap: () => c.modifyFromOrToState(hero, type, e),
+                        isGrey: (type == 'from'
+                                            ? c.fosterList.firstWhere((element) => element.hero == hero).fromState
+                                            : c.fosterList.firstWhere((element) => element.hero == hero).toState) >>
+                                        (5 - e) &
+                                    1 ==
+                                0
+                            ? true
+                            : false,
+                      );
+                    }).toList(),
+                  )
+                ],
+              ),
+              TextButton(
+                child: const Text('确认'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
-          TextButton(
-            child: const Text('确认'),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
-    ),
-  );
+        ));
+  }
 }
 
 class DialogImage extends StatelessWidget {
-  const DialogImage(
-      {super.key,
-      required this.equipment,
-      required this.isGrey,
-      required this.onTap});
+  const DialogImage({super.key, required this.equipment, required this.isGrey, required this.onTap});
 
   final Equipment equipment;
   final bool isGrey;
@@ -191,8 +181,7 @@ class DialogImage extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child:
-            EquipmentImage(equipment: equipment, imageSize: 64, isGrey: isGrey),
+        child: EquipmentImage(equipment: equipment, imageSize: 64, isGrey: isGrey),
       ),
     );
   }

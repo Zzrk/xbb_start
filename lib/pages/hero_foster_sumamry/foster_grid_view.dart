@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/hero.dart';
-import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/controllers/hero.dart';
 import 'package:xbb_start/pages/hero_foster_sumamry/stage_column.dart';
 
 // 选择的养成英雄
 class FosterGridView extends StatelessWidget {
-  FosterGridView({super.key});
+  const FosterGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final HeroInfoController c = Get.find();
-    final EquipmentController c1 = Get.find();
 
     const itemCount = 2;
     final itemWidth = MediaQuery.of(context).size.width / itemCount;

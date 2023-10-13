@@ -19,7 +19,7 @@ class HeroFosterSummaryPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            FosterGridView(),
+            const FosterGridView(),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
