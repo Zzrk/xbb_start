@@ -1,3 +1,4 @@
+// 我的装备(碎片)
 class MyEquipment {
   final int id;
   final String name;
