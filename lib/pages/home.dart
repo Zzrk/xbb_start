@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xbb_start/components/calendar.dart';
 import 'package:xbb_start/components/drawer.dart';
 
 // 首页
@@ -11,9 +12,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('首页'),
       ),
-      body: const Center(
-        child: Text('Hello World!'),
-      ),
+      body: const Calendar(),
       drawer: const GlobalDrawer(),
     );
   }
