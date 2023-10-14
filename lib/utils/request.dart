@@ -17,17 +17,21 @@ abstract class CommonRequest {
 
   // 请求我的碎片
   static Future<List<dynamic>> getEquipmentFragment() async {
-    final response =
-        await CommonRequest.dio.get('http://10.0.2.2:3000/fragment');
+    final response = await CommonRequest.dio.get('http://10.0.2.2:3000/fragment');
     return response.data;
   }
 
   // 更新我的装备
   static updateEquipmentItem(MyEquipment payload) async {
-    await CommonRequest.dio
-        .patch('http://10.0.2.2:3000/item/${payload.id}', data: {
+    await CommonRequest.dio.patch('http://10.0.2.2:3000/item/${payload.id}', data: {
       'name': payload.name,
       'count': payload.count,
     });
+  }
+
+  // 请求活动日历数据
+  static Future<List<dynamic>> getCalendarData() async {
+    final response = await CommonRequest.dio.get('http://10.0.2.2:3000/calendar');
+    return response.data;
   }
 }
