@@ -7,12 +7,7 @@ const equipmentQualityList = ['白', '绿', '蓝', '紫'];
 const heroTypeMap = {'力': 'hero_str', '敏': 'hero_agi', '智': 'hero_int'};
 
 // 装备品质映射
-const equipmentQualityMap = {
-  '白': 'white',
-  '绿': 'green',
-  '蓝': 'blue',
-  '紫': 'purple'
-};
+const equipmentQualityMap = {'白': 'white', '绿': 'green', '蓝': 'blue', '紫': 'purple'};
 
 // 英雄阶段列表
 const heroStageList = ['蓝+2', '紫', '紫+1', '紫+2', '紫+3'];
@@ -24,3 +19,6 @@ final dropdownItems = heroStageList
           child: Text(e),
         ))
     .toList();
+
+// 星期列表
+const weekList = ['一', '二', '三', '四', '五', '六', '日'];

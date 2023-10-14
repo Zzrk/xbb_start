@@ -4,6 +4,7 @@ import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/controllers/hero.dart';
 import 'package:xbb_start/controllers/my_equipment.dart';
 import 'package:xbb_start/controllers/foster_summary.dart';
+import 'package:xbb_start/controllers/home.dart';
 import 'package:xbb_start/pages/home.dart';
 import 'package:xbb_start/pages/equipment.dart';
 import 'package:xbb_start/pages/equipment_detail.dart';
@@ -15,6 +16,7 @@ import 'package:xbb_start/pages/hero_foster_summary/index.dart';
 import 'package:xbb_start/pages/my_equipment.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
 
@@ -27,10 +29,12 @@ class MainApp extends StatelessWidget {
     final EquipmentController c1 = Get.put(EquipmentController());
     final HeroInfoController c2 = Get.put(HeroInfoController());
     final MyEquipmentController c3 = Get.put(MyEquipmentController());
+    final HomeController c4 = Get.put(HomeController());
     Get.put(FosterSummaryController());
     c1.initEquipmentList();
     c2.initHeroList();
     c3.initMyEquipmentList();
+    c4.initCalendaarData();
 
     return GetMaterialApp(
       title: '小冰冰, 启动!',
