@@ -1,0 +1,29 @@
+import 'package:flutter/material.dart';
+import 'package:xbb_start/components/equipment.dart';
+import 'package:xbb_start/declaration/equipment.dart';
+
+// 装备计算结果
+class EquipmentGridView extends StatelessWidget {
+  const EquipmentGridView({super.key, required this.computedItemList});
+
+  final List<EquipmentFoster> computedItemList;
+
+  @override
+  Widget build(BuildContext context) {
+    const itemCount = 4;
+
+    return GridView.count(
+      crossAxisCount: itemCount,
+      children: computedItemList.map((element) {
+        final equipment = element.equipment;
+        final count = element.count;
+
+        return EquipmentItem(
+          equipment: equipment,
+          count: count,
+          innerPadding: const EdgeInsets.all(4.0),
+        );
+      }).toList(),
+    );
+  }
+}

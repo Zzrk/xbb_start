@@ -117,6 +117,16 @@ class DialogWidget extends StatelessWidget {
                   Column(
                     children: [0, 1, 2].map((e) {
                       final equipmentName = stage.equipments[e];
+
+                      if (equipmentName.isEmpty) {
+                        return Container(
+                          width: 76.8,
+                          height: 76.8,
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Center(child: Text('暂无数据')),
+                        );
+                      }
+
                       final equipment =
                           c1.equipmentData['item']!.firstWhere((element) => element.name == equipmentName);
 
@@ -137,6 +147,16 @@ class DialogWidget extends StatelessWidget {
                   Column(
                     children: [3, 4, 5].map((e) {
                       final equipmentName = stage.equipments[e];
+
+                      if (equipmentName.isEmpty) {
+                        return Container(
+                          width: 76.8,
+                          height: 76.8,
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Center(child: Text('暂无数据')),
+                        );
+                      }
+
                       final equipment =
                           c1.equipmentData['item']!.firstWhere((element) => element.name == equipmentName);
 
