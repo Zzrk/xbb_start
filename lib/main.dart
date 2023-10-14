@@ -14,6 +14,7 @@ import 'package:xbb_start/pages/hero_foster.dart';
 import 'package:xbb_start/pages/hero_foster_config/index.dart';
 import 'package:xbb_start/pages/hero_foster_summary/index.dart';
 import 'package:xbb_start/pages/my_equipment.dart';
+import 'package:xbb_start/pages/summon.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -85,6 +86,11 @@ class MainApp extends StatelessWidget {
         GetPage(
           name: '/my_equipment',
           page: () => const MyEquipmentPage(),
+        ),
+        // 召唤
+        GetPage(
+          name: '/summon',
+          page: () => const SummonPage(),
         ),
       ],
     );
