@@ -21,7 +21,7 @@ class EquipmentCount {
 
 class Equipment {
   // 装备类型 item/fragment
-  final String type;
+  final String category;
   // 装备名称
   final String name;
   // 装备品质 白/绿/蓝/紫
@@ -36,7 +36,7 @@ class Equipment {
   final int? level;
 
   const Equipment({
-    required this.type,
+    required this.category,
     required this.name,
     required this.quality,
     this.access,
@@ -49,17 +49,13 @@ class Equipment {
     final access = json['access'];
     final synthesis = json['synthesis'];
     return Equipment(
-      type: json['type'] as String,
+      category: json['category'] as String,
       name: json['name'] as String,
       quality: json['quality'] as String,
       description: json['description'] as String,
       access: access != null ? access!.cast<String>() : null,
-      synthesis: synthesis != null
-          ? synthesis!
-              .map((x) => EquipmentCount.fromJson(x))
-              .toList()
-              .cast<EquipmentCount>()
-          : null,
+      synthesis:
+          synthesis != null ? synthesis!.map((x) => EquipmentCount.fromJson(x)).toList().cast<EquipmentCount>() : null,
       level: json['level'],
     );
   }

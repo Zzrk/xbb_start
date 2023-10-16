@@ -42,7 +42,7 @@ class EquipmentImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final equipmentName = equipment.name.replaceAll('(碎片)', '');
     final equipmentQuality = equipmentQualityMap[equipment.quality]!;
-    final isFragment = equipment.type == 'fragment';
+    final isFragment = equipment.category == 'fragment';
 
     if (isFragment) {
       return Stack(
