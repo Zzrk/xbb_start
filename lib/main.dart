@@ -35,7 +35,7 @@ class MainApp extends StatelessWidget {
     c1.initEquipmentList();
     c2.initHeroList();
     c3.initMyEquipmentList();
-    c4.initCalendaarData();
+    c4.initCalendarData();
 
     return GetMaterialApp(
       title: '小冰冰, 启动!',

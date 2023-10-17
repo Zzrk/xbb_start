@@ -28,7 +28,7 @@ class HeroFosterPage extends StatelessWidget {
             children: c.heroList.map((hero) {
               return HeroItem(
                 hero: hero,
-                onTap: () => c.toogleFoster(hero),
+                onTap: () => c.toggleFoster(hero),
                 decoration: c.fosterList.any((element) => element.hero.name == hero.name)
                     ? const BoxDecoration(color: Colors.black26)
                     : null,
