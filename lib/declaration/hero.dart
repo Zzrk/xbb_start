@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class HeroStage {
   // 英雄阶段 白/绿/蓝/蓝+1/蓝+2/紫/紫+1/紫+2/紫+3
   final String stage;
@@ -28,7 +26,7 @@ class HeroInfo {
   // 英雄名称
   final String name;
   // 英雄类型 力/敏/智
-  final String type;
+  final String category;
   // 英雄初始星级
   final int star;
   // 英雄阶段
@@ -36,7 +34,7 @@ class HeroInfo {
 
   const HeroInfo({
     required this.name,
-    required this.type,
+    required this.category,
     required this.star,
     required this.stages,
   });
@@ -44,19 +42,16 @@ class HeroInfo {
   factory HeroInfo.fromJson(Map<String, dynamic> json) {
     return HeroInfo(
       name: json['name'] as String,
-      type: json['type'] as String,
+      category: json['category'] as String,
       star: json['star'] as int,
-      stages: json['stages']
-          .map((x) => HeroStage.fromJson(x))
-          .toList()
-          .cast<HeroStage>(),
+      stages: json['stages'].map((x) => HeroStage.fromJson(x)).toList().cast<HeroStage>(),
     );
   }
-}
 
-List<HeroInfo> parseHeroList(String responseBody) {
-  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  return parsed.map<HeroInfo>((json) => HeroInfo.fromJson(json)).toList();
+  static List<HeroInfo> parseHeroList(List<dynamic> responseBody) {
+    final parsed = responseBody.cast<Map<String, dynamic>>();
+    return parsed.map<HeroInfo>((json) => HeroInfo.fromJson(json)).toList();
+  }
 }
 
 class HeroFosterInfo {

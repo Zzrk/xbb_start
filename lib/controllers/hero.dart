@@ -1,6 +1,6 @@
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:get/get.dart';
 import 'package:xbb_start/declaration/hero.dart';
+import 'package:xbb_start/utils/request.dart';
 
 class HeroInfoController extends GetxController {
   static HeroInfoController get to => Get.find();
@@ -10,16 +10,15 @@ class HeroInfoController extends GetxController {
 
   // 初始化英雄列表
   Future<void> initHeroList() async {
-    // TODO: 接口返回数据
-    final data = await rootBundle.loadString('lib/mock/hero.json');
-    heroList.value = parseHeroList(data);
+    final response = await CommonRequest.getHero();
+    heroList.value = HeroInfo.parseHeroList(response);
   }
 
   // 英雄养成列表
   var fosterList = <HeroFosterInfo>[].obs;
 
   // 切换添加或删除英雄
-  void toogleFoster(HeroInfo hero) {
+  void toggleFoster(HeroInfo hero) {
     final index = fosterList.indexWhere((element) => element.hero == hero);
     if (index >= 0) {
       fosterList.removeAt(index);

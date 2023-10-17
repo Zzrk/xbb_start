@@ -21,8 +21,7 @@ class MyEquipmentController extends GetxController {
 
   // 更新装备数据
   updateMyEquipment(String type, String name, int count) {
-    final equipment =
-        myEquipmentData[type]!.firstWhere((element) => element.name == name);
+    final equipment = myEquipmentData[type]!.firstWhere((element) => element.name == name);
     final index = myEquipmentData[type]!.indexOf(equipment);
     equipment.count = count;
     myEquipmentData[type]![index] = equipment;

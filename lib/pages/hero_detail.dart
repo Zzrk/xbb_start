@@ -39,7 +39,7 @@ class HeroDetailPage extends StatelessWidget {
                       children: [
                         const Text('属性: '),
                         Image.asset(
-                          'assets/hero_detail/${heroTypeMap[hero.type]}.png',
+                          'assets/hero_detail/${heroTypeMap[hero.category]}.png',
                           width: 32,
                           height: 32,
                         )
@@ -72,10 +72,8 @@ class HeroDetailPage extends StatelessWidget {
           Expanded(
               child: TabBarView(
                   children: heroStageList
-                      .map((stage) => HeroStageContent(
-                          stageInfo: hero.stages
-                              .where((element) => element.stage == stage)
-                              .first))
+                      .map((stage) =>
+                          HeroStageContent(stageInfo: hero.stages.where((element) => element.stage == stage).first))
                       .toList())),
         ]),
         drawer: const GlobalDrawer(),
@@ -126,8 +124,7 @@ class EquipmentRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EquipmentController c = Get.find();
-    final equipment = c.equipmentData['item']!
-        .firstWhereOrNull((element) => element.name == name);
+    final equipment = c.equipmentData['item']!.firstWhereOrNull((element) => element.name == name);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 4),

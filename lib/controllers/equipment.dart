@@ -1,6 +1,6 @@
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:get/get.dart';
 import 'package:xbb_start/declaration/equipment.dart';
+import 'package:xbb_start/utils/request.dart';
 
 class EquipmentController extends GetxController {
   static EquipmentController get to => Get.find();
@@ -17,9 +17,8 @@ class EquipmentController extends GetxController {
 
   // 初始化装备数据
   Future<void> initEquipmentList() async {
-    // TODO: 接口返回数据
-    final data = await rootBundle.loadString('lib/mock/equipment.json');
-    final list = parseEquipmentList(data);
+    final response = await CommonRequest.getEquipment();
+    final list = Equipment.parseEquipmentList(response);
     equipmentData['item'] = list.where((element) => element.category == 'item').toList();
     equipmentData['fragment'] = list.where((element) => element.category == 'fragment').toList();
     equipmentData['total'] = list;

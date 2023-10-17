@@ -35,4 +35,16 @@ abstract class CommonRequest {
     final response = await CommonRequest.dio.get('/calendar/all');
     return response.data;
   }
+
+  // 请求装备图鉴数据
+  static Future<List<dynamic>> getEquipment() async {
+    final response = await CommonRequest.dio.get('/equipment/all');
+    return response.data;
+  }
+
+  // 请求英雄图鉴数据
+  static Future<List<dynamic>> getHero() async {
+    final response = await CommonRequest.dio.get('/hero/all');
+    return response.data;
+  }
 }

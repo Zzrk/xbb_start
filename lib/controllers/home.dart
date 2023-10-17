@@ -11,7 +11,7 @@ class HomeController extends GetxController {
   var currentActivity = <CalendarInfo>[].obs;
 
   // 初始化活动日历数据
-  Future<void> initCalendaarData() async {
+  Future<void> initCalendarData() async {
     final response = await CommonRequest.getCalendarData();
     final list = CalendarInfo.parseCalendarData(response);
     calendarData.value = list;
