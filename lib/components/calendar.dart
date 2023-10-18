@@ -60,8 +60,6 @@ class CalendarDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('${Get.width} ${Get.height} ${Get.statusBarHeight}');
-    print('${context.width} ${context.height} ${context.mediaQueryShortestSide}');
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(

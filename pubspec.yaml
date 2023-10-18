@@ -13,6 +13,8 @@ dependencies:
   fluttertoast: ^8.2.2
   get: ^4.6.6
   http: ^1.1.0
+  logger: ^2.0.2+1
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import 'package:xbb_start/components/drawer.dart';
@@ -7,7 +6,6 @@ import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/controllers/my_equipment.dart';
 import 'package:xbb_start/utils/toast.dart';
-import 'package:xbb_start/utils/request.dart';
 
 // 我的装备
 class MyEquipmentPage extends StatelessWidget {
@@ -55,8 +53,7 @@ class EquipmentContent extends StatelessWidget {
     return Obx(() => GridView.count(
           crossAxisCount: 4,
           children: c.myEquipmentData[type]!.map((element) {
-            final equipment = c0.equipmentData[type]!
-                .firstWhere((e) => e.name == element.name);
+            final equipment = c0.equipmentData[type]!.firstWhere((e) => e.name == element.name);
 
             return EquipmentItem(
               equipment: equipment,
@@ -82,9 +79,7 @@ class EquipmentContent extends StatelessWidget {
                           const SizedBox(height: 8),
                           TextField(
                             controller: myController,
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: '输入装备数量'),
+                            decoration: const InputDecoration(border: OutlineInputBorder(), hintText: '输入装备数量'),
                           ),
                           const SizedBox(height: 8),
                           TextButton(
@@ -92,9 +87,7 @@ class EquipmentContent extends StatelessWidget {
                             onPressed: () async {
                               final newCount = int.parse(myController.text);
                               element.count = newCount;
-                              CommonRequest.updateEquipmentItem(element);
-                              c.updateMyEquipment(
-                                  type, equipment.name, newCount);
+                              c.updateMyEquipment(type, equipment.name, newCount);
                               toaster.showToast('修改成功');
                               Navigator.pop(context);
                             },

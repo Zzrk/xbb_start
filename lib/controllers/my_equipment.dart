@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:xbb_start/utils/request.dart';
 import 'package:xbb_start/declaration/my_equipment.dart';
+import 'package:xbb_start/utils/storage.dart';
 
 class MyEquipmentController extends GetxController {
   static MyEquipmentController get to => Get.find();
@@ -11,11 +11,14 @@ class MyEquipmentController extends GetxController {
     'fragment': <MyEquipment>[].obs,
   };
 
+  var storage = EquipmentStorage();
+
   // 初始化装备数据
   Future<void> initMyEquipmentList() async {
-    final itemResponse = await CommonRequest.getEquipmentItem();
+    final itemResponse = await storage.readEquipment('item');
+    final fragmentResponse = await storage.readEquipment('fragment');
+
     myEquipmentData['item']!.value = parseMyEquipmentList(itemResponse);
-    final fragmentResponse = await CommonRequest.getEquipmentFragment();
     myEquipmentData['fragment']!.value = parseMyEquipmentList(fragmentResponse);
   }
 
@@ -25,5 +28,6 @@ class MyEquipmentController extends GetxController {
     final index = myEquipmentData[type]!.indexOf(equipment);
     equipment.count = count;
     myEquipmentData[type]![index] = equipment;
+    storage.writeEquipment(type, myEquipmentData[type]!);
   }
 }
