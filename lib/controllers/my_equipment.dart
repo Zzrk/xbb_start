@@ -24,10 +24,21 @@ class MyEquipmentController extends GetxController {
 
   // 更新装备数据
   updateMyEquipment(String type, String name, int count) {
-    final equipment = myEquipmentData[type]!.firstWhere((element) => element.name == name);
-    final index = myEquipmentData[type]!.indexOf(equipment);
-    equipment.count = count;
-    myEquipmentData[type]![index] = equipment;
-    storage.writeEquipment(type, myEquipmentData[type]!);
+    final equipmentList = myEquipmentData[type]!;
+    final equipment = equipmentList.firstWhereOrNull((element) => element.name == name);
+    if (equipment == null) {
+      equipmentList.insert(0, MyEquipment(id: equipmentList.length, name: name, count: count));
+    } else {
+      equipment.count = count;
+      final index = myEquipmentData[type]!.indexOf(equipment);
+      myEquipmentData[type]![index] = equipment;
+    }
+    storage.writeEquipment(type, equipmentList);
+  }
+
+  // 下拉框选择装备
+  var selectedEquipment = '';
+  updateSelectedEquipment(String name) {
+    selectedEquipment = name;
   }
 }
