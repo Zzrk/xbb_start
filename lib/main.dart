@@ -5,6 +5,7 @@ import 'package:xbb_start/controllers/hero.dart';
 import 'package:xbb_start/controllers/my_equipment.dart';
 import 'package:xbb_start/controllers/foster_summary.dart';
 import 'package:xbb_start/controllers/home.dart';
+import 'package:xbb_start/controllers/summon.dart';
 import 'package:xbb_start/pages/home.dart';
 import 'package:xbb_start/pages/equipment.dart';
 import 'package:xbb_start/pages/equipment_detail.dart';
@@ -31,6 +32,7 @@ class MainApp extends StatelessWidget {
     final HeroInfoController c2 = Get.put(HeroInfoController());
     final MyEquipmentController c3 = Get.put(MyEquipmentController());
     final HomeController c4 = Get.put(HomeController());
+    Get.put(SummonController());
     Get.put(FosterSummaryController());
     c1.initEquipmentList();
     c2.initHeroList();
