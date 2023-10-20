@@ -22,19 +22,37 @@ class SummonPage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   final summonResult = c.summonResult[index];
                   return ListTile(
+                    tileColor: summonProbabilityColor(summonResult.probability),
                     title: Text(summonResult.hero.name),
-                    subtitle:
-                        Text('${summonResult.probability.star}星${summonResult.probability.isFragment ? '碎片' : '英雄'}'),
+                    trailing: Text(
+                      '${summonResult.probability.star}星${summonResult.probability.isFragment ? '碎片' : '英雄'}',
+                      style: const TextStyle(color: Colors.black54),
+                    ),
                   );
                 },
               )),
         ),
-        ElevatedButton(
-          onPressed: () {
-            c.updateSummonResult(getSummonResult());
-          },
-          child: const Text('十连抽'),
-        ),
+        Obx(() => Text('剩余几次保底：${c.rest.value}')),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                c.updateSummonResult([summonOneResult(rest: c.rest.value)]);
+                c.getNewRest();
+              },
+              child: const Text('单抽'),
+            ),
+            const SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: () {
+                c.updateSummonResult(summonTenResult(rest: c.rest.value));
+                c.getNewRest();
+              },
+              child: const Text('十连抽'),
+            ),
+          ],
+        )
       ]),
       drawer: const GlobalDrawer(),
     );
