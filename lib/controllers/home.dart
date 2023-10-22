@@ -30,4 +30,9 @@ class HomeController extends GetxController {
     final list = RedeemCode.parseRedeemCode(response);
     redeemCode.value = list;
   }
+
+  void init() {
+    initCalendarData();
+    initRedeemCode();
+  }
 }

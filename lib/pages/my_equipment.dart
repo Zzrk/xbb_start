@@ -116,7 +116,7 @@ void openDialog(
                     onChanged: (Equipment? data) => c.updateSelectedEquipment(data!.name),
                     popupProps: const PopupProps.menu(showSearchBox: true),
                     dropdownDecoratorProps: const DropDownDecoratorProps(
-                      dropdownSearchDecoration: InputDecoration(labelText: "User by name"),
+                      dropdownSearchDecoration: InputDecoration(labelText: "选择装备"),
                     ),
                   ),
             const SizedBox(height: 8),

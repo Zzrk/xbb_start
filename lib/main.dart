@@ -28,17 +28,12 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 初始化装备和英雄数据
-    final EquipmentController c1 = Get.put(EquipmentController());
-    final HeroInfoController c2 = Get.put(HeroInfoController());
-    final MyEquipmentController c3 = Get.put(MyEquipmentController());
-    final HomeController c4 = Get.put(HomeController());
+    Get.put(EquipmentController()).initEquipmentList();
+    Get.put(HeroInfoController()).initHeroList();
+    Get.put(MyEquipmentController()).initMyEquipmentList();
+    Get.put(HomeController()).init();
     Get.put(SummonController());
     Get.put(FosterSummaryController());
-    c1.initEquipmentList();
-    c2.initHeroList();
-    c3.initMyEquipmentList();
-    c4.initCalendarData();
-    c4.initRedeemCode();
 
     return GetMaterialApp(
       title: '小冰冰, 启动!',
