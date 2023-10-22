@@ -22,4 +22,12 @@ class HomeController extends GetxController {
       return now.isAfter(beginTime) && now.isBefore(endTime);
     }).toList();
   }
+
+  // 兑换码数据
+  var redeemCode = <RedeemCode>[].obs;
+  Future<void> initRedeemCode() async {
+    final response = await CommonRequest.getRedeemCode();
+    final list = RedeemCode.parseRedeemCode(response);
+    redeemCode.value = list;
+  }
 }

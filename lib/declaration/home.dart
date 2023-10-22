@@ -25,3 +25,25 @@ class CalendarInfo {
     return parsed.map<CalendarInfo>((json) => CalendarInfo.fromJson(json)).toList();
   }
 }
+
+class RedeemCode {
+  final String code;
+  final String desc;
+
+  const RedeemCode({
+    required this.code,
+    required this.desc,
+  });
+
+  factory RedeemCode.fromJson(Map<String, dynamic> json) {
+    return RedeemCode(
+      code: json['code'],
+      desc: json['desc'],
+    );
+  }
+
+  static List<RedeemCode> parseRedeemCode(List<dynamic> responseBody) {
+    final parsed = responseBody.cast<Map<String, dynamic>>();
+    return parsed.map<RedeemCode>((json) => RedeemCode.fromJson(json)).toList();
+  }
+}

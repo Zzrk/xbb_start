@@ -34,6 +34,12 @@ abstract class CommonRequest {
     return response.data;
   }
 
+  // 请求兑换码数据
+  static Future<List<dynamic>> getRedeemCode() async {
+    final response = await CommonRequest.dio.get('/calendar/all_codes');
+    return response.data;
+  }
+
   // 请求装备图鉴数据
   static Future<List<dynamic>> getEquipment() async {
     final response = await CommonRequest.dio.get('/equipment/all');
