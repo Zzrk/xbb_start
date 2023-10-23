@@ -127,8 +127,12 @@ void openDialog(
             const SizedBox(height: 8),
             TextButton(
               child: const Text('确认'),
-              onPressed: () async {
-                final newCount = int.parse(myController.text);
+              onPressed: () {
+                final newCount = int.tryParse(myController.text);
+                if (newCount == null) {
+                  toaster.showToast('请输入正确的数量');
+                  return;
+                }
                 final equipment = name.isEmpty ? c.selectedEquipment : name;
                 c.updateMyEquipment(type, equipment, newCount);
                 toaster.showToast('修改成功');

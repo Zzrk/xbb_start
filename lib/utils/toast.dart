@@ -21,8 +21,8 @@ class ToastWidget extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.check),
-          const SizedBox(width: 12.0),
+          // const Icon(Icons.check),
+          // const SizedBox(width: 12.0),
           Text(msg),
         ],
       ),
@@ -42,7 +42,7 @@ class CommonToast {
   void showToast(String msg) {
     fToast.showToast(
       child: ToastWidget(msg: msg),
-      gravity: ToastGravity.BOTTOM,
+      gravity: ToastGravity.TOP,
       toastDuration: const Duration(seconds: 2),
     );
   }
