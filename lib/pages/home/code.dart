@@ -23,6 +23,7 @@ class CodeList extends StatelessWidget {
                 const Divider(),
               ]);
             }),
+            if (c.redeemCode.isEmpty) const Text('暂无兑换码'),
             const SizedBox(height: 8)
           ]),
         ));

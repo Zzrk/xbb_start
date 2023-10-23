@@ -48,6 +48,7 @@ class Calendar extends StatelessWidget {
                 const Divider(),
               ]);
             }),
+            if (c.currentActivity.isEmpty) const Text('暂无活动'),
             const SizedBox(height: 8)
           ]),
         ));
