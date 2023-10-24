@@ -15,8 +15,12 @@ class EquipmentController extends GetxController {
     'total': <Equipment>[]
   }.obs;
 
-  // 装备品质列表
-  var equipmentQualityList = <String>[].obs;
+  var showEquipmentData = {
+    // 整件
+    'item': <Equipment>[],
+    // 碎片
+    'fragment': <Equipment>[],
+  }.obs;
 
   // 初始化装备数据
   Future<void> initEquipmentList() async {
@@ -25,22 +29,19 @@ class EquipmentController extends GetxController {
     equipmentData['item'] = list.where((element) => element.category == 'item').toList();
     equipmentData['fragment'] = list.where((element) => element.category == 'fragment').toList();
     equipmentData['total'] = list;
-
-    // 获取装备品质列表
-    equipmentQualityList.value = ['', ...list.map((e) => e.quality).toSet().toList()];
+    showEquipmentData['item'] = equipmentData['item']!;
+    showEquipmentData['fragment'] = equipmentData['fragment']!;
   }
 
   // 过滤器
   var filter = {
     'quality': '',
-    'name': '',
   }.obs;
 
   // 重置过滤器
   void resetFilter() {
     filter.value = {
       'quality': '',
-      'name': '',
     };
   }
 
@@ -50,21 +51,21 @@ class EquipmentController extends GetxController {
   }
 
   // 过滤
-  void triggerFilter(String type) {
+  void triggerFilterByType(String type) {
     final list = equipmentData['total']!.where((element) => element.category == type).toList();
     final quality = filter['quality']!;
-    final name = filter['name']!;
 
-    equipmentData[type] = list.where((element) {
+    showEquipmentData[type] = list.where((element) {
       if (quality.isNotEmpty && element.quality != quality) {
-        return false;
-      }
-
-      if (name.isNotEmpty && !element.name.contains(name)) {
         return false;
       }
 
       return true;
     }).toList();
+  }
+
+  void triggerFilter() {
+    triggerFilterByType('item');
+    triggerFilterByType('fragment');
   }
 }

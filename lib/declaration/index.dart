@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 // 装备品质列表
-const equipmentQualityList = ['白', '绿', '蓝', '紫'];
+const equipmentQualityList = ['', '白', '绿', '蓝', '紫'];
+
+// 英雄星级列表
+const heroStarList = ['', '一星', '二星', '三星'];
 
 // 英雄类型映射
 const heroTypeMap = {'力': 'hero_str', '敏': 'hero_agi', '智': 'hero_int'};
