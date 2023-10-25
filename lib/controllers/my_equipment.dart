@@ -11,7 +11,7 @@ class MyEquipmentController extends GetxController {
     'fragment': <MyEquipment>[].obs,
   };
 
-  var storage = EquipmentStorage();
+  var storage = MyEquipmentStorage();
 
   // 初始化装备数据
   Future<void> initMyEquipmentList() async {

@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 
-class EquipmentStorage {
+class MyEquipmentStorage {
   // 本地存储路径
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
@@ -65,5 +65,59 @@ class EquipmentStorage {
   // 写入数据
   Future<File> writeEquipment(String type, List<dynamic> equipments) async {
     return type == 'item' ? _writeItem(equipments) : _writeFragment(equipments);
+  }
+}
+
+class HandBookStorage {
+  // 本地存储路径
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+    return directory.path;
+  }
+
+  // 装备图鉴文件
+  Future<File> get _equipmentFile async {
+    final path = await _localPath;
+    return File('$path/equipment.json');
+  }
+
+  // 英雄图鉴文件
+  Future<File> get _heroFile async {
+    final path = await _localPath;
+    return File('$path/hero.json');
+  }
+
+  // 读取装备数据
+  Future<List<dynamic>> readEquipment() async {
+    try {
+      final file = await _equipmentFile;
+      final equipments = await file.readAsString();
+      return jsonDecode(equipments);
+    } catch (e) {
+      return [];
+    }
+  }
+
+  // 写入装备数据
+  Future<File> writeEquipment(List<dynamic> equipments) async {
+    final file = await _equipmentFile;
+    return file.writeAsString(jsonEncode(equipments));
+  }
+
+  // 读取英雄数据
+  Future<List<dynamic>> readHero() async {
+    try {
+      final file = await _heroFile;
+      final heroes = await file.readAsString();
+      return jsonDecode(heroes);
+    } catch (e) {
+      return [];
+    }
+  }
+
+  // 写入装备数据
+  Future<File> writeHero(List<dynamic> heroes) async {
+    final file = await _heroFile;
+    return file.writeAsString(jsonEncode(heroes));
   }
 }
