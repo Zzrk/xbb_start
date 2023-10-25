@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:xbb_start/declaration/hero.dart';
 import 'package:xbb_start/declaration/index.dart';
 import 'package:xbb_start/utils/request.dart';
+import 'package:xbb_start/utils/storage.dart';
 
 class HeroInfoController extends GetxController {
   static HeroInfoController get to => Get.find();
@@ -12,11 +13,14 @@ class HeroInfoController extends GetxController {
   // 展示的英雄列表
   var showHeroList = <HeroInfo>[].obs;
 
+  var storage = HeroStorage();
+
   // 初始化英雄列表
-  Future<void> initHeroList() async {
-    final response = await CommonRequest.getHero();
+  Future<void> initHeroList(bool isNeedUpdate) async {
+    final response = await (isNeedUpdate ? CommonRequest.getHero() : storage.readHero());
     heroList.value = HeroInfo.parseHeroList(response);
     showHeroList.value = heroList;
+    storage.writeHero(heroList);
   }
 
   // 英雄养成列表

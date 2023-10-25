@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class EquipmentCount {
   // 装备名称
   final String name;
@@ -14,6 +16,13 @@ class EquipmentCount {
       name: json['name'] as String,
       count: json['count'] as int,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> all = {};
+    all["name"] = name;
+    all["count"] = count;
+    return all;
   }
 }
 
@@ -61,6 +70,18 @@ class Equipment {
   static List<Equipment> parseEquipmentList(List<dynamic> responseBody) {
     final parsed = responseBody.cast<Map<String, dynamic>>();
     return parsed.map<Equipment>((json) => Equipment.fromJson(json)).toList();
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "category": category,
+      "name": name,
+      "quality": quality,
+      "description": description,
+      "access": access,
+      "synthesis": synthesis != null ? synthesis!.map((e) => e.toJson()).toList() : null,
+      "level": level,
+    };
   }
 }
 

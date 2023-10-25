@@ -28,8 +28,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 初始化装备和英雄数据
-    Get.put(EquipmentController()).initEquipmentList();
-    Get.put(HeroInfoController()).initHeroList();
+    Get.put(EquipmentController()).initEquipmentList(false);
+    Get.put(HeroInfoController()).initHeroList(false);
     Get.put(MyEquipmentController()).initMyEquipmentList();
     Get.put(HomeController()).init();
     Get.put(SummonController());
