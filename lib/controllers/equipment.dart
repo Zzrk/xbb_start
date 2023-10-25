@@ -34,7 +34,7 @@ class EquipmentController extends GetxController {
     equipmentData['total'] = list;
     showEquipmentData['item'] = equipmentData['item']!;
     showEquipmentData['fragment'] = equipmentData['fragment']!;
-    storage.writeEquipment(equipmentData['total']!);
+    // storage.writeEquipment(equipmentData['total']!);
   }
 
   // 过滤器

@@ -20,7 +20,7 @@ class HeroInfoController extends GetxController {
     final response = await (isNeedUpdate ? CommonRequest.getHero() : storage.readHero());
     heroList.value = HeroInfo.parseHeroList(response);
     showHeroList.value = heroList;
-    storage.writeHero(heroList);
+    // storage.writeHero(heroList);
   }
 
   // 英雄养成列表
