@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('首页'),
       ),
-      body: const Column(children: [
+      body: ListView(children: const [
         Calendar(),
         CodeList(),
       ]),

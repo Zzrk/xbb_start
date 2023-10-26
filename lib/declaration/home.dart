@@ -2,7 +2,7 @@ class CalendarInfo {
   final String title;
   final DateTime beginTime;
   final DateTime endTime;
-  final String description;
+  final List<String> description;
 
   const CalendarInfo({
     required this.title,
@@ -16,7 +16,7 @@ class CalendarInfo {
       title: json['title'],
       beginTime: DateTime.parse(json['begin_time']),
       endTime: DateTime.parse(json['end_time']),
-      description: json['description'],
+      description: json['description'].cast<String>(),
     );
   }
 

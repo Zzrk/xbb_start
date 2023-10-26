@@ -130,12 +130,12 @@ void openDialog(
               onPressed: () {
                 final newCount = int.tryParse(myController.text);
                 if (newCount == null) {
-                  toaster.showToast('请输入正确的数量');
+                  toaster.error('请输入正确的数量');
                   return;
                 }
                 final equipment = name.isEmpty ? c.selectedEquipment : name;
                 c.updateMyEquipment(type, equipment, newCount);
-                toaster.showToast('修改成功');
+                toaster.info('修改成功');
                 Navigator.pop(context);
               },
             ),

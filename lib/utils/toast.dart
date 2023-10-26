@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 // toast widget
 class ToastWidget extends StatelessWidget {
-  const ToastWidget({super.key, required this.msg});
+  const ToastWidget({super.key, required this.msg, required this.icon});
 
   final String msg;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +19,13 @@ class ToastWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25.0),
         color: Colors.white,
+        border: Border.all(color: Colors.black12),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // const Icon(Icons.check),
-          // const SizedBox(width: 12.0),
+          Icon(icon),
+          const SizedBox(width: 12.0),
           Text(msg),
         ],
       ),
@@ -39,10 +42,34 @@ class CommonToast {
     fToast.init(context);
   }
 
-  void showToast(String msg) {
+  void info(String msg) {
     fToast.showToast(
-      child: ToastWidget(msg: msg),
+      child: ToastWidget(msg: msg, icon: Icons.info),
       gravity: ToastGravity.TOP,
+      positionedToastBuilder: (context, child) {
+        return Positioned(
+          top: Get.statusBarHeight,
+          left: 24.0,
+          right: 24.0,
+          child: child,
+        );
+      },
+      toastDuration: const Duration(seconds: 2),
+    );
+  }
+
+  void error(String msg) {
+    fToast.showToast(
+      child: ToastWidget(msg: msg, icon: Icons.cancel),
+      gravity: ToastGravity.TOP,
+      positionedToastBuilder: (context, child) {
+        return Positioned(
+          top: Get.statusBarHeight,
+          left: 24.0,
+          right: 24.0,
+          child: child,
+        );
+      },
       toastDuration: const Duration(seconds: 2),
     );
   }
