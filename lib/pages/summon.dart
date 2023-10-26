@@ -13,7 +13,7 @@ class SummonPage extends StatelessWidget {
     final SummonController c = Get.find();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('首页'),
+        title: const Text('召唤模拟'),
       ),
       body: Column(children: [
         Expanded(

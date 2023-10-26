@@ -33,7 +33,7 @@ class HeroInfoController extends GetxController {
     if (index >= 0) {
       fosterList.removeAt(index);
     } else {
-      final fosterInfo = HeroFosterInfo(hero: hero, from: '蓝+2', to: '紫+3');
+      final fosterInfo = HeroFosterInfo(hero: hero, from: heroStageList.first, to: heroStageList.last);
       fosterList.add(fosterInfo);
     }
   }
