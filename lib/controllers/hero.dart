@@ -87,7 +87,7 @@ class HeroInfoController extends GetxController {
     final category = filter['category']!;
 
     showHeroList.value = heroList.where((element) {
-      if (star.isNotEmpty && heroStarList[element.star] != star) {
+      if (star.isNotEmpty && heroStarList[element.star - 1] != star) {
         return false;
       }
 

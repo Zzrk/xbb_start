@@ -4,6 +4,7 @@ import 'package:xbb_start/components/drawer.dart';
 import 'package:xbb_start/components/filter_button.dart';
 import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/hero.dart';
+import 'package:xbb_start/declaration/index.dart';
 
 // 英雄养成
 class HeroFosterPage extends StatelessWidget {
@@ -29,7 +30,7 @@ class HeroFosterPage extends StatelessWidget {
               SelectFilterMenu(
                 title: '星级',
                 value: c.filter['star']!,
-                options: ['', '一星', '二星', '三星'],
+                options: heroStarList,
                 onChange: (value) {
                   c.toggleFilter('star', value);
                   c.triggerFilter();
@@ -38,7 +39,7 @@ class HeroFosterPage extends StatelessWidget {
               SelectFilterMenu(
                 title: '属性',
                 value: c.filter['category']!,
-                options: ['', '力', '智', '敏'],
+                options: heroTypeList,
                 onChange: (value) {
                   c.toggleFilter('category', value);
                   c.triggerFilter();
