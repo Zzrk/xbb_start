@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   // 初始化活动日历数据
   Future<void> initCalendarData() async {
     final response = await CommonRequest.getCalendarData();
-    final list = CalendarInfo.parseCalendarData(response);
+    final list = CalendarInfo.parseCalendarData(response ?? []);
     calendarData.value = list;
     currentActivity.value = list.where((element) {
       final now = DateTime.now();
@@ -25,9 +25,11 @@ class HomeController extends GetxController {
 
   // 兑换码数据
   var redeemCode = <RedeemCode>[].obs;
+
+  // 初始化兑换码数据
   Future<void> initRedeemCode() async {
     final response = await CommonRequest.getRedeemCode();
-    final list = RedeemCode.parseRedeemCode(response);
+    final list = RedeemCode.parseRedeemCode(response ?? []);
     redeemCode.value = list;
   }
 

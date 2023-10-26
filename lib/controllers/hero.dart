@@ -16,11 +16,12 @@ class HeroInfoController extends GetxController {
   var storage = HeroStorage();
 
   // 初始化英雄列表
-  Future<void> initHeroList(bool isNeedUpdate) async {
-    final response = await (isNeedUpdate ? CommonRequest.getHero() : storage.readHero());
-    heroList.value = HeroInfo.parseHeroList(response);
-    showHeroList.value = heroList;
-    // storage.writeHero(heroList);
+  Future<void> initHeroList() async {
+    final response = await CommonRequest.getHero();
+    final list = HeroInfo.parseHeroList(response ?? await storage.readHero());
+    heroList.value = list;
+    showHeroList.value = list;
+    if (response != null) storage.writeHero(heroList);
   }
 
   // 英雄养成列表
