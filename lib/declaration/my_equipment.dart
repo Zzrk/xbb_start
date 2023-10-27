@@ -15,7 +15,11 @@ class MyEquipment {
     all["id"] = id;
     all["name"] = name;
     all["count"] = count;
-    return all;
+    return {
+      "id": id,
+      "name": name,
+      "count": count,
+    };
   }
 }
 

@@ -22,11 +22,11 @@ class HeroStage {
   }
 
   Map<String, dynamic> toJson() {
-    Map<String, dynamic> all = {};
-    all["stage"] = stage;
-    all["equipments"] = equipments;
-    all["level"] = level;
-    return all;
+    return {
+      "stage": stage,
+      "equipments": equipments,
+      "level": level,
+    };
   }
 }
 
@@ -56,18 +56,18 @@ class HeroInfo {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      "name": name,
+      "category": category,
+      "star": star,
+      "stages": stages.map((e) => e.toJson()).toList(),
+    };
+  }
+
   static List<HeroInfo> parseHeroList(List<dynamic> responseBody) {
     final parsed = responseBody.cast<Map<String, dynamic>>();
     return parsed.map<HeroInfo>((json) => HeroInfo.fromJson(json)).toList();
-  }
-
-  Map<String, dynamic> toJson() {
-    Map<String, dynamic> all = {};
-    all["name"] = name;
-    all["category"] = category;
-    all["star"] = star;
-    all["stages"] = stages.map((e) => e.toJson()).toList();
-    return all;
   }
 }
 

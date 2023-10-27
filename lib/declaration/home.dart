@@ -20,6 +20,15 @@ class CalendarInfo {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      "title": title,
+      "begin_time": beginTime.toString(),
+      "end_time": endTime.toString(),
+      "description": description,
+    };
+  }
+
   static List<CalendarInfo> parseCalendarData(List<dynamic> responseBody) {
     final parsed = responseBody.cast<Map<String, dynamic>>();
     return parsed.map<CalendarInfo>((json) => CalendarInfo.fromJson(json)).toList();
@@ -40,6 +49,13 @@ class RedeemCode {
       code: json['code'],
       desc: json['desc'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "code": code,
+      "desc": desc,
+    };
   }
 
   static List<RedeemCode> parseRedeemCode(List<dynamic> responseBody) {
