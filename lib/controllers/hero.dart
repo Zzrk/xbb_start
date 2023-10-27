@@ -5,25 +5,41 @@ import 'package:xbb_start/utils/request.dart';
 import 'package:xbb_start/utils/storage.dart';
 
 class HeroInfoController extends GetxController {
+  // 当前控制器实例
   static HeroInfoController get to => Get.find();
+  // 本地存储
+  var storage = HeroStorage();
 
+  // ------------------- 英雄 -------------------
   // 英雄列表
   var heroList = <HeroInfo>[].obs;
 
   // 展示的英雄列表
   var showHeroList = <HeroInfo>[].obs;
 
-  var storage = HeroStorage();
+  // 从本地存储中恢复数据
+  Future<void> recoverFromFile() async {
+    final list = HeroInfo.parseHeroList(await storage.readHero());
+    heroList.value = list;
+    showHeroList.value = list;
+  }
+
+  // 重新请求数据
+  Future<void> reRequest() async {
+    final list = HeroInfo.parseHeroList(await CommonRequest.getHero() ?? []);
+    if (list.isEmpty) return;
+    heroList.value = list;
+    showHeroList.value = list;
+    storage.writeHero(list);
+  }
 
   // 初始化英雄列表
   Future<void> initHeroList() async {
-    final response = await CommonRequest.getHero();
-    final list = HeroInfo.parseHeroList(response ?? await storage.readHero());
-    heroList.value = list;
-    showHeroList.value = list;
-    if (response != null) storage.writeHero(heroList);
+    await recoverFromFile();
+    await reRequest();
   }
 
+  // ------------------- 英雄养成 -------------------
   // 英雄养成列表
   var fosterList = <HeroFosterInfo>[].obs;
 
@@ -62,6 +78,7 @@ class HeroInfoController extends GetxController {
     fosterList[index] = fosterInfo;
   }
 
+  // ------------------- 过滤器 -------------------
   // 过滤器
   var filter = {
     'star': '',

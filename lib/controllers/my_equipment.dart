@@ -3,15 +3,17 @@ import 'package:xbb_start/declaration/my_equipment.dart';
 import 'package:xbb_start/utils/storage.dart';
 
 class MyEquipmentController extends GetxController {
+  // 当前控制器实例
   static MyEquipmentController get to => Get.find();
+  // 本地存储
+  var storage = MyEquipmentStorage();
 
+  // ------------------- 我的装备 -------------------
   // 我的装备
   var myEquipmentData = {
     'item': <MyEquipment>[].obs,
     'fragment': <MyEquipment>[].obs,
   };
-
-  var storage = MyEquipmentStorage();
 
   // 初始化装备数据
   Future<void> initMyEquipmentList() async {
@@ -36,6 +38,7 @@ class MyEquipmentController extends GetxController {
     storage.writeEquipment(type, equipmentList);
   }
 
+  // ------------------- 下拉框 -------------------
   // 下拉框选择装备
   var selectedEquipment = '';
   updateSelectedEquipment(String name) {

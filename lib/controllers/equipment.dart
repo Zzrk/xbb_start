@@ -4,8 +4,12 @@ import 'package:xbb_start/utils/request.dart';
 import 'package:xbb_start/utils/storage.dart';
 
 class EquipmentController extends GetxController {
+  // 当前控制器实例
   static EquipmentController get to => Get.find();
+  // 本地存储
+  var storage = EquipmentStorage();
 
+  // ------------------- 装备 -------------------
   // 装备数据
   var equipmentData = {
     // 整件
@@ -23,20 +27,36 @@ class EquipmentController extends GetxController {
     'fragment': <Equipment>[],
   }.obs;
 
-  var storage = EquipmentStorage();
-
-  // 初始化装备数据
-  Future<void> initEquipmentList() async {
-    final response = await CommonRequest.getEquipment();
-    final list = Equipment.parseEquipmentList(response ?? await storage.readEquipment());
+  // 设置装备数据
+  void setData(List<Equipment> list) {
     equipmentData['item'] = list.where((element) => element.category == 'item').toList();
     equipmentData['fragment'] = list.where((element) => element.category == 'fragment').toList();
     equipmentData['total'] = list;
     showEquipmentData['item'] = equipmentData['item']!;
     showEquipmentData['fragment'] = equipmentData['fragment']!;
-    if (response != null) storage.writeEquipment(equipmentData['total']!);
   }
 
+  // 从本地存储中恢复数据
+  Future<void> recoverFromStorage() async {
+    final list = Equipment.parseEquipmentList(await storage.readEquipment());
+    setData(list);
+  }
+
+  // 重新请求数据
+  Future<void> reRequest() async {
+    final list = Equipment.parseEquipmentList(await CommonRequest.getEquipment() ?? []);
+    if (list.isEmpty) return;
+    setData(list);
+    storage.writeEquipment(list);
+  }
+
+  // 初始化装备数据
+  Future<void> initEquipmentList() async {
+    await recoverFromStorage();
+    await reRequest();
+  }
+
+  // ------------------- 过滤器 -------------------
   // 过滤器
   var filter = {
     'quality': '',
@@ -54,7 +74,7 @@ class EquipmentController extends GetxController {
     filter[key] = filter[key] == value ? '' : value;
   }
 
-  // 过滤
+  // 过滤装备/碎片
   void triggerFilterByType(String type) {
     final list = equipmentData['total']!.where((element) => element.category == type).toList();
     final quality = filter['quality']!;
@@ -68,6 +88,7 @@ class EquipmentController extends GetxController {
     }).toList();
   }
 
+  // 过滤
   void triggerFilter() {
     triggerFilterByType('item');
     triggerFilterByType('fragment');

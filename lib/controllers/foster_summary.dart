@@ -136,6 +136,7 @@ class FosterSummaryController extends GetxController {
     }
   }
 
+  // 计算
   void compute() {
     computeFoster(computedItemList);
     computeFoster(computedFragmentList);

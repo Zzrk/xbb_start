@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:xbb_start/declaration/summon.dart';
 
 class SummonController extends GetxController {
+  // 当前控制器实例
   static SummonController get to => Get.find();
 
   // 抽卡结果
