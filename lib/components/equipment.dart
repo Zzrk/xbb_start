@@ -49,8 +49,8 @@ class EquipmentImage extends StatelessWidget {
         children: [
           ClipPath(
             clipper: MyClipper(),
-            child: Image.asset(
-              'assets/equipment/$equipmentName.jpg',
+            child: Image.network(
+              '$equipmentBaseUrl/$equipmentName.jpg',
               width: imageSize,
               height: imageSize,
             ),
@@ -80,8 +80,8 @@ class EquipmentImage extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(imageSize * 0.2),
-            child: Image.asset(
-              'assets/equipment/$equipmentName.jpg',
+            child: Image.network(
+              '$equipmentBaseUrl/$equipmentName.jpg',
               width: imageSize,
               height: imageSize,
               color: isGrey ? Colors.grey : null,

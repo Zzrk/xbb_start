@@ -28,3 +28,8 @@ final dropdownItems = heroStageList
 
 // 星期列表
 const weekList = ['一', '二', '三', '四', '五', '六', '日'];
+
+// CDN 基础路径
+const cdnBaseUrl = 'https://cdn.jsdelivr.net/gh/Zzrk/ImageHosting';
+const equipmentBaseUrl = '$cdnBaseUrl/xbb/equipment';
+const heroBaseUrl = '$cdnBaseUrl/xbb/hero';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/declaration/hero.dart';
+import 'package:xbb_start/declaration/index.dart';
 
 // 装备图片
 class HeroImage extends StatelessWidget {
@@ -19,8 +20,8 @@ class HeroImage extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(imageSize * 0.2),
-          child: Image.asset(
-            'assets/hero/${hero.name}.jpg',
+          child: Image.network(
+            '$heroBaseUrl/${hero.name}.jpg',
             width: imageSize,
             height: imageSize,
           ),
@@ -63,8 +64,7 @@ class HeroItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final heroName = hero.name;
-    final isTodo = hero.stages
-        .any((stage) => stage.equipments.any((equipment) => equipment.isEmpty));
+    final isTodo = hero.stages.any((stage) => stage.equipments.any((equipment) => equipment.isEmpty));
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
