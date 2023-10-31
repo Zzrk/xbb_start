@@ -32,11 +32,13 @@ class EquipmentImage extends StatelessWidget {
     required this.equipment,
     required this.imageSize,
     this.isGrey = false,
+    this.tagPrefix = '',
   });
 
   final Equipment equipment;
   final double imageSize;
   final bool isGrey;
+  final String tagPrefix;
 
   @override
   Widget build(BuildContext context) {
@@ -45,60 +47,66 @@ class EquipmentImage extends StatelessWidget {
     final isFragment = equipment.category == 'fragment';
 
     if (isFragment) {
-      return Stack(
-        children: [
-          ClipPath(
-            clipper: MyClipper(),
-            child: Image.network(
-              '$equipmentBaseUrl/$equipmentName.jpg',
-              width: imageSize,
-              height: imageSize,
+      return Hero(
+        tag: tagPrefix + equipment.name,
+        child: Stack(
+          children: [
+            ClipPath(
+              clipper: MyClipper(),
+              child: Image.network(
+                '$equipmentBaseUrl/$equipmentName.jpg',
+                width: imageSize,
+                height: imageSize,
+              ),
             ),
-          ),
-          Positioned(
-            left: -imageSize * 0.1,
-            top: -imageSize * 0.1,
-            child: Image.asset(
-              'assets/equipment_detail/fragment_frame_$equipmentQuality.png',
-              width: imageSize * 1.2,
-              height: imageSize * 1.2,
+            Positioned(
+              left: -imageSize * 0.1,
+              top: -imageSize * 0.1,
+              child: Image.asset(
+                'assets/equipment_detail/fragment_frame_$equipmentQuality.png',
+                width: imageSize * 1.2,
+                height: imageSize * 1.2,
+              ),
             ),
-          ),
-          Positioned(
-            left: imageSize * 0.04,
-            top: imageSize * 0.04,
-            child: Image.asset(
-              'assets/equipment_detail/fragment_tag.png',
-              width: imageSize * 0.24,
-              height: imageSize * 0.24,
+            Positioned(
+              left: imageSize * 0.04,
+              top: imageSize * 0.04,
+              child: Image.asset(
+                'assets/equipment_detail/fragment_tag.png',
+                width: imageSize * 0.24,
+                height: imageSize * 0.24,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       );
     } else {
-      return Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(imageSize * 0.2),
-            child: Image.network(
-              '$equipmentBaseUrl/$equipmentName.jpg',
-              width: imageSize,
-              height: imageSize,
-              color: isGrey ? Colors.grey : null,
-              colorBlendMode: isGrey ? BlendMode.color : null,
+      return Hero(
+        tag: tagPrefix + equipment.name,
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(imageSize * 0.2),
+              child: Image.network(
+                '$equipmentBaseUrl/$equipmentName.jpg',
+                width: imageSize,
+                height: imageSize,
+                color: isGrey ? Colors.grey : null,
+                colorBlendMode: isGrey ? BlendMode.color : null,
+              ),
             ),
-          ),
-          Positioned(
-            left: -imageSize * 0.1,
-            top: -imageSize * 0.1,
-            child: Image.asset(
-              'assets/equipment_detail/equip_frame_$equipmentQuality.png',
-              width: imageSize * 1.2,
-              height: imageSize * 1.2,
-              color: isGrey ? Colors.grey : null,
-            ),
-          )
-        ],
+            Positioned(
+              left: -imageSize * 0.1,
+              top: -imageSize * 0.1,
+              child: Image.asset(
+                'assets/equipment_detail/equip_frame_$equipmentQuality.png',
+                width: imageSize * 1.2,
+                height: imageSize * 1.2,
+                color: isGrey ? Colors.grey : null,
+              ),
+            )
+          ],
+        ),
       );
     }
   }
@@ -115,6 +123,7 @@ class EquipmentItem extends StatelessWidget {
     this.innerPadding = const EdgeInsets.all(12.0),
     this.count,
     this.onLongPress,
+    this.tagPrefix = '',
   });
 
   final Equipment equipment;
@@ -124,6 +133,7 @@ class EquipmentItem extends StatelessWidget {
   final EdgeInsets innerPadding;
   final int? count;
   final void Function()? onLongPress;
+  final String tagPrefix;
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +158,7 @@ class EquipmentItem extends StatelessWidget {
               child: EquipmentImage(
                 equipment: equipment,
                 imageSize: imageSize,
+                tagPrefix: tagPrefix,
               ),
             ),
             Text(

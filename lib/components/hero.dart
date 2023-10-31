@@ -16,26 +16,29 @@ class HeroImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(imageSize * 0.2),
-          child: Image.network(
-            '$heroBaseUrl/${hero.name}.jpg',
-            width: imageSize,
-            height: imageSize,
+    return Hero(
+      tag: hero.name,
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(imageSize * 0.2),
+            child: Image.network(
+              '$heroBaseUrl/${hero.name}.jpg',
+              width: imageSize,
+              height: imageSize,
+            ),
           ),
-        ),
-        Positioned(
-          left: -imageSize * 0.1,
-          top: -imageSize * 0.11,
-          child: Image.asset(
-            'assets/hero_detail/hero_icon_frame_1.png',
-            width: imageSize * 1.2,
-            height: imageSize * 1.2,
-          ),
-        )
-      ],
+          Positioned(
+            left: -imageSize * 0.1,
+            top: -imageSize * 0.11,
+            child: Image.asset(
+              'assets/hero_detail/hero_icon_frame_1.png',
+              width: imageSize * 1.2,
+              height: imageSize * 1.2,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

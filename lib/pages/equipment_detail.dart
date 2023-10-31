@@ -32,8 +32,7 @@ class EquipmentDetailPage extends StatelessWidget {
                         const SizedBox(height: 12),
                         Text('品质: ${equipment.quality}'),
                         if (equipment.level != null) const SizedBox(height: 12),
-                        if (equipment.level != null)
-                          Text('需求英雄等级: ${equipment.level}'),
+                        if (equipment.level != null) Text('需求英雄等级: ${equipment.level}'),
                       ],
                     ),
                   ),
@@ -55,8 +54,7 @@ class EquipmentDetailPage extends StatelessWidget {
                 child: Column(children: [
                   const ListTile(title: Text('获取途径')),
                   const Divider(),
-                  ...List.generate(equipment.access!.length,
-                      (index) => Text(equipment.access![index])),
+                  ...List.generate(equipment.access!.length, (index) => Text(equipment.access![index])),
                   const SizedBox(height: 8)
                 ]),
               ),
@@ -70,10 +68,8 @@ class EquipmentDetailPage extends StatelessWidget {
                     children: [
                       ...List.generate(equipment.synthesis!.length, (index) {
                         final synthesis = equipment.synthesis![index];
-                        final type =
-                            synthesis.name.contains('碎片') ? 'fragment' : 'item';
-                        final e = c.equipmentData[type]!.firstWhere(
-                            (element) => element.name == synthesis.name);
+                        final type = synthesis.name.contains('碎片') ? 'fragment' : 'item';
+                        final e = c.equipmentData[type]!.firstWhere((element) => element.name == synthesis.name);
 
                         return EquipmentItem(
                           equipment: e,
@@ -82,6 +78,7 @@ class EquipmentDetailPage extends StatelessWidget {
                           outerPadding: const EdgeInsets.all(8.0),
                           innerPadding: const EdgeInsets.all(0),
                           count: synthesis.count,
+                          tagPrefix: 'synthesis',
                         );
                       }),
                     ],
