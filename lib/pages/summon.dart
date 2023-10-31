@@ -11,6 +11,7 @@ class SummonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SummonController c = Get.find();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('召唤模拟'),
@@ -21,13 +22,28 @@ class SummonPage extends StatelessWidget {
                 itemCount: c.summonResult.length,
                 itemBuilder: (BuildContext context, int index) {
                   final summonResult = c.summonResult[index];
-                  return ListTile(
-                    tileColor: summonProbabilityColor(summonResult.probability),
-                    title: Text(summonResult.hero.name),
-                    trailing: Text(
-                      '${summonResult.probability.star}星${summonResult.probability.isFragment ? '碎片' : '英雄'}',
-                      style: const TextStyle(color: Colors.black54),
-                    ),
+                  return AnimatedBuilder(
+                    animation: c.controller,
+                    builder: (BuildContext context, Widget? child) {
+                      final opacity = Tween<double>(begin: 0, end: 1)
+                          .animate(CurvedAnimation(
+                            parent: c.controller,
+                            curve: Interval(index * 0.1, (index + 1) * 0.1),
+                          ))
+                          .value;
+
+                      return Opacity(
+                        opacity: opacity,
+                        child: ListTile(
+                          tileColor: summonProbabilityColor(summonResult.probability).withOpacity(opacity),
+                          title: Text(summonResult.hero.name),
+                          trailing: Text(
+                            '${summonResult.probability.star}星${summonResult.probability.isFragment ? '碎片' : '英雄'}',
+                            style: const TextStyle(color: Colors.black54),
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
               )),
@@ -40,6 +56,8 @@ class SummonPage extends StatelessWidget {
               onPressed: () {
                 c.updateSummonResult([summonOneResult(rest: c.rest.value)]);
                 c.getNewRest();
+                c.controller.reset();
+                c.controller.forward();
               },
               child: const Text('单抽'),
             ),
@@ -48,6 +66,8 @@ class SummonPage extends StatelessWidget {
               onPressed: () {
                 c.updateSummonResult(summonTenResult(rest: c.rest.value));
                 c.getNewRest();
+                c.controller.reset();
+                c.controller.forward();
               },
               child: const Text('十连抽'),
             ),
