@@ -5,10 +5,13 @@ abstract class CommonRequest {
   // 请求实例
   static final dio = Dio(BaseOptions(
     contentType: 'application/json',
-    baseUrl: 'http://192.168.9.195:8000',
     connectTimeout: const Duration(seconds: 5),
     receiveTimeout: const Duration(seconds: 5),
   ));
+
+  static setup(String baseUrl) {
+    dio.options.baseUrl = baseUrl;
+  }
 
   // 请求活动日历数据
   static Future<List<dynamic>?> getCalendarData() async {
