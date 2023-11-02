@@ -16,7 +16,7 @@ class EquipmentDetailPage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(title: const Text('装备图鉴')),
-        body: Column(
+        body: ListView(
           children: [
             Row(
               children: [

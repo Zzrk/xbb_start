@@ -19,7 +19,7 @@ class HeroDetailPage extends StatelessWidget {
       length: heroStageList.length,
       child: Scaffold(
         appBar: AppBar(title: const Text('英雄图鉴')),
-        body: Column(children: [
+        body: ListView(children: [
           Row(children: [
             HeroImage(
               hero: hero,

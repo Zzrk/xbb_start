@@ -5,6 +5,7 @@ import 'package:xbb_start/components/equipment.dart';
 import 'package:xbb_start/components/filter_button.dart';
 import 'package:xbb_start/controllers/equipment.dart';
 import 'package:xbb_start/declaration/index.dart';
+import 'package:xbb_start/utils/toast.dart';
 
 // 装备图鉴
 class EquipmentPage extends StatelessWidget {
@@ -13,6 +14,18 @@ class EquipmentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EquipmentController c = Get.find();
+    final toaster = CommonToast(context);
+
+    Future<void> reRequest() async {
+      final result = await c.reRequest();
+      if (!result) toaster.errorRefresh();
+    }
+
+    if (!c.isInit.value) {
+      // 重新请求一次
+      reRequest();
+      c.isInit.value = true;
+    }
 
     return DefaultTabController(
         length: 2,
@@ -59,12 +72,21 @@ class EquipmentContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EquipmentController c = Get.find();
+    final toaster = CommonToast(context);
 
-    return Obx(() => GridView.count(
-          crossAxisCount: 4,
-          children: c.showEquipmentData[type]!.map((equipment) {
-            return EquipmentItem(equipment: equipment);
-          }).toList(),
-        ));
+    Future<void> reRequest() async {
+      final result = await c.reRequest();
+      if (!result) toaster.errorRefresh();
+    }
+
+    return RefreshIndicator(
+      onRefresh: () => reRequest(),
+      child: Obx(() => GridView.count(
+            crossAxisCount: 4,
+            children: c.showEquipmentData[type]!.map((equipment) {
+              return EquipmentItem(equipment: equipment);
+            }).toList(),
+          )),
+    );
   }
 }

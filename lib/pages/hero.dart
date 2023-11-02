@@ -5,6 +5,7 @@ import 'package:xbb_start/components/filter_button.dart';
 import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/hero.dart';
 import 'package:xbb_start/declaration/index.dart';
+import 'package:xbb_start/utils/toast.dart';
 
 // 英雄图鉴
 class HeroPage extends StatelessWidget {
@@ -13,15 +14,30 @@ class HeroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HeroInfoController c = Get.find();
+    final toaster = CommonToast(context);
+
+    Future<void> reRequest() async {
+      final result = await c.reRequest();
+      if (!result) toaster.errorRefresh();
+    }
+
+    if (!c.isInit.value) {
+      // 重新请求一次
+      reRequest();
+      c.isInit.value = true;
+    }
 
     return Scaffold(
       appBar: AppBar(title: const Text('英雄图鉴')),
-      body: Obx(() => GridView.count(
-            crossAxisCount: 4,
-            children: c.showHeroList.map((hero) {
-              return HeroItem(hero: hero);
-            }).toList(),
-          )),
+      body: RefreshIndicator(
+        onRefresh: () => reRequest(),
+        child: Obx(() => GridView.count(
+              crossAxisCount: 4,
+              children: c.showHeroList.map((hero) {
+                return HeroItem(hero: hero);
+              }).toList(),
+            )),
+      ),
       floatingActionButton: Obx(() => FilterButton(
             filterMenus: [
               SelectFilterMenu(

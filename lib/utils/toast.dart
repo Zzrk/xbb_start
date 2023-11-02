@@ -73,4 +73,8 @@ class CommonToast {
       toastDuration: const Duration(seconds: 2),
     );
   }
+
+  void errorRefresh() {
+    error('数据更新失败');
+  }
 }
