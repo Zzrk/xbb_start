@@ -16,7 +16,7 @@ class MyEquipmentController extends GetxController {
   };
 
   // 初始化装备数据
-  Future<void> initMyEquipmentList() async {
+  Future<void> recoverFromStorage() async {
     final itemResponse = await storage.readEquipment('item');
     final fragmentResponse = await storage.readEquipment('fragment');
 

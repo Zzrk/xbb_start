@@ -33,11 +33,12 @@ class HomeController extends GetxController {
   }
 
   // 重新请求活动日历数据
-  Future<void> reRequestCalendarData() async {
+  Future<bool> reRequestCalendarData() async {
     final list = CalendarInfo.parseCalendarData(await CommonRequest.getCalendarData() ?? []);
-    if (list.isEmpty) return;
+    if (list.isEmpty) return false;
     setCalendarData(list);
     storage.writeCalendar(list);
+    return true;
   }
 
   // 初始化活动日历数据
@@ -57,11 +58,12 @@ class HomeController extends GetxController {
   }
 
   // 重新请求兑换码数据
-  Future<void> reRequestRedeemCode() async {
+  Future<bool> reRequestRedeemCode() async {
     final list = RedeemCode.parseRedeemCode(await CommonRequest.getRedeemCode() ?? []);
-    if (list.isEmpty) return;
+    if (list.isEmpty) return false;
     redeemCode.value = list;
     storage.writeCode(list);
+    return true;
   }
 
   // 初始化兑换码数据
@@ -71,8 +73,20 @@ class HomeController extends GetxController {
   }
 
   // ------------------- 初始化 -------------------
-  void init() {
-    initCalendarData();
-    initRedeemCode();
+  var isInit = false.obs;
+
+  Future<List<void>> recoverFromStorage() async {
+    return Future.wait([
+      recoverCalendarData(),
+      recoverRedeemCode(),
+    ]);
+  }
+
+  Future<bool> reRequest() async {
+    final results = await Future.wait([
+      reRequestCalendarData(),
+      reRequestRedeemCode(),
+    ]);
+    return results.every((element) => element);
   }
 }

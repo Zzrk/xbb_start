@@ -36,26 +36,6 @@ class EquipmentController extends GetxController {
     showEquipmentData['fragment'] = equipmentData['fragment']!;
   }
 
-  // 从本地存储中恢复数据
-  Future<void> recoverFromStorage() async {
-    final list = Equipment.parseEquipmentList(await storage.readEquipment());
-    setData(list);
-  }
-
-  // 重新请求数据
-  Future<void> reRequest() async {
-    final list = Equipment.parseEquipmentList(await CommonRequest.getEquipment() ?? []);
-    if (list.isEmpty) return;
-    setData(list);
-    storage.writeEquipment(list);
-  }
-
-  // 初始化装备数据
-  Future<void> initEquipmentList() async {
-    await recoverFromStorage();
-    await reRequest();
-  }
-
   // ------------------- 过滤器 -------------------
   // 过滤器
   var filter = {
@@ -92,5 +72,23 @@ class EquipmentController extends GetxController {
   void triggerFilter() {
     triggerFilterByType('item');
     triggerFilterByType('fragment');
+  }
+
+  // ------------------- 初始化 -------------------
+  var isInit = false.obs;
+
+  // 从本地存储中恢复数据
+  Future<void> recoverFromStorage() async {
+    final list = Equipment.parseEquipmentList(await storage.readEquipment());
+    setData(list);
+  }
+
+  // 重新请求数据
+  Future<bool> reRequest() async {
+    final list = Equipment.parseEquipmentList(await CommonRequest.getEquipment() ?? []);
+    if (list.isEmpty) return false;
+    setData(list);
+    storage.writeEquipment(list);
+    return true;
   }
 }

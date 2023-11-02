@@ -17,28 +17,6 @@ class HeroInfoController extends GetxController {
   // 展示的英雄列表
   var showHeroList = <HeroInfo>[].obs;
 
-  // 从本地存储中恢复数据
-  Future<void> recoverFromFile() async {
-    final list = HeroInfo.parseHeroList(await storage.readHero());
-    heroList.value = list;
-    showHeroList.value = list;
-  }
-
-  // 重新请求数据
-  Future<void> reRequest() async {
-    final list = HeroInfo.parseHeroList(await CommonRequest.getHero() ?? []);
-    if (list.isEmpty) return;
-    heroList.value = list;
-    showHeroList.value = list;
-    storage.writeHero(list);
-  }
-
-  // 初始化英雄列表
-  Future<void> initHeroList() async {
-    await recoverFromFile();
-    await reRequest();
-  }
-
   // ------------------- 英雄养成 -------------------
   // 英雄养成列表
   var fosterList = <HeroFosterInfo>[].obs;
@@ -114,5 +92,25 @@ class HeroInfoController extends GetxController {
 
       return true;
     }).toList();
+  }
+
+  // ------------------- 初始化-------------------
+  var isInit = false.obs;
+
+  // 从本地存储中恢复数据
+  Future<void> recoverFromStorage() async {
+    final list = HeroInfo.parseHeroList(await storage.readHero());
+    heroList.value = list;
+    showHeroList.value = list;
+  }
+
+  // 重新请求数据
+  Future<bool> reRequest() async {
+    final list = HeroInfo.parseHeroList(await CommonRequest.getHero() ?? []);
+    if (list.isEmpty) return false;
+    heroList.value = list;
+    showHeroList.value = list;
+    storage.writeHero(list);
+    return true;
   }
 }
