@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 // 全局抽屉
 class GlobalDrawer extends StatelessWidget {
@@ -8,12 +9,13 @@ class GlobalDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: 285,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
-            child: Text('小冰冰, 启动!', style: TextStyle(color: Colors.white)),
+          DrawerHeader(
+            padding: const EdgeInsets.all(0),
+            child: Lottie.asset('assets/lottie/drawer.json'),
           ),
           ListTile(
             leading: const Icon(Icons.home),

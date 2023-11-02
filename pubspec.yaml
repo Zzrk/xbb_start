@@ -15,6 +15,7 @@ dependencies:
   get: ^4.6.6
   http: ^1.1.0
   logger: ^2.0.2+1
+  lottie: ^2.7.0
   path_provider: ^2.1.1
 
 dev_dependencies:
@@ -28,3 +29,4 @@ flutter:
     - assets/equipment_detail/
     - assets/hero_detail/
     - assets/calendar/
+    - assets/lottie/

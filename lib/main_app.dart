@@ -32,6 +32,13 @@ class MainApp extends StatelessWidget {
 
     return GetMaterialApp(
       title: '小冰冰, 启动!',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.deepPurple,
+        ).copyWith(
+          secondary: Colors.deepPurpleAccent,
+        ),
+      ),
       initialRoute: '/',
       // 各级路由
       getPages: [
