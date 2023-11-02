@@ -9,6 +9,9 @@ const equipmentQualityMap = {'白': 'white', '绿': 'green', '蓝': 'blue', '紫
 // 英雄星级列表
 const heroStarList = ['一星', '二星', '三星'];
 
+// 英雄品质映射
+const heroQualityMap = {1: 'blue', 2: 'purple', 3: 'orange'};
+
 // 英雄类型列表
 const heroTypeList = ['力', '敏', '智'];
 

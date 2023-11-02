@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xbb_start/components/drawer.dart';
+import 'package:xbb_start/components/hero.dart';
 import 'package:xbb_start/controllers/summon.dart';
 import 'package:xbb_start/declaration/summon.dart';
 
@@ -33,7 +34,7 @@ class SummonPage extends StatelessWidget {
                           .value;
 
                       return Opacity(
-                        opacity: opacity,
+                        opacity: Get.isDialogOpen! ? 0 : opacity,
                         child: ListTile(
                           tileColor: summonProbabilityColor(summonResult.probability).withOpacity(opacity),
                           title: Text(summonResult.hero.name),
@@ -54,20 +55,20 @@ class SummonPage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                c.updateSummonResult([summonOneResult(rest: c.rest.value)]);
+                final result = [summonOneResult(rest: c.rest.value)];
+                c.updateSummonResult(result);
                 c.getNewRest();
-                c.controller.reset();
-                c.controller.forward();
+                openSummonDialog(result);
               },
               child: const Text('单抽'),
             ),
             const SizedBox(width: 10),
             ElevatedButton(
               onPressed: () {
-                c.updateSummonResult(summonTenResult(rest: c.rest.value));
+                final result = summonTenResult(rest: c.rest.value);
+                c.updateSummonResult(result);
                 c.getNewRest();
-                c.controller.reset();
-                c.controller.forward();
+                openSummonDialog(result);
               },
               child: const Text('十连抽'),
             ),
@@ -77,4 +78,49 @@ class SummonPage extends StatelessWidget {
       drawer: const GlobalDrawer(),
     );
   }
+}
+
+void openSummonDialog(List<SummonResult> result) {
+  final SummonController c = Get.find();
+  // 临时全屏窗口
+  Get.dialog(
+    GestureDetector(
+      onTap: () {
+        if (c.showResult.length > 1) {
+          c.popResult();
+        } else {
+          Get.back();
+          c.animate();
+        }
+      },
+      child: Obx(() {
+        final summonResult = c.showResult.first;
+        return Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+              colors: [
+                summonProbabilityColor(summonResult.probability),
+                summonProbabilityColor(summonResult.probability).withOpacity(0.2),
+              ],
+              stops: const [0.5, 1],
+            ),
+          ),
+          child: Center(
+            child: AnimatedBuilder(
+              animation: c.controller,
+              builder: (context, child) {
+                return HeroImage(
+                  hero: summonResult.hero,
+                  imageSize: 100,
+                  isFragment: summonResult.probability.isFragment,
+                );
+              },
+            ),
+          ),
+        );
+      }),
+    ),
+  );
 }

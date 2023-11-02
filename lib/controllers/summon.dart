@@ -9,9 +9,18 @@ class SummonController extends GetxController with GetSingleTickerProviderStateM
   // 抽卡结果
   var summonResult = <SummonResult>[].obs;
 
+  // 抽卡结果对话框列表, 用于 pop
+  var showResult = <SummonResult>[].obs;
+
+  // 点击抽卡结果
+  void popResult() {
+    showResult.removeAt(0);
+  }
+
   // 更新抽卡结果
-  updateSummonResult(List<SummonResult> result) {
+  void updateSummonResult(List<SummonResult> result) {
     summonResult.value = result;
+    showResult.value = result;
   }
 
   // 剩余几次保底
@@ -26,11 +35,18 @@ class SummonController extends GetxController with GetSingleTickerProviderStateM
     rest.value = newRest;
   }
 
+  // 动画控制器
   late AnimationController controller;
+
+  // 开始动画
+  void animate() {
+    controller.reset();
+    controller.forward();
+  }
 
   @override
   void onInit() {
     super.onInit();
-    controller = AnimationController(vsync: this, duration: const Duration(seconds: 5));
+    controller = AnimationController(vsync: this, duration: const Duration(seconds: 2));
   }
 }
