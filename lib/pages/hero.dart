@@ -31,11 +31,10 @@ class HeroPage extends StatelessWidget {
       appBar: AppBar(title: const Text('英雄图鉴')),
       body: RefreshIndicator(
         onRefresh: () => reRequest(),
-        child: Obx(() => GridView.count(
-              crossAxisCount: 4,
-              children: c.showHeroList.map((hero) {
-                return HeroItem(hero: hero);
-              }).toList(),
+        child: Obx(() => GridView.builder(
+              itemCount: c.showHeroList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+              itemBuilder: (context, index) => HeroItem(hero: c.showHeroList[index]),
             )),
       ),
       floatingActionButton: Obx(() => FilterButton(

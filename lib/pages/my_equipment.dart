@@ -63,9 +63,11 @@ class EquipmentContent extends StatelessWidget {
     final MyEquipmentController c = Get.find();
     final EquipmentController c0 = Get.find();
 
-    return Obx(() => GridView.count(
-          crossAxisCount: 4,
-          children: c.myEquipmentData[type]!.map((element) {
+    return Obx(() => GridView.builder(
+          itemCount: c.myEquipmentData[type]!.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+          itemBuilder: (context, index) {
+            final element = c.myEquipmentData[type]![index];
             final equipment = c0.equipmentData[type]!.firstWhere((e) => e.name == element.name);
 
             return EquipmentItem(
@@ -75,7 +77,7 @@ class EquipmentContent extends StatelessWidget {
                 openDialog(context, type, equipment.name);
               },
             );
-          }).toList(),
+          },
         ));
   }
 }

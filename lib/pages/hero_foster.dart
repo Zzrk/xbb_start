@@ -47,17 +47,19 @@ class HeroFosterPage extends StatelessWidget {
               ),
             ],
           )),
-      body: Obx(() => GridView.count(
-            crossAxisCount: 4,
-            children: c.showHeroList.map((hero) {
-              return HeroItem(
-                hero: hero,
-                onTap: () => c.toggleFoster(hero),
-                decoration: c.fosterList.any((element) => element.hero.name == hero.name)
-                    ? const BoxDecoration(color: Colors.black26)
-                    : null,
-              );
-            }).toList(),
+      body: Obx(() => GridView.builder(
+            itemCount: c.showHeroList.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+            itemBuilder: (context, index) {
+              final hero = c.showHeroList[index];
+              return Obx(() => HeroItem(
+                    hero: hero,
+                    onTap: () => c.toggleFoster(hero),
+                    decoration: c.fosterList.any((element) => element.hero.name == hero.name)
+                        ? const BoxDecoration(color: Colors.black26)
+                        : null,
+                  ));
+            },
           )),
       drawer: const GlobalDrawer(),
     );

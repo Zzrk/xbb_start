@@ -81,11 +81,10 @@ class EquipmentContent extends StatelessWidget {
 
     return RefreshIndicator(
       onRefresh: () => reRequest(),
-      child: Obx(() => GridView.count(
-            crossAxisCount: 4,
-            children: c.showEquipmentData[type]!.map((equipment) {
-              return EquipmentItem(equipment: equipment);
-            }).toList(),
+      child: Obx(() => GridView.builder(
+            itemCount: c.showEquipmentData[type]!.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+            itemBuilder: (context, index) => EquipmentItem(equipment: c.showEquipmentData[type]![index]),
           )),
     );
   }
