@@ -67,7 +67,7 @@ class HeroImage extends StatelessWidget {
               left: imageSize * 0.04,
               top: imageSize * 0.04,
               child: Image.asset(
-                'assets/equipment_detail/fragment_tag.png',
+                'assets/equipment_detail/equip_soulstone_tag.png',
                 width: imageSize * 0.24,
                 height: imageSize * 0.24,
               ),

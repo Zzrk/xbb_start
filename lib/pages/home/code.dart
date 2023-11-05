@@ -15,7 +15,12 @@ class CodeList extends StatelessWidget {
     return Obx(() => Card(
           child: Column(children: [
             const ListTile(
-              title: Text('兑换码'),
+              title: Text(
+                '兑换码',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             const Divider(),
             ...List.generate(c.redeemCode.length, (index) {

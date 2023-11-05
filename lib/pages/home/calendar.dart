@@ -19,7 +19,12 @@ class Calendar extends StatelessWidget {
     return Obx(() => Card(
           child: Column(children: [
             const ListTile(
-              title: Text('当前活动'),
+              title: Text(
+                '当前活动',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               // trailing: TextButton(
               //   onPressed: () {
               //     // 强制横屏

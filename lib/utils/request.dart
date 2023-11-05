@@ -5,8 +5,8 @@ abstract class CommonRequest {
   // 请求实例
   static final dio = Dio(BaseOptions(
     contentType: 'application/json',
-    connectTimeout: const Duration(seconds: 5),
-    receiveTimeout: const Duration(seconds: 5),
+    connectTimeout: const Duration(seconds: 10),
+    receiveTimeout: const Duration(seconds: 10),
   ));
 
   static setup(String baseUrl) {
