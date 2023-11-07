@@ -6,12 +6,6 @@ on:
       - main
     tags:
       - '*'
-  pull_request:
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.txt'
-      - '**/*.png'
-      - '**/*.jpg'
 
 jobs:
   build:
