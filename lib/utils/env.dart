@@ -3,18 +3,16 @@ import 'package:xbb_start/utils/request.dart';
 enum BuildFlavor { dev, release }
 
 class BuildEnvironment {
+  // 环境区分
   late BuildFlavor flavor;
-  late String apiBaseUrl;
 
-  BuildEnvironment.dev(String apiBaseUrl) {
+  BuildEnvironment.dev() {
     flavor = BuildFlavor.dev;
-    apiBaseUrl = apiBaseUrl;
-    CommonRequest.setup(apiBaseUrl);
+    CommonRequest.setup('http://10.0.2.2:8000/');
   }
 
-  BuildEnvironment.release(String apiBaseUrl) {
+  BuildEnvironment.release() {
     flavor = BuildFlavor.release;
-    apiBaseUrl = apiBaseUrl;
-    CommonRequest.setup(apiBaseUrl);
+    CommonRequest.setup('http://122.51.216.75:8000/');
   }
 }

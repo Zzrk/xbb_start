@@ -56,4 +56,16 @@ abstract class CommonRequest {
       return null;
     }
   }
+
+  // 请求 latest 文件
+  static Future<Map<String, dynamic>?> checkVersion() async {
+    try {
+      final response = await CommonRequest.dio.get('/latest.json');
+      CommonLogger.info(response.data);
+      return response.data;
+    } catch (err) {
+      CommonLogger.error(err);
+      return null;
+    }
+  }
 }

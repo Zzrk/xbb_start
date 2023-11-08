@@ -6,6 +6,7 @@ import 'package:xbb_start/controllers/my_equipment.dart';
 import 'package:xbb_start/controllers/foster_summary.dart';
 import 'package:xbb_start/controllers/home.dart';
 import 'package:xbb_start/controllers/summon.dart';
+import 'package:xbb_start/controllers/update.dart';
 import 'package:xbb_start/pages/home/index.dart';
 import 'package:xbb_start/pages/equipment.dart';
 import 'package:xbb_start/pages/equipment_detail.dart';
@@ -29,6 +30,7 @@ class MainApp extends StatelessWidget {
     Get.put(MyEquipmentController()).recoverFromStorage();
     Get.put(FosterSummaryController());
     Get.put(SummonController());
+    Get.put(UpdateController()).checkVersion();
 
     return GetMaterialApp(
       title: '小冰冰, 启动!',
