@@ -87,11 +87,14 @@ jobs:
     steps:
       - name: Connect to SSH
         uses: appleboy/ssh-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
+          envs: GITHUB_TOKEN
           script: |
             cd /home/lighthouse/project/xbb_start_server/public/
             bash auto.sh
