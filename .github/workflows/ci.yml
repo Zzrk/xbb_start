@@ -96,5 +96,5 @@ jobs:
           port: ${{ secrets.PORT }}
           envs: GITHUB_TOKEN
           script: |
-            cd /home/lighthouse/project/xbb_start_server/public/
+            cd /home/lighthouse/project/
             bash auto.sh

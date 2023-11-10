@@ -11,15 +11,13 @@ dependencies:
   dropdown_search: ^5.0.6
   flutter:
     sdk: flutter
-  flutter_downloader: ^1.11.4
   fluttertoast: 8.2.2
   get: ^4.6.6
-  http: ^1.1.0
   logger: ^2.0.2+1
   lottie: ^2.7.0
-  open_file: ^3.3.2
   package_info: ^2.0.2
   path_provider: ^2.1.1
+  r_upgrade: ^0.4.2
 
 dev_dependencies:
   flutter_test:
