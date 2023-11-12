@@ -1,11 +1,7 @@
-import 'dart:isolate';
-import 'dart:ui';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:open_file/open_file.dart';
 import 'package:package_info/package_info.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:r_upgrade/r_upgrade.dart';
 import 'package:xbb_start/utils/logger.dart';
 import 'package:xbb_start/utils/request.dart';
 
@@ -13,77 +9,125 @@ class UpdateController extends GetxController {
   // 当前控制器实例
   static UpdateController get to => Get.find();
 
-  ReceivePort _port = ReceivePort();
-
-  @pragma('vm:entry-point')
-  static void downloadCallback(String id, int status, int progress) {
-    final SendPort send = IsolateNameServer.lookupPortByName('downloader_send_port')!;
-    send.send([id, status, progress]);
-  }
+  var id = 0.obs;
+  var speed = 0.obs;
+  var percent = 0.obs;
+  var status = DownloadStatus.STATUS_PENDING.obs;
 
   // 初始化
   @override
   void onInit() {
     super.onInit();
-
-    IsolateNameServer.registerPortWithName(_port.sendPort, 'downloader_send_port');
-    _port.listen((dynamic data) {
-      String id = data[0];
-      // DownloadTaskStatus status = DownloadTaskStatus(data[1]);
-      int progress = data[2];
-      print('下载进度：$progress');
+    RUpgrade.stream.listen((DownloadInfo info) {
+      // 保留整数部分
+      speed.value = info.speed?.toInt() ?? speed.value;
+      percent.value = info.percent?.toInt() ?? percent.value;
+      status.value = info.status ?? DownloadStatus.STATUS_PENDING;
+      CommonLogger.info(info.status);
+      if (info.status == DownloadStatus.STATUS_SUCCESSFUL) {
+        Get.back();
+      }
     });
-    FlutterDownloader.registerCallback(downloadCallback);
-
     CommonLogger.info('UpdateController init');
   }
 
   // 销毁
   @override
   void onClose() {
-    IsolateNameServer.removePortNameMapping('downloader_send_port');
-
     super.onClose();
-
     CommonLogger.info('UpdateController close');
   }
 
   checkVersion() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    final version = packageInfo.version;
+    final version = 'v${packageInfo.version}';
     final latest = await CommonRequest.checkVersion();
 
-    if (latest != null && latest['version'] == 'v$version') {
-      // 打开更新对话框
-      Get.defaultDialog(
-        title: '发现新版本',
-        content: Text(latest['content']!),
-        textConfirm: '更新',
-        textCancel: '取消',
-        confirmTextColor: Colors.white,
-        onConfirm: () async {
-          // 获取存储卡的路径
-          final directory = await getExternalStorageDirectory();
-          String _localPath = directory!.path;
-          print('存储卡路径：$_localPath');
-
-          // OpenFile.open('${_localPath}/xbb_start_v0.1.0.apk');
-          // await FlutterDownloader.enqueue(
-          //   // 远程的APK地址（注意：安卓9.0以上后要求用https）
-          //   url: latest['url'],
-          //   // 下载保存的路径
-          //   savedDir: _localPath,
-          //   // 是否在手机顶部显示下载进度（仅限安卓）
-          //   showNotification: true,
-          //   // 是否允许下载完成点击打开文件（仅限安卓）
-          //   openFileFromNotification: true,
-          // );
-
-          // Get.back();
-        },
-        onCancel: () {
-          Get.back();
-        },
+    if (latest != null && latest['version'] != version) {
+      // 打开更新内容对话框
+      Get.dialog(
+        Obx(
+          () => Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  const Text('发现新版本',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        decoration: TextDecoration.none,
+                      )),
+                  const SizedBox(height: 20),
+                  Text(latest['content'],
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                        decoration: TextDecoration.none,
+                      )),
+                  const SizedBox(height: 20),
+                  if (status.value == DownloadStatus.STATUS_PENDING)
+                    Row(
+                      children: [
+                        // 取消按钮
+                        Expanded(
+                          child: TextButton(
+                            onPressed: () {
+                              RUpgrade.cancel(id.value);
+                              Get.back();
+                            },
+                            child: const Text('取消'),
+                          ),
+                        ),
+                        // 更新按钮
+                        Expanded(
+                          child: TextButton(
+                            onPressed: () async {
+                              final version = latest['version'];
+                              id.value = await RUpgrade.upgrade(
+                                    latest['url'],
+                                    fileName: 'xbb_start_$version.apk',
+                                    installType: RUpgradeInstallType.normal,
+                                  ) ??
+                                  0;
+                              CommonLogger.info('开始更新: $id');
+                            },
+                            child: const Text('更新'),
+                          ),
+                        ),
+                      ],
+                    )
+                  else
+                    // 与 TextButton 占据相同控件的进度条
+                    Container(
+                      height: 48,
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        height: 10,
+                        child: LinearProgressIndicator(
+                          value: percent.value / 100,
+                          backgroundColor: Colors.grey[200],
+                          valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        barrierDismissible: false,
       );
     }
   }
