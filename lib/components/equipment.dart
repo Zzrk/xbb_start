@@ -162,7 +162,7 @@ class EquipmentItem extends StatelessWidget {
               ),
             ),
             Text(
-              equipmentName,
+              equipmentName.replaceAll('(碎片)', ''),
               style: TextStyle(fontSize: fontSize),
             ),
             if (count != null) Text('x$count')

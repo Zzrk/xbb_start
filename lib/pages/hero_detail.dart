@@ -67,6 +67,7 @@ class HeroDetailPage extends StatelessWidget {
           ]),
           const SizedBox(height: 12),
           TabBar(
+            isScrollable: true,
             tabs: heroStageList.map((stage) => Tab(text: stage)).toList(),
             labelColor: Colors.black,
           ),
