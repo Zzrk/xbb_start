@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xbb_start/components/priority_image.dart';
 import 'package:xbb_start/declaration/equipment.dart';
 import 'package:xbb_start/declaration/index.dart';
 
@@ -53,8 +54,9 @@ class EquipmentImage extends StatelessWidget {
           children: [
             ClipPath(
               clipper: MyClipper(),
-              child: Image.network(
-                '$equipmentBaseUrl/$equipmentName.jpg',
+              child: PriorityImage(
+                localImage: 'assets/equipment/$equipmentName.jpg',
+                networkImage: '$equipmentBaseUrl/$equipmentName.jpg',
                 width: imageSize,
                 height: imageSize,
               ),
@@ -87,8 +89,9 @@ class EquipmentImage extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(imageSize * 0.2),
-              child: Image.network(
-                '$equipmentBaseUrl/$equipmentName.jpg',
+              child: PriorityImage(
+                localImage: 'assets/equipment/$equipmentName.jpg',
+                networkImage: '$equipmentBaseUrl/$equipmentName.jpg',
                 width: imageSize,
                 height: imageSize,
                 color: isGrey ? Colors.grey : null,

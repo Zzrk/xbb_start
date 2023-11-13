@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xbb_start/components/priority_image.dart';
 import 'package:xbb_start/declaration/hero.dart';
 import 'package:xbb_start/declaration/index.dart';
 
@@ -48,8 +49,9 @@ class HeroImage extends StatelessWidget {
           children: [
             ClipPath(
               clipper: MyClipper(),
-              child: Image.network(
-                '$heroBaseUrl/${hero.name}.jpg',
+              child: PriorityImage(
+                localImage: 'assets/hero/${hero.name}.jpg',
+                networkImage: '$heroBaseUrl/${hero.name}.jpg',
                 width: imageSize,
                 height: imageSize,
               ),
@@ -82,8 +84,9 @@ class HeroImage extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(imageSize * 0.2),
-              child: Image.network(
-                '$heroBaseUrl/${hero.name}.jpg',
+              child: PriorityImage(
+                localImage: 'assets/hero/${hero.name}.jpg',
+                networkImage: '$heroBaseUrl/${hero.name}.jpg',
                 width: imageSize,
                 height: imageSize,
               ),
