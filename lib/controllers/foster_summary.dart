@@ -24,12 +24,24 @@ class FosterSummaryController extends GetxController {
         equipmentQualityList.indexOf(b.equipment.quality).compareTo(equipmentQualityList.indexOf(a.equipment.quality)));
   }
 
+  // 合并两个装备列表
+  void combine2list(List<EquipmentFoster> list1, List<EquipmentFoster> list2) {
+    for (EquipmentFoster item in list2) {
+      if (list1.any((element) => element.equipment == item.equipment)) {
+        final computedEquipment = list1.firstWhere((element) => element.equipment == item.equipment);
+        computedEquipment.count += item.count;
+      } else {
+        list1.add(EquipmentFoster(equipment: item.equipment, count: item.count));
+      }
+    }
+  }
+
   // 计算养成装备
-  void computeFoster(List<EquipmentFoster> computedItemList) {
+  void computeFoster(List<EquipmentFoster> list) {
     final fosterList = HeroInfoController.to.fosterList;
     final equipmentList = EquipmentController.to.equipmentData['total'];
     // 清空原先的计算结果
-    computedItemList.clear();
+    list.clear();
     // 遍历每个需要养成的英雄
     for (HeroFosterInfo foster in fosterList) {
       // 英雄的各个阶段所需装备
@@ -52,37 +64,35 @@ class FosterSummaryController extends GetxController {
               (i == toIndex && ((foster.toState >> (5 - j)) & 1 == 0))) continue;
           // 如果计算结果中已经有该装备，数量+1，否则新增
           final equipment = equipmentList!.firstWhere((element) => element.name == equipmentName);
-          if (computedItemList.any((element) => element.equipment == equipment)) {
-            final computedEquipment = computedItemList.firstWhere((element) => element.equipment == equipment);
+          if (list.any((element) => element.equipment == equipment)) {
+            final computedEquipment = list.firstWhere((element) => element.equipment == equipment);
             computedEquipment.count++;
           } else {
-            computedItemList.add(EquipmentFoster(equipment: equipment, count: 1));
+            list.add(EquipmentFoster(equipment: equipment, count: 1));
           }
         }
       }
     }
-    sortFoster(computedItemList);
+    sortFoster(list);
   }
 
   // 计算装备碎片
-  void computeFragment(List<EquipmentFoster> computedItemList) {
+  void computeFragment(List<EquipmentFoster> list) {
     // 在 computeFoster 之后调用
     // 筛选需要合成的装备
-    final synthesisList = computedItemList.where((element) => element.equipment.synthesis != null).toList();
+    final synthesisList = list.where((element) => element.equipment.synthesis != null).toList();
     // 如果没有需要合成的装备，直接返回
     if (synthesisList.isEmpty) {
-      computedItemList.sort((a, b) => equipmentQualityList
-          .indexOf(b.equipment.quality)
-          .compareTo(equipmentQualityList.indexOf(a.equipment.quality)));
+      sortFoster(list);
       return;
     }
-    // 新添加的子装备列表, 需要在最后 computedItemList.addAll
+    // 新添加的子装备列表, 需要在最后 combine2list
     final newList = <EquipmentFoster>[];
     final equipmentList = EquipmentController.to.equipmentData['total'];
     // 遍历需要合成的装备
     for (EquipmentFoster foster in synthesisList) {
       // 删除需要合成的装备
-      computedItemList.removeWhere((element) => element.equipment == foster.equipment);
+      list.removeWhere((element) => element.equipment == foster.equipment);
       final synthesis = foster.equipment.synthesis!;
       // 遍历合成所需的子装备
       for (EquipmentCount synthesis in synthesis) {
@@ -96,9 +106,9 @@ class FosterSummaryController extends GetxController {
         }
       }
     }
-    computedItemList.addAll(newList);
+    combine2list(list, newList);
     // 重复调用直到没有需要合成的装备
-    computeFragment(computedItemList);
+    computeFragment(list);
   }
 
   // 计算需求装备
